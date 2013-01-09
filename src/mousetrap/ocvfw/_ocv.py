@@ -51,7 +51,8 @@ class OcvfwBase:
             debug.debug("OcvfwBase", "Changed %s value to %s" % (key, value))
             return True
         
-        debug.debug("OcvfwBase", "%s not found" % (key))
+        debug.debug("ocvfw", self.img) #remove
+	debug.debug("OcvfwBase", "%s not found" % (key))
         return False
 
     def lk_swap(self, set=None):
@@ -76,7 +77,7 @@ class OcvfwBase:
         if type(size) == "<type 'tuple'>":
             size = co.cv.CvSize( size[0], size[1])
 
-        return co.cv.CreateImage( size, num, ch)
+        return co.cv.cvCreateImage( size, num, ch)
 
     def set_camera_idx(self, idx):
         """
@@ -123,7 +124,7 @@ class OcvfwBase:
 
         if not  self.img:
             self.storage        = co.cv.CreateMemStorage(0)
-            self.imgSize        = co.cv.GetSize (frame)
+            self.imgSize        = co.cv.cvGetSize (frame)
             self.img            = co.cv.cvCreateImage ( self.imgSize, 8, 3 )
             #self.img.origin     = frame.origin
             self.grey           = co.cv.cvCreateImage ( self.imgSize, 8, 1 )
@@ -134,7 +135,8 @@ class OcvfwBase:
             self.small_img       = co.cv.cvCreateImage( co.cv.CvSize( co.cv.cvRound ( self.imgSize.width/self.imageScale),
                                     co.cv.cvRound ( self.imgSize.height/self.imageScale) ), 8, 3 )
         self.img = frame
-        co.cv.CvtColor(self.img, self.grey, co.cv.CV_BGR2GRAY)
+        debug.debug("ocvfw", self.img) #remove here
+	co.cv.CvtColor(self.img, self.grey, co.cv.CV_BGR2GRAY)
 
         self.wait_key(10)
         return True
@@ -263,12 +265,12 @@ class OcvfwCtypes(OcvfwBase):
         """
         Initialize the module and set its main variables.
         """
-        co.cv = __import__("ctypescv.cv",
+        co.cv = __import__("ctypesopencv.cv",
                         globals(),
                         locals(),
                         [''])
         
-        co.hg = __import__("ctypescv.cv",
+        co.hg = __import__("ctypesopencv.cv",
                         globals(),
                         locals(),
                         [''])
