@@ -17,42 +17,42 @@
 # We have the following line for use by intltoolize:
 # INTLTOOL_MAKEFILE
 
-GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
-PACKAGE = @PACKAGE@
-VERSION = @VERSION@
+GETTEXT_PACKAGE = mousetrap
+PACKAGE = mousetrap
+VERSION = 0.4
 
-SHELL = @SHELL@
+SHELL = /bin/sh
 
-srcdir = @srcdir@
-top_srcdir = @top_srcdir@
-top_builddir = @top_builddir@
-VPATH = @srcdir@
+srcdir = .
+top_srcdir = ..
+top_builddir = ..
 
-prefix = @prefix@
-exec_prefix = @exec_prefix@
-datadir = @datadir@
-datarootdir = @datarootdir@
-libdir = @libdir@
-DATADIRNAME = @DATADIRNAME@
+
+prefix = /usr/local
+exec_prefix = ${prefix}
+datadir = ${datarootdir}
+datarootdir = ${prefix}/share
+libdir = ${exec_prefix}/lib
+DATADIRNAME = share
 itlocaledir = $(prefix)/$(DATADIRNAME)/locale
 subdir = po
-install_sh = @install_sh@
-# Automake >= 1.8 provides @mkdir_p@.
+install_sh = ${SHELL} /opt/git/mousetrap/install-sh
+# Automake >= 1.8 provides /bin/mkdir -p.
 # Until it can be supposed, use the safe fallback:
 mkdir_p = $(install_sh) -d
 
-INSTALL = @INSTALL@
-INSTALL_DATA = @INSTALL_DATA@
+INSTALL = /bin/install -c
+INSTALL_DATA = ${INSTALL} -m 644
 
-GMSGFMT = @GMSGFMT@
-MSGFMT = @MSGFMT@
-XGETTEXT = @XGETTEXT@
-INTLTOOL_UPDATE = @INTLTOOL_UPDATE@
-INTLTOOL_EXTRACT = @INTLTOOL_EXTRACT@
+GMSGFMT = /bin/msgfmt
+MSGFMT = /bin/msgfmt
+XGETTEXT = /bin/xgettext
+INTLTOOL_UPDATE = /bin/intltool-update
+INTLTOOL_EXTRACT = /bin/intltool-extract
 MSGMERGE = INTLTOOL_EXTRACT="$(INTLTOOL_EXTRACT)" XGETTEXT="$(XGETTEXT)" srcdir=$(srcdir) $(INTLTOOL_UPDATE) --gettext-package $(GETTEXT_PACKAGE) --dist
 GENPOT   = INTLTOOL_EXTRACT="$(INTLTOOL_EXTRACT)" XGETTEXT="$(XGETTEXT)" srcdir=$(srcdir) $(INTLTOOL_UPDATE) --gettext-package $(GETTEXT_PACKAGE) --pot
 
-ALL_LINGUAS = @ALL_LINGUAS@
+ALL_LINGUAS = 
 
 PO_LINGUAS=$(shell if test -r $(srcdir)/LINGUAS; then grep -v "^\#" $(srcdir)/LINGUAS; else echo "$(ALL_LINGUAS)"; fi)
 
@@ -66,14 +66,24 @@ DISTFILES = Makefile.in.in POTFILES.in $(POFILES)
 EXTRA_DISTFILES = ChangeLog POTFILES.skip Makevars LINGUAS
 
 POTFILES = \
-# This comment gets stripped out
+	../src/mousetrap/app/addons/handler.py \
+	../src/mousetrap/app/addons/recalc.py \
+	../src/mousetrap/app/main.py \
+	../src/mousetrap/app/ui/dialogs.py \
+	../src/mousetrap/app/ui/main.py \
+	../src/mousetrap/app/ui/settings_gui.py \
+	../src/mousetrap/ocvfw/_ocv.py \
+	../src/mousetrap/ocvfw/backends/OcvfwBase.py \
+	../src/mousetrap/ocvfw/backends/OcvfwCtypes.py \
+	../src/mousetrap/ocvfw/backends/OcvfwPython.py \
+	../src/mousetrap/ocvfw/pocv.py
 
 CATALOGS=$(shell LINGUAS="$(USE_LINGUAS)"; for lang in $$LINGUAS; do printf "$$lang.gmo "; done)
 
 .SUFFIXES:
 .SUFFIXES: .po .pox .gmo .mo .msg .cat
 
-AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
+AM_DEFAULT_VERBOSITY = 1
 INTLTOOL_V_MSGFMT = $(INTLTOOL__v_MSGFMT_$(V))
 INTLTOOL__v_MSGFMT_= $(INTLTOOL__v_MSGFMT_$(AM_DEFAULT_VERBOSITY))
 INTLTOOL__v_MSGFMT_0 = @echo "  MSGFMT" $@;
@@ -94,7 +104,7 @@ INTLTOOL__v_MSGFMT_0 = @echo "  MSGFMT" $@;
 	  && rm -f $@ && gencat $@ $*.msg
 
 
-all: all-@USE_NLS@
+all: all-yes
 
 all-yes: $(CATALOGS)
 all-no:
@@ -103,7 +113,7 @@ $(GETTEXT_PACKAGE).pot: $(POTFILES)
 	$(GENPOT)
 
 install: install-data
-install-data: install-data-@USE_NLS@
+install-data: install-data-yes
 install-data-no: all
 install-data-yes: all
 	linguas="$(USE_LINGUAS)"; \
