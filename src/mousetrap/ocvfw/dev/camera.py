@@ -27,11 +27,11 @@ __date__      = "$Date$"
 __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
-import gobject
 from warnings import *
 from .. import debug
 from .. import commons as co
 from mousetrap.ocvfw import _ocv as ocv
+from gi.repository import GObject
 
 Camera = None
 
@@ -103,7 +103,7 @@ class Capture(object):
         self.async = async
 
         if self.async:
-            gobject.timeout_add(self.fps, self.sync)
+            GObject.timeout_add(self.fps, self.sync)
 
     def sync(self):
         """

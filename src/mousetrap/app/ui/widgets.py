@@ -27,9 +27,8 @@ __date__      = "$Date$"
 __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
-import gtk
+import gtk, gobject
 import cairo
-import gobject
 from gtk import gdk
 from math import pi
 

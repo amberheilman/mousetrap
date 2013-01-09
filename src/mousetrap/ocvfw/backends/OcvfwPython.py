@@ -39,12 +39,12 @@ class OcvfwPython(OcvfwBase):
     This Backend uses normal opencv python bindings.
     """
 
-    co.cv = __import__("opencv.cv",
+    co.cv = __import__("cv",
                         globals(),
                         locals(),
                         [''])
         
-    co.hg = __import__("opencv.highgui",
+    co.hg = __import__("cv.highgui",
                         globals(),
                         locals(),
                         [''])

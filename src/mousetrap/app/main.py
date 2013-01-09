@@ -36,7 +36,7 @@ __license__   = "GPLv2"
 import sys
 sys.argv[0] = "mousetrap"
 
-import gobject
+from gi.repository import GObject
 import debug
 import getopt
 import environment as env
@@ -65,7 +65,7 @@ class Controller():
         # We don't want to load the settings each time we need them. do we?
         self.cfg = None
 
-        self.loop = gobject.MainLoop()
+        self.loop = GObject.MainLoop()
         self.httpd = httpd.HttpdServer(20433)
         self.dbusd = dbusd.DbusServer()
 
@@ -92,8 +92,8 @@ class Controller():
             self.idm = idm.Module(self)
             self.idm.set_capture(self.cfg.getint("cam", "inputDevIndex"))
 
-            gobject.timeout_add(150, self.update_frame)
-            gobject.timeout_add(50, self.update_pointers)
+            GObject.timeout_add(150, self.update_frame)
+            GObject.timeout_add(50, self.update_pointers)
             
             debug.info("mousetrap", "Idm loaded and started")
 
@@ -108,7 +108,7 @@ class Controller():
             
         debug.info("mousetrap", "MouseTrap's Interface Built and Loaded")
 
-        gobject.threads_init()
+        GObject.threads_init()
         self.loop.run()
 
     def proc_args(self):
