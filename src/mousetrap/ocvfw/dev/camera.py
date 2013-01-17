@@ -58,7 +58,7 @@ class Capture(object):
 
     def __init__(self, image=None, fps=100, async=False, idx=0, backend="OcvfwPython"):
 
-        global Camera
+	global Camera
 
         self.__lock        = False
         self.__flip        = {}
@@ -116,11 +116,11 @@ class Capture(object):
         Camera.query_image()
 
         if not self.__image:
-            self.__images_cn   = { 1 : co.cv.cvCreateImage ( Camera.imgSize, 8, 1 ),
-                                   3 : co.cv.cvCreateImage ( Camera.imgSize, 8, 3 ),
-                                   4 : co.cv.cvCreateImage ( Camera.imgSize, 8, 4 ) }
+            self.__images_cn   = { 1 : co.cv.CreateImage ( Camera.imgSize, 8, 1 ),
+                                   3 : co.cv.CreateImage ( Camera.imgSize, 8, 3 ),
+                                   4 : co.cv.CreateImage ( Camera.imgSize, 8, 4 ) }
 
-        self.__color       = "bgr"
+	self.__color       = "bgr"
         self.__image_orig  = self.__image = Camera.img
 
         if self.__color != self.__color_set:
@@ -168,13 +168,13 @@ class Capture(object):
         if self.__image is None:
             return False
 
-        tmp = co.cv.cvCreateImage( co.cv.cvSize( width, height ), 8, self.__ch )
-        co.cv.cvResize( self.__image, tmp, co.cv.CV_INTER_AREA )
+        tmp = co.cv.CreateImage( ( width, height ), 8, self.__ch )
+        co.cv.Resize( self.__image, tmp, co.cv.CV_INTER_AREA )
 
         if not copy:
             self.__image = tmp
 
-        return tmp
+	return tmp
 
     def to_gtk_buff(self):
         """
@@ -191,10 +191,10 @@ class Capture(object):
                                                  gtk.gdk.COLORSPACE_RGB, 
                                                  img.depth)
         else:
-            buff = gtk.gdk.pixbuf_new_from_data(img.imageData, 
+	    buff = gtk.gdk.pixbuf_new_from_data(img.tostring(), 
                                                 gtk.gdk.COLORSPACE_RGB, False, 8,
                                                 int(img.width), int(img.height), 
-                                                img.widthStep )
+                                                img.width )
         return buff
 
     def points(self):
@@ -291,7 +291,7 @@ class Capture(object):
 
         if new_color:
             tmp = self.__images_cn[channel]
-            co.cv.cvCvtColor( self.__image, tmp, self.__color_int['cv_%s2%s' % (self.__color, new_color) ])
+            co.cv.CvtColor( self.__image, tmp, self.__color_int['cv_%s2%s' % (self.__color, new_color) ])
             self.__color = new_color
             self.__ch = channel
 
@@ -463,7 +463,7 @@ class Point(Graphic):
         self.__ocv = None
         self.last  = None
         self.diff  = None
-        self.orig  = co.cv.cvPoint( self.x, self.y )
+        self.orig  = ( self.x, self.y )
 
     def set_opencv(self, opencv):
         """
@@ -483,10 +483,10 @@ class Point(Graphic):
             self.last = self.__ocv
 
             # Update the diff attr
-            self.rel_diff = co.cv.cvPoint( self.last.x - self.x,
+            self.rel_diff = ( self.last.x - self.x,
                                         self.last.y - self.y )
 
-            self.abs_diff = co.cv.cvPoint( self.x - self.orig.x,
+            self.abs_diff = ( self.x - self.orig.x,
                                         self.y - self.orig.y )
 
         self.__ocv = opencv

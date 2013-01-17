@@ -29,7 +29,6 @@ __license__   = "GPLv2"
 
 import os
 import re
-import debug #remove
 
 def get_idm(idm):
     """
@@ -38,7 +37,6 @@ def get_idm(idm):
     Arguments:
     - idm: The requested idm.
     """
-    debug.debug("Ocvfw", __import__("mousetrap.ocvfw.idm.%s" %idm, globals(), locals(), [''])) #remove 
     return __import__("mousetrap.ocvfw.idm.%s" % idm,
                       globals(),
                       locals(),

@@ -236,7 +236,7 @@ class Controller():
         - self: The main object pointer.
         """
         self.itf.update_frame(self.idm.get_capture(), self.idm.get_pointer())
-        return True
+	return True
 
     def update_pointers(self):
         """

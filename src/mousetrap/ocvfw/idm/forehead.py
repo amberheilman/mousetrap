@@ -108,8 +108,7 @@ class Module(object):
         self.cap = Capture(async=True, idx=cam, backend="OcvfwPython")
         self.cap.change(color="rgb")
         self.cap.set_camera("lk_swap", True)
-
-
+	
     def calc_motion(self):
         if not hasattr(self.cap, "forehead"):
             self.get_forehead()
@@ -129,7 +128,7 @@ class Module(object):
 
         #return self.cap.resize(200, 160, True)
         return self.cap
-
+	
     def get_pointer(self):
         """
         Returns the new MousePosition

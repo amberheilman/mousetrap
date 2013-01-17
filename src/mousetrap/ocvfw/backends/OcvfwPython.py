@@ -44,7 +44,7 @@ class OcvfwPython(OcvfwBase):
                         locals(),
                         [''])
         
-    co.hg = __import__("cv.highgui",
+    co.hg = __import__("cv",
                         globals(),
                         locals(),
                         [''])
@@ -84,16 +84,16 @@ class OcvfwPython(OcvfwBase):
         Returns a list with the matches.
         """
 
-        cascade = co.cv.cvLoadHaarClassifierCascade( haarCascade, self.imgSize )
+        cascade = co.cv.Load( haarCascade, self.imgSize )
 
         if not cascade:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
-        co.cv.cvResize( self.img, self.small_img, co.cv.CV_INTER_LINEAR )
+        co.cv.Resize( self.img, self.small_img, co.cv.CV_INTER_LINEAR )
 
-        co.cv.cvClearMemStorage( self.storage )
+        co.cv.ClearMemStorage( self.storage )
 
-        points = co.cv.cvHaarDetectObjects( self.small_img, cascade, self.storage, 1.2, 2, method, co.cv.cvSize(20, 20) )
+        points = co.cv.HaarDetectObjects( self.small_img, cascade, self.storage, 1.2, 2, method, co.cv.Size(20, 20) )
 
         if points:
             matches = [ [ co.cv.cvPoint( int(r.x*self.imageScale), int(r.y*self.imageScale)), \
