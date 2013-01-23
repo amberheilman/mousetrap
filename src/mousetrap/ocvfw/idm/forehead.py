@@ -160,7 +160,7 @@ class Module(object):
                                                          "height" : endF[1] - startF[1]}, (startF[0], startF[1]) )# replaced x and y
 
         if eyes:
-            areas = [ (pt[1].x - pt[0].x)*(pt[1].y - pt[0].y) for pt in eyes ]
+            areas = [ (pt[1][0] - pt[0][0])*(pt[1][1] - pt[0][1]) for pt in eyes ] #replaced x with [0] and y with [1]
 
             point1, point2   = eyes[areas.index(max(areas))][0], eyes[areas.index(max(areas))][1]
 

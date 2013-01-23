@@ -346,10 +346,7 @@ class OcvfwPython(OcvfwBase):
 
         points = co.cv.HaarDetectObjects( self.small_img, cascade, self.storage, 1.2, 2, method, (20, 20) )
         if points:
-	    #look into how points is created
-	    debug.debug("ocvfw", type(points)) #remove
-	    debug.debug("ocvfw", [[r] for r in points])
-	    debug.debug("ocvfw", [[r[0][2]] for r in points])
+	    #remove look into how points is created
 	    matches = [ [ ( int(r[0][0]*self.imageScale), int(r[0][1]*self.imageScale)), \
                           ( int((r[0][0]+r[0][3])*self.imageScale), int((r[0][0]+r[0][2])*self.imageScale) )] \
                           for r in points]
@@ -375,19 +372,21 @@ class OcvfwPython(OcvfwBase):
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
 
-        imageROI = co.cv.GetSubRect(self.img, rect)
+        debug.debug("ocvfw", self.img) #remove
+	debug.debug("ocvfw", rect) #remove
+	imageROI = co.cv.GetSubRect(self.img, rect)
 
         if cascade:
             points = co.cv.HaarDetectObjects( imageROI, cascade, self.storage,
-                                    1.2, 2, method, co.cv.cvSize(20,20) )
+                                    1.2, 2, method, (20,20) )
         else:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load Failed (ROI)" )
 
         if points:
-            matches = [ [ co.cv.Point( int(r.x+origSize[0]), int(r.y+origSize[1])), \
-                          co.cv.Point( int(r.x+r.width+origSize[0]), int(r.y+r.height+origSize[1] ))] \
-                          for r in points]
-	    debug.debug("ocvfw", help(r)) #remove
+	    debug.debug("ocvfw", [[r] for r in points])
+            matches = [ [ ( int(r[0][0]+origSize[0]), int(r[0][1]+origSize[1])), \
+                          ( int(r[0][0]+r[0][3]+origSize[0]), int(r[0][1]+r[0][2]+origSize[1] ))] \
+                          for r in points] #replaced x with [0][0] and y with [0][1] and height with [0][2] and width with [0][3]
             debug.debug( "ocvfw", "cmGetHaarROIPoints: detected some matches" )
             return matches
 
