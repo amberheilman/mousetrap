@@ -89,13 +89,13 @@ class OcvfwBase:
 
     def wait_key(self, num):
         """
-        Simple call to the co.hg.WaitKey function, which has to be called periodically.
+        Simple call to the co.cv.WaitKey function, which has to be called periodically.
 
         Arguments:
         - self: The main object pointer.
         - num: An int value.
         """
-        return co.hg.WaitKey(num)
+        return co.cv.WaitKey(num)
     
     def start_camera(self, params = None):
         """
@@ -130,10 +130,13 @@ class OcvfwBase:
             self.prevGrey       = co.cv.CreateImage ( self.imgSize, 8, 1 )
             self.pyramid        = co.cv.CreateImage ( self.imgSize, 8, 1 )
             self.prevPyramid    = co.cv.CreateImage ( self.imgSize, 8, 1 )
-	    a = co.cv.Round(self.img.width/self.imageScale)
-	    b = co.cv.Round(self.img.height/self.imageScale)
-	    c = (a, b)
-            self.small_img      = co.cv.CreateImage( c, 8, 3 )
+	    #a = co.cv.Round(self.img.width/self.imageScale)
+	    #b = co.cv.Round(self.img.height/self.imageScale)
+	    #c = (a, b)
+            self.small_img      = co.cv.CreateImage( 
+				( co.cv.Round(self.img.width/self.imageScale),
+				  co.cv.Round(self.img.height/self.imageScale) ),
+				8, 3 )
 
 
         self.img = frame
@@ -151,15 +154,15 @@ class OcvfwBase:
         - point: A co.cv.Point Point.
         """
 
-        Point = co.cv.Point( point.x, point.y )
+        #Point = co.cv.Point( point.x, point.y )
 
-        self.img_lkpoints["current"] = [ co.cv.PointTo32f ( Point ) ]
+        self.img_lkpoints["current"] = [ point.x, point.y] #co.cv.PointTo32f ( Point ) ]
 
         if self.img_lkpoints["current"]:
             co.cv.FindCornerSubPix (
                 self.grey,
                 self.img_lkpoints["current"],
-                co.cv.cvSize (20, 20), co.cv.cvSize (-1, -1),
+                (20, 20), (-1, -1),
                 co.cv.TermCriteria (co.cv.CV_TERMCRIT_ITER | co.cv.CV_TERMCRIT_EPS, 20, 0.03))
 
             point.set_opencv( Point )
@@ -342,10 +345,13 @@ class OcvfwPython(OcvfwBase):
         #co.cv.ClearMemStorage( self.storage )
 
         points = co.cv.HaarDetectObjects( self.small_img, cascade, self.storage, 1.2, 2, method, (20, 20) )
-	debug.debug("ocvfw", points) #remove
         if points:
-            matches = [ [ ( int(r*self.imageScale), int(r*self.imageScale)), \
-                          ( int((r+r.width)*self.imageScale), int((r+r.height)*self.imageScale) )] \
+	    #look into how points is created
+	    debug.debug("ocvfw", type(points)) #remove
+	    debug.debug("ocvfw", [[r] for r in points])
+	    debug.debug("ocvfw", [[r[0][2]] for r in points])
+	    matches = [ [ ( int(r[0][0]*self.imageScale), int(r[0][1]*self.imageScale)), \
+                          ( int((r[0][0]+r[0][3])*self.imageScale), int((r[0][0]+r[0][2])*self.imageScale) )] \
                           for r in points]
 			
             debug.debug( "ocvfw", "cmGetHaarPoints: detected some matches" )
@@ -363,11 +369,11 @@ class OcvfwPython(OcvfwBase):
         Returns a list with the matches.
         """
 
-        cascade = co.cv.CvLoadHaarClassifierCascade( haarCascade, self.imgSize )
+        cascade = co.cv.Load( haarCascade ) #, self.imgSize )
         if not cascade:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
-        co.cv.ClearMemStorage(self.storage)
+        #remove, DNE co.cv.ClearMemStorage(self.storage)
 
         imageROI = co.cv.GetSubRect(self.img, rect)
 

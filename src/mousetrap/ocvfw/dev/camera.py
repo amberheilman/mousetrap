@@ -114,7 +114,7 @@ class Capture(object):
         """
 
         Camera.query_image()
-
+	
         if not self.__image:
             self.__images_cn   = { 1 : co.cv.CreateImage ( Camera.imgSize, 8, 1 ),
                                    3 : co.cv.CreateImage ( Camera.imgSize, 8, 3 ),
@@ -225,7 +225,7 @@ class Capture(object):
         #debug.debug("Camera", "Showing existing rectangles -> %d" % len(rectangles))
 
         for rect in rectangles:
-            co.cv.cvRectangle( self.__image, co.cv.cvPoint(rect.x, rect.y), co.cv.cvPoint(rect.size[0], rect.size[1]), co.cv.CV_RGB(255,0,0), 3, 8, 0 )
+            co.cv.Rectangle( self.__image, co.cv.cvPoint(rect.x, rect.y), co.cv.cvPoint(rect.size[0], rect.size[1]), co.cv.CV_RGB(255,0,0), 3, 8, 0 )
 
     def draw_point(self, x, y):
         co.cv.cvCircle(self.__image, (x,y), 3, co.cv.cvScalar(0, 255, 0, 0), -1, 8, 0)
@@ -371,9 +371,11 @@ class Capture(object):
 
         if roi is None:
             return Camera.get_haar_points(haar_csd)
-
-        roi = co.cv.cvRect(roi["start"], roi["end"], roi["width"], roi["height"])
-        return Camera.get_haar_roi_points(haar_csd, roi, orig)
+	roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
+	#roi = co.cv.Rectangle(self.__image, (roi["start"], roi["end"]), (roi["width"], roi["height"]), (0,0,255))
+        #roi pt1 and pt2 needs to be a vertex and added color
+	#might need to remove and reestablish point values
+	return Camera.get_haar_roi_points(haar_csd, roi, orig)
 
     def message(self, message):
         """

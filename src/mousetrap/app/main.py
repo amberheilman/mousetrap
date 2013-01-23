@@ -108,8 +108,8 @@ class Controller():
             
         debug.info("mousetrap", "MouseTrap's Interface Built and Loaded")
 
-        GObject.threads_init()
-        self.loop.run()
+	GObject.threads_init()
+	self.loop.run()
 
     def proc_args(self):
         """
@@ -130,7 +130,7 @@ class Controller():
             # ? for help
             # e for enable
             # d for disable
-            # t for mouse tiemout
+            # t for mouse timeout
             opts, args = getopt.getopt(
                 arguments,
                 "?hve:d:s:",

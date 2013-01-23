@@ -153,7 +153,7 @@ class Module(object):
         """
 
         try:
-            self.tmpl = co.hg.cvLoadImage("%s/tmpl.jpg" % self.stgs["conf_path"], 3)
+            self.tmpl = co.cv.cvLoadImage("%s/tmpl.jpg" % self.stgs["conf_path"], 3)
             debug.debug("finger", "Loading template")
         except:
             pass

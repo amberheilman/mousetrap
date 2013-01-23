@@ -147,17 +147,17 @@ class Module(object):
         face     = self.cap.get_area(commons.haar_cds['Face'])
 
         if face:
-            areas    = [ (pt[1].x - pt[0].x)*(pt[1].y - pt[0].y) for pt in face ]
+            areas    = [ (pt[1][0] - pt[0][0])*(pt[1][1] - pt[0][1]) for pt in face ] #replaced x with [0] and y with [1]
             startF   = face[areas.index(max(areas))][0]
             endF     = face[areas.index(max(areas))][1]
 
             # Shows the face rectangle
             #self.cap.add( Graphic("rect", "Face", ( startF.x, startF.y ), (endF.x, endF.y), parent=self.cap) )
 
-            eyes = self.cap.get_area( commons.haar_cds['Eyes'], {"start" : startF.x,
-                                                         "end" : startF.y,
-                                                         "width" : endF.x - startF.x,
-                                                         "height" : endF.y - startF.y}, (startF.x, startF.y) )
+            eyes = self.cap.get_area( commons.haar_cds['Eyes'], {"start" : startF[0],
+                                                         "end" : startF[1],
+                                                         "width" : endF[0] - startF[0],
+                                                         "height" : endF[1] - startF[1]}, (startF[0], startF[1]) )# replaced x and y
 
         if eyes:
             areas = [ (pt[1].x - pt[0].x)*(pt[1].y - pt[0].y) for pt in eyes ]

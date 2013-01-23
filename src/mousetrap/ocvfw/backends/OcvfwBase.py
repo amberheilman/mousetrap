@@ -142,8 +142,8 @@ class OcvfwBase:
         Returns The image even if it was stored in self.img
         """
 
-        frame = co.hg.QueryFrame( self.capture )
-
+        frame = co.cv.QueryFrame( self.capture )
+	cv.ShowImage("Feed", frame) #remove
         if not  self.img:
             self.storage        = co.cv.CreateMemStorage(0)
             self.imgSize        = co.cv.GetSize (frame)
