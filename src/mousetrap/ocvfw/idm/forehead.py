@@ -167,7 +167,7 @@ class Module(object):
             # Shows the eyes rectangle
             #self.cap.add(Graphic("rect", "Face", ( point1.x, point1.y ), (point2.x, point2.y), parent=self.cap))
 
-            X, Y = ( (point1.x + point2.x) / 2 ), ( point1.y + ( (point1.y + point2.y) / 2 ) ) / 2
+            X, Y = ( (point1[0] + point2[0]) / 2 ), ( point1[1] + ( (point1[1] + point2[1]) / 2 ) ) / 2 #replaced x and y
             self.cap.add( Point("point", "forehead", ( X, Y ), parent=self.cap, follow=True) )
             return True
 

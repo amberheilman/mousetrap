@@ -196,13 +196,34 @@ class OcvfwBase:
         Arguments:
         - self: The main object pointer.
         """
-
         # calculate the optical flow
-        optical_flow = co.cv.CalcOpticalFlowPyrLK (
-            self.prevGrey, self.grey, self.prevPyramid, self.pyramid,
-            self.img_lkpoints["last"], len( self.img_lkpoints["last"] ),
-            co.cv.cvSize (20, 20), 3, len( self.img_lkpoints["last"] ), None,
-            co.cv.TermCriteria (co.cv.CV_TERMCRIT_ITER|co.cv.CV_TERMCRIT_EPS, 20, 0.03), 0)
+        #optical_flow = co.cv.CalcOpticalFlowPyrLK (
+        #    self.prevGrey, self.grey, self.prevPyramid, self.pyramid,
+        #    self.img_lkpoints["last"], len( self.img_lkpoints["last"] ),
+        #    (20, 20), 3, len( self.img_lkpoints["last"] ), None,
+        #    co.cv.TermCriteria(co.cv.CV_TERMCRIT_ITER|co.cv.CV_TERMCRIT_EPS, 20, 0.03))
+
+        (currFeatures, status, track_error) = co.cv.CalcOpticalFlowPyrLK(self.prevGrey,
+                                                                      self.grey,
+                                                                      self.prevPyramid,
+                                                                      self.pyramid,
+                                                                      self.img_lkpoints["last"],
+                                                                      (10, 10),
+                                                                      3,
+                                                                      (co.cv.CV_TERMCRIT_ITER|co.cv.CV_TERMCRIT_EPS,20, 0.03),
+                                                                      0)
+
+	debug.debug("ocvfw", currFeatures) #remove
+
+
+
+
+
+
+
+
+
+
 
         if isinstance(optical_flow[0], tuple):
             self.img_lkpoints["current"], status = optical_flow[0]
