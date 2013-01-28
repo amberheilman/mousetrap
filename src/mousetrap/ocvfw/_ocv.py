@@ -156,14 +156,14 @@ class OcvfwBase:
 
         #Point = co.cv.Point( point.x, point.y )
 
-        self.img_lkpoints["current"] = [ point.x, point.y] #co.cv.PointTo32f ( Point ) ]
+        self.img_lkpoints["current"] = [ point.x, point.y ] #co.cv.PointTo32f ( Point ) ]
 
         if self.img_lkpoints["current"]:
             co.cv.FindCornerSubPix (
                 self.grey,
                 self.img_lkpoints["current"],
                 (20, 20), (-1, -1),
-                co.cv.TermCriteria (co.cv.CV_TERMCRIT_ITER | co.cv.CV_TERMCRIT_EPS, 20, 0.03))
+                (co.cv.CV_TERMCRIT_ITER | co.cv.CV_TERMCRIT_EPS, 20, 0.03))
 
             point.set_opencv( Point )
             self.img_lkpoints["points"].append(point)
@@ -196,34 +196,13 @@ class OcvfwBase:
         Arguments:
         - self: The main object pointer.
         """
+
         # calculate the optical flow
-        #optical_flow = co.cv.CalcOpticalFlowPyrLK (
-        #    self.prevGrey, self.grey, self.prevPyramid, self.pyramid,
-        #    self.img_lkpoints["last"], len( self.img_lkpoints["last"] ),
-        #    (20, 20), 3, len( self.img_lkpoints["last"] ), None,
-        #    co.cv.TermCriteria(co.cv.CV_TERMCRIT_ITER|co.cv.CV_TERMCRIT_EPS, 20, 0.03))
-
-        (currFeatures, status, track_error) = co.cv.CalcOpticalFlowPyrLK(self.prevGrey,
-                                                                      self.grey,
-                                                                      self.prevPyramid,
-                                                                      self.pyramid,
-                                                                      self.img_lkpoints["last"],
-                                                                      (10, 10),
-                                                                      3,
-                                                                      (co.cv.CV_TERMCRIT_ITER|co.cv.CV_TERMCRIT_EPS,20, 0.03),
-                                                                      0)
-
-	debug.debug("ocvfw", currFeatures) #remove
-
-
-
-
-
-
-
-
-
-
+        optical_flow = co.cv.CalcOpticalFlowPyrLK (
+            self.prevGrey, self.grey, self.prevPyramid, self.pyramid,
+            (self.img_lkpoints["last"][0], self.img_lkpoints["last"][1]),
+            (20, 20), 3,
+            (co.cv.CV_TERMCRIT_ITER|co.cv.CV_TERMCRIT_EPS, 20, 0.03), 0)
 
         if isinstance(optical_flow[0], tuple):
             self.img_lkpoints["current"], status = optical_flow[0]
@@ -367,7 +346,6 @@ class OcvfwPython(OcvfwBase):
 
         points = co.cv.HaarDetectObjects( self.small_img, cascade, self.storage, 1.2, 2, method, (20, 20) )
         if points:
-	    #remove look into how points is created
 	    matches = [ [ ( int(r[0][0]*self.imageScale), int(r[0][1]*self.imageScale)), \
                           ( int((r[0][0]+r[0][3])*self.imageScale), int((r[0][0]+r[0][2])*self.imageScale) )] \
                           for r in points]
@@ -393,8 +371,6 @@ class OcvfwPython(OcvfwBase):
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
 
-        debug.debug("ocvfw", self.img) #remove
-	debug.debug("ocvfw", rect) #remove
 	imageROI = co.cv.GetSubRect(self.img, rect)
 
         if cascade:
