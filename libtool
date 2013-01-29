@@ -275,7 +275,7 @@ hardcode_into_libs=yes
 sys_lib_search_path_spec="/usr/lib/gcc/i686-redhat-linux/4.7.2 /usr/lib /lib "
 
 # Run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib /usr/lib/atlas /usr/lib/llvm /usr/lib/tracker-0.14 /usr/lib/xulrunner "
+sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib /usr/lib/atlas /usr/lib/llvm /usr/lib/mysql /usr/lib/qt-3.3/lib /usr/lib/tcl8.5 /usr/lib/tracker-0.14 /usr/lib/xulrunner "
 
 # Whether dlopen is supported.
 dlopen_support=unknown
