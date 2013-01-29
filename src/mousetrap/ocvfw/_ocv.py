@@ -26,6 +26,7 @@ __license__   = "GPLv2"
 import time
 import debug
 import commons as co
+import cv2 #remove
 
 class OcvfwBase:
     
@@ -370,9 +371,11 @@ class OcvfwPython(OcvfwBase):
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
-
+	debug.debug("ocvfw", self.img) #remove
+	debug.debug("ocvfw", rect) #remove
+	
 	imageROI = co.cv.GetSubRect(self.img, rect)
-
+	
         if cascade:
             points = co.cv.HaarDetectObjects( imageROI, cascade, self.storage,
                                     1.2, 2, method, (20,20) )
