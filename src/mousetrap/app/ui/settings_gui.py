@@ -72,7 +72,7 @@ class PreffGui( gtk.Window ):
         try:
             icon = icon_theme.load_icon("mouseTrap", 48, 0)
         except:
-            return
+            return "theme failed to load" #remove statement
 
         gtk.window_set_default_icon(icon)
 

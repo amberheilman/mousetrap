@@ -234,7 +234,7 @@ class OcvfwBase:
             counter += 1
 
 
-        #debug.debug( "ocvfw", "cmShowLKPoints: Showing %d LK Points" % counter )
+        debug.debug( "ocvfw", "cmShowLKPoints: Showing %d LK Points" % counter )#remove put back as comment
 
         # set back the self.imgPoints we keep
         self.img_lkpoints["current"] = new_points
@@ -370,6 +370,13 @@ class OcvfwPython(OcvfwBase):
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
+<<<<<<< Updated upstream
+
+=======
+	#debug.debug("ocvfw", self.img) #remove
+	#debug.debug("ocvfw", rect) #remove
+	rect = (0, 50, 50, 100) #remove	
+>>>>>>> Stashed changes
 	imageROI = co.cv.GetSubRect(self.img, rect)
 
         if cascade:

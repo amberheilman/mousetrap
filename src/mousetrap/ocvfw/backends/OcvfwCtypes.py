@@ -45,12 +45,12 @@ class OcvfwCtypes(OcvfwBase):
         """
         Initialize the module and set its main variables.
         """
-        co.cv = __import__("ctypesopencv.cv",
+        co.cv = __import__("pyopencv.cv",
                         globals(),
                         locals(),
                         [''])
         
-        co.hg = __import__("ctypesopencv.highgui",
+        co.hg = __import__("pyopencv.highgui",
                         globals(),
                         locals(),
                         [''])

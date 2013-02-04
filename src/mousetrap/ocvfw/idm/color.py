@@ -291,7 +291,7 @@ class Module(object):
                              co.cv.cvPoint((i+1)*bin_w,self.histimg.height - val),
                              color, -1, 8, 0 )
         if self.debugLevel >= 30:
-            co.hg.cvShowImage( "Histogram", self.histimg )
+            co.cv.ShowImage( "Histogram", self.histimg )
 
     def get_capture(self):
         """
@@ -395,7 +395,7 @@ class Module(object):
             co.cv.cvResetImageROI( self.image )
         
         if self.debugLevel >= 30:
-            co.hg.cvShowImage( "Mask", self.mask)
+            co.cv.ShowImage( "Mask", self.mask)
         
         self.cap.color("rgb", channel=3, copy=True)
 

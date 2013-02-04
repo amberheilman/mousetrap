@@ -143,7 +143,6 @@ class OcvfwBase:
         """
 
         frame = co.cv.QueryFrame( self.capture )
-	cv.ShowImage("Feed", frame) #remove
         if not  self.img:
             self.storage        = co.cv.CreateMemStorage(0)
             self.imgSize        = co.cv.GetSize (frame)

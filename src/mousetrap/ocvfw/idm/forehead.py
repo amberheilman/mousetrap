@@ -154,10 +154,13 @@ class Module(object):
             # Shows the face rectangle
             #self.cap.add( Graphic("rect", "Face", ( startF.x, startF.y ), (endF.x, endF.y), parent=self.cap) )
 
-            eyes = self.cap.get_area( commons.haar_cds['Eyes'], {"start" : startF[0],
-                                                         "end" : startF[1],
-                                                         "width" : endF[0] - startF[0],
-                                                         "height" : endF[1] - startF[1]}, (startF[0], startF[1]) )# replaced x and y
+            eyes = self.cap.get_area( 
+                commons.haar_cds['Eyes'],
+		{"start" : startF[0],
+                "end" : startF[1],
+                "width" : endF[0] - startF[0],
+                "height" : endF[1] - startF[1]},
+                (startF[0], startF[1]) ) # replaced x and y
 
         if eyes:
             areas = [ (pt[1][0] - pt[0][0])*(pt[1][1] - pt[0][1]) for pt in eyes ] #replaced x with [0] and y with [1]

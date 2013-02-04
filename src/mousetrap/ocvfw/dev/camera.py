@@ -254,9 +254,9 @@ class Capture(object):
         rect = args[0]
 
         if len(args) > 1:
-            rect = co.cv.cvRect( args[0], args[1], args[2], args[3] )
+            rect = co.cv.Rectangle( args[0], args[1], args[2], args[3] )
 
-        return co.cv.cvGetSubRect(self.__image, rect)
+        return co.cv.GetSubRect(self.__image, rect)
 
 
     def flip(self, flip):
@@ -269,10 +269,10 @@ class Capture(object):
         """
 
         if "hor" or "both" in flip:
-            co.cv.cvFlip( self.__image, self.__image, 1)
+            co.cv.Flip( self.__image, self.__image, 1)
 
         if "ver" or "both" in flip:
-            co.cv.cvFlip( self.__image, self.__image, 0)
+            co.cv.Flip( self.__image, self.__image, 0)
 
         return self.__image
 
