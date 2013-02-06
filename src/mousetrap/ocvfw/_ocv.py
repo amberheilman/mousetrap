@@ -26,6 +26,8 @@ __license__   = "GPLv2"
 import time
 import debug
 import commons as co
+import cv2 #remove
+import numpy
 
 class OcvfwBase:
     
@@ -99,7 +101,7 @@ class OcvfwBase:
     
     def start_camera(self, params = None):
         """
-        Starts the camera capture using co.hg.
+        Starts the camera capture
 
         Arguments:
         - params: A list with the capture properties. NOTE: Not implemented yet.
@@ -196,13 +198,27 @@ class OcvfwBase:
         Arguments:
         - self: The main object pointer.
         """
+	debug.debug("Ocvfw", help(cv2)) #remove
 
-        # calculate the optical flow
-        optical_flow = co.cv.CalcOpticalFlowPyrLK (
-            self.prevGrey, self.grey, self.prevPyramid, self.pyramid,
-            (self.img_lkpoints["last"][0], self.img_lkpoints["last"][1]),
-            (20, 20), 3,
-            (co.cv.CV_TERMCRIT_ITER|co.cv.CV_TERMCRIT_EPS, 20, 0.03), 0)
+	self.prevGrey = numpy.asarray(self.prevGrey[:,:])
+	prevGrey = cv2.cvtColor(self.prevGrey, cv2.COLOR_BGR2GRAY)
+	
+	self.grey = nympy.asarray(self.grey[:,:])
+        grey = cv2.cvtColor(self.grey, cv2.COLOR_BGR2GRAY)
+
+	# calculate the optical flow
+        nextPts, status, err = cv2.calcOpticalFlowPyrLK (
+            prevGrey, #prevImg
+	    grey, #nextImg
+	    self.prevPyramid, #prevPts
+	    self.pyramid, #nextPts
+	    None, #status
+	    (20, 20), #winSize
+	    2, #maxLevel
+            (cv2.TERM_CRITERIA_MAX_ITER|cv2.TERM_CRITERIA_EPS, 20, 0.03), #criteria
+	    cv2.OPTFLOW_USE_INITIAL_FLOW #flags
+	    )
+
 
         if isinstance(optical_flow[0], tuple):
             self.img_lkpoints["current"], status = optical_flow[0]
@@ -277,7 +293,7 @@ class OcvfwCtypes(OcvfwBase):
         co.hg = __import__("pyopencv.cv",
                         globals(),
                         locals(),
-                        [''])
+                        [''])#should be removed
  
         OcvfwBase.__init__(self)
 
@@ -370,7 +386,7 @@ class OcvfwPython(OcvfwBase):
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
-	imageROI = co.cv.GetSubRect(self.img, rect)
+ 	imageROI = co.cv.GetSubRect(self.img, rect)
 
         if cascade:
             points = co.cv.HaarDetectObjects( imageROI, cascade, self.storage,
@@ -379,9 +395,11 @@ class OcvfwPython(OcvfwBase):
             debug.exception( "ocvfw", "The Haar Classifier Cascade load Failed (ROI)" )
 
         if points:
-            matches = [ [ ( int(r[0][0]+origSize[0]), int(r[0][1]+origSize[1])), \
-                          ( int(r[0][0]+r[0][3]+origSize[0]), int(r[0][1]+r[0][2]+origSize[1] ))] \
-                          for r in points] #replaced x with [0][0] and y with [0][1] and height with [0][2] and width with [0][3]
+
+	    matches = [ [ ( int(r[0][0]*origSize[0]), int(r[0][1]*origSize[1])), \
+                          ( int((r[0][0]+r[0][3])+origSize[0]), int((r[0][1]+r[0][2])*origSize[1]) )] \
+                          for r in points]
+
             debug.debug( "ocvfw", "cmGetHaarROIPoints: detected some matches" )
             return matches
 
@@ -440,7 +458,7 @@ class OcvfwPython(OcvfwBase):
         idx1 = self.lastFm
 
         # convert frame to grayscale
-        co.cv.cvCvtColor( img, self.buf[self.lastFm], co.cv.CV_BGR2GRAY )
+        cv2.cvtColor( img, self.buf[self.lastFm], cv2.CV_BGR2GRAY )
 
         # index of (self.lastFm - (n_-1))th frame
         idx2 = ( self.lastFm + 1 ) % n_

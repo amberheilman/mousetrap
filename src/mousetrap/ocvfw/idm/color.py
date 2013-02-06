@@ -29,8 +29,8 @@ __license__   = "GPLv2"
 
 import mousetrap.ocvfw.commons as co
 from mousetrap.ocvfw.dev.camera import Camera, Capture, Point
-from ctypes import c_int 
-""" Using ctypes-opencv, instead of the python bindings provided by OpenCV. """
+import pyopencv 
+""" Using pyopencv, instead of the python bindings provided by OpenCV. """
 from sys import argv, exit
 import math
 
@@ -318,12 +318,12 @@ class Module(object):
             # Initialization of images.  Only needs to happen once.
 
             # TODO: What is a better way to get the image size?
-            self.hue = co.cv.cvCreateImage( co.cv.cvGetSize(self.image), 8, 1 )
-            self.mask = co.cv.cvCreateImage(  co.cv.cvGetSize(self.image), 8, 1 )
-            self.backproject = co.cv.cvCreateImage(  co.cv.cvGetSize(self.image), 8, 1 )
+            self.hue = co.cv.CreateImage( co.cv.cvGetSize(self.image), 8, 1 )
+            self.mask = co.cv.CreateImage(  co.cv.cvGetSize(self.image), 8, 1 )
+            self.backproject = co.cv.CreateImage(  co.cv.cvGetSize(self.image), 8, 1 )
             self.hist = co.cv.cvCreateHist( [self.hdims], co.cv.CV_HIST_ARRAY, [[0, 180]] )
-            self.histimg = co.cv.cvCreateImage( co.cv.cvSize(320,200), 8, 3 )
-            self.temp = co.cv.cvCreateImage(  co.cv.cvGetSize(self.image), 8, 3) #needed?
+            self.histimg = co.cv.CreateImage( co.cv.cvSize(320,200), 8, 3 )
+            self.temp = co.cv.CreateImage(  co.cv.cvGetSize(self.image), 8, 3) #needed?
             co.cv.cvZero( self.histimg )
 
             #Initialization of hue range from config file.
