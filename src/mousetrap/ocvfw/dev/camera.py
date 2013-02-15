@@ -291,6 +291,7 @@ class Capture(object):
 
         if new_color:
             tmp = self.__images_cn[channel]
+	    debug.debug("Ocvfw", type(self.__image)) #remove
             co.cv.CvtColor( self.__image, tmp, self.__color_int['cv_%s2%s' % (self.__color, new_color) ])
             self.__color = new_color
             self.__ch = channel
