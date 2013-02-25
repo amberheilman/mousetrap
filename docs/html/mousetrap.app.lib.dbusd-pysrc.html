@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>mousetrap.app.lib.dbusd</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="mousetrap-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MouseTrap</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="mousetrap-module.html">Package&nbsp;mousetrap</a> ::
+        <a href="mousetrap.app-module.html">Package&nbsp;app</a> ::
+        <a href="mousetrap.app.lib-module.html">Package&nbsp;lib</a> ::
+        Module&nbsp;dbusd
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="mousetrap.app.lib.dbusd-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="mousetrap.app.lib.dbusd-module.html">Module mousetrap.app.lib.dbusd</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># MouseTrap</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2009 Flavio Percoco Premoli</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># This file is part of mouseTrap.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># MouseTrap is free software: you can redistribute it and/or modify</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># it under the terms of the GNU General Public License v2 as published</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment"># by the Free Software Foundation.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment"># mouseTrap is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"># but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment"># GNU General Public License for more details.</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"># along with mouseTrap.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-docstring">""" Exposes mouseTrap as a DBus service for comunication purposes. """</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable mousetrap.__id__=mousetrap-module.html#__id__,Variable mousetrap.app.__id__=mousetrap.app-module.html#__id__,Variable mousetrap.app.addons.__id__=mousetrap.app.addons-module.html#__id__,Variable mousetrap.app.commons.__id__=mousetrap.app.commons-module.html#__id__,Variable mousetrap.app.debug.__id__=mousetrap.app.debug-module.html#__id__,Variable mousetrap.app.environment.__id__=mousetrap.app.environment-module.html#__id__,Variable mousetrap.app.lib.__id__=mousetrap.app.lib-module.html#__id__,Variable mousetrap.app.lib.dbusd.__id__=mousetrap.app.lib.dbusd-module.html#__id__,Variable mousetrap.app.lib.httpd.__id__=mousetrap.app.lib.httpd-module.html#__id__,Variable mousetrap.app.lib.mouse.__id__=mousetrap.app.lib.mouse-module.html#__id__,Variable mousetrap.app.lib.settings.__id__=mousetrap.app.lib.settings-module.html#__id__,Variable mousetrap.app.main.__id__=mousetrap.app.main-module.html#__id__,Variable mousetrap.app.ui.__id__=mousetrap.app.ui-module.html#__id__,Variable mousetrap.app.ui.dialogs.__id__=mousetrap.app.ui.dialogs-module.html#__id__,Variable mousetrap.app.ui.i18n.__id__=mousetrap.app.ui.i18n-module.html#__id__,Variable mousetrap.app.ui.main.__id__=mousetrap.app.ui.main-module.html#__id__,Variable mousetrap.app.ui.scripts.__id__=mousetrap.app.ui.scripts-module.html#__id__,Variable mousetrap.app.ui.scripts.joystick.__id__=mousetrap.app.ui.scripts.joystick-module.html#__id__,Variable mousetrap.app.ui.scripts.screen.__id__=mousetrap.app.ui.scripts.screen-module.html#__id__,Variable mousetrap.app.ui.settings_gui.__id__=mousetrap.app.ui.settings_gui-module.html#__id__,Variable mousetrap.app.ui.widgets.__id__=mousetrap.app.ui.widgets-module.html#__id__,Variable mousetrap.ocvfw.__id__=mousetrap.ocvfw-module.html#__id__,Variable mousetrap.ocvfw._ocv.__id__=mousetrap.ocvfw._ocv-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwBase.__id__=mousetrap.ocvfw.backends.OcvfwBase-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwCtypes.__id__=mousetrap.ocvfw.backends.OcvfwCtypes-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwPython.__id__=mousetrap.ocvfw.backends.OcvfwPython-module.html#__id__,Variable mousetrap.ocvfw.commons.__id__=mousetrap.ocvfw.commons-module.html#__id__,Variable mousetrap.ocvfw.debug.__id__=mousetrap.ocvfw.debug-module.html#__id__,Variable mousetrap.ocvfw.dev.__id__=mousetrap.ocvfw.dev-module.html#__id__,Variable mousetrap.ocvfw.dev.camera.__id__=mousetrap.ocvfw.dev.camera-module.html#__id__,Variable mousetrap.ocvfw.idm.__id__=mousetrap.ocvfw.idm-module.html#__id__,Variable mousetrap.ocvfw.idm.finger.__id__=mousetrap.ocvfw.idm.finger-module.html#__id__,Variable mousetrap.ocvfw.idm.forehead.__id__=mousetrap.ocvfw.idm.forehead-module.html#__id__,Variable mousetrap.ocvfw.pocv.__id__=mousetrap.ocvfw.pocv-module.html#__id__"><a title="mousetrap.__id__
+mousetrap.app.__id__
+mousetrap.app.addons.__id__
+mousetrap.app.commons.__id__
+mousetrap.app.debug.__id__
+mousetrap.app.environment.__id__
+mousetrap.app.lib.__id__
+mousetrap.app.lib.dbusd.__id__
+mousetrap.app.lib.httpd.__id__
+mousetrap.app.lib.mouse.__id__
+mousetrap.app.lib.settings.__id__
+mousetrap.app.main.__id__
+mousetrap.app.ui.__id__
+mousetrap.app.ui.dialogs.__id__
+mousetrap.app.ui.i18n.__id__
+mousetrap.app.ui.main.__id__
+mousetrap.app.ui.scripts.__id__
+mousetrap.app.ui.scripts.joystick.__id__
+mousetrap.app.ui.scripts.screen.__id__
+mousetrap.app.ui.settings_gui.__id__
+mousetrap.app.ui.widgets.__id__
+mousetrap.ocvfw.__id__
+mousetrap.ocvfw._ocv.__id__
+mousetrap.ocvfw.backends.OcvfwBase.__id__
+mousetrap.ocvfw.backends.OcvfwCtypes.__id__
+mousetrap.ocvfw.backends.OcvfwPython.__id__
+mousetrap.ocvfw.commons.__id__
+mousetrap.ocvfw.debug.__id__
+mousetrap.ocvfw.dev.__id__
+mousetrap.ocvfw.dev.camera.__id__
+mousetrap.ocvfw.idm.__id__
+mousetrap.ocvfw.idm.finger.__id__
+mousetrap.ocvfw.idm.forehead.__id__
+mousetrap.ocvfw.pocv.__id__" class="py-name" href="#" onclick="return doclink('link-0', '__id__', 'link-0');">__id__</a></tt>        <tt class="py-op">=</tt> <tt class="py-string">"$Id$"</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-name">__version__</tt>   <tt class="py-op">=</tt> <tt class="py-string">"$Revision$"</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-name">__date__</tt>      <tt class="py-op">=</tt> <tt class="py-string">"$Date$"</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"Copyright (c) 2008 Flavio Percoco Premoli"</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-name">__license__</tt>   <tt class="py-op">=</tt> <tt class="py-string">"GPLv2"</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">dbus</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">dbus</tt><tt class="py-op">.</tt><tt class="py-name">service</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Package mousetrap=mousetrap-module.html"><a title="mousetrap" class="py-name" href="#" onclick="return doclink('link-1', 'mousetrap', 'link-1');">mousetrap</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Package mousetrap.app=mousetrap.app-module.html"><a title="mousetrap.app" class="py-name" href="#" onclick="return doclink('link-2', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module mousetrap.app.debug=mousetrap.app.debug-module.html,Function mousetrap.app.debug.debug()=mousetrap.app.debug-module.html#debug,Module mousetrap.ocvfw.debug=mousetrap.ocvfw.debug-module.html,Function mousetrap.ocvfw.debug.debug()=mousetrap.ocvfw.debug-module.html#debug"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-3', 'debug', 'link-3');">debug</a></tt> <tt class="py-keyword">as</tt> <tt id="link-4" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-4', 'debug', 'link-3');">debug</a></tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">dbus</tt><tt class="py-op">.</tt><tt class="py-name">mainloop</tt><tt class="py-op">.</tt><tt class="py-name">glib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">DBusGMainLoop</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable mousetrap.app.lib.dbusd.dbusserver=mousetrap.app.lib.dbusd-module.html#dbusserver"><a title="mousetrap.app.lib.dbusd.dbusserver" class="py-name" href="#" onclick="return doclink('link-5', 'dbusserver', 'link-5');">dbusserver</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable mousetrap.app.lib.dbusd.main_loop=mousetrap.app.lib.dbusd-module.html#main_loop"><a title="mousetrap.app.lib.dbusd.main_loop" class="py-name" href="#" onclick="return doclink('link-6', 'main_loop', 'link-6');">main_loop</a></tt> <tt class="py-op">=</tt> <tt class="py-name">DBusGMainLoop</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable mousetrap.app.lib.dbusd.bus=mousetrap.app.lib.dbusd-module.html#bus"><a title="mousetrap.app.lib.dbusd.bus" class="py-name" href="#" onclick="return doclink('link-7', 'bus', 'link-7');">bus</a></tt> <tt class="py-op">=</tt> <tt class="py-name">dbus</tt><tt class="py-op">.</tt><tt class="py-name">SessionBus</tt><tt class="py-op">(</tt><tt class="py-name">mainloop</tt><tt class="py-op">=</tt><tt id="link-8" class="py-name"><a title="mousetrap.app.lib.dbusd.main_loop" class="py-name" href="#" onclick="return doclink('link-8', 'main_loop', 'link-6');">main_loop</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable mousetrap.app.lib.dbusd.DBUS_NAME=mousetrap.app.lib.dbusd-module.html#DBUS_NAME"><a title="mousetrap.app.lib.dbusd.DBUS_NAME" class="py-name" href="#" onclick="return doclink('link-9', 'DBUS_NAME', 'link-9');">DBUS_NAME</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"org.gnome.mousetrap"</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable mousetrap.app.lib.dbusd.DBUS_PATH=mousetrap.app.lib.dbusd-module.html#DBUS_PATH"><a title="mousetrap.app.lib.dbusd.DBUS_PATH" class="py-name" href="#" onclick="return doclink('link-10', 'DBUS_PATH', 'link-10');">DBUS_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"/org/gnome/mousetrap"</tt> </tt>
+<a name="DbusServer"></a><div id="DbusServer-def"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-comment"># pylint: disable-msg=R0923</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-comment"># Server: Interface not implemented</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt> <a class="py-toggle" href="#" id="DbusServer-toggle" onclick="return toggle('DbusServer');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mousetrap.app.lib.dbusd.DbusServer-class.html">DbusServer</a><tt class="py-op">(</tt><tt class="py-base-class">dbus</tt><tt class="py-op">.</tt><tt class="py-base-class">service</tt><tt class="py-op">.</tt><tt class="py-base-class">Object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DbusServer-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="DbusServer-expanded"><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-docstring">"""DBus service"""</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="DbusServer.start"></a><div id="DbusServer.start-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="DbusServer.start-toggle" onclick="return toggle('DbusServer.start');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.dbusd.DbusServer-class.html#start">start</a><tt class="py-op">(</tt> <tt class="py-param">self</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DbusServer.start-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DbusServer.start-expanded"><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">        Initialize the dbus server module.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">        - lself: The main object pointer</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring">        - mouseTrap: The mouseTrap onject pointer</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">bus_name</tt> <tt class="py-op">=</tt> <tt class="py-name">dbus</tt><tt class="py-op">.</tt><tt class="py-name">service</tt><tt class="py-op">.</tt><tt class="py-name">BusName</tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="mousetrap.app.lib.dbusd.DBUS_NAME" class="py-name" href="#" onclick="return doclink('link-11', 'DBUS_NAME', 'link-9');">DBUS_NAME</a></tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name"><a title="mousetrap.app.lib.dbusd.bus" class="py-name" href="#" onclick="return doclink('link-12', 'bus', 'link-7');">bus</a></tt><tt class="py-op">=</tt><tt id="link-13" class="py-name"><a title="mousetrap.app.lib.dbusd.bus" class="py-name" href="#" onclick="return doclink('link-13', 'bus', 'link-7');">bus</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">dbus</tt><tt class="py-op">.</tt><tt class="py-name">service</tt><tt class="py-op">.</tt><tt class="py-name">Object</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method mousetrap.app.addons.cpu.Addon.__init__()=mousetrap.app.addons.cpu.Addon-class.html#__init__,Method mousetrap.app.addons.handler.AddonsBase.__init__()=mousetrap.app.addons.handler.AddonsBase-class.html#__init__,Method mousetrap.app.addons.handler.AddonsHandler.__init__()=mousetrap.app.addons.handler.AddonsHandler-class.html#__init__,Method mousetrap.app.addons.recalc.Addon.__init__()=mousetrap.app.addons.recalc.Addon-class.html#__init__,Method mousetrap.app.lib.httpd.HttpdServer.__init__()=mousetrap.app.lib.httpd.HttpdServer-class.html#__init__,Method mousetrap.app.main.Controller.__init__()=mousetrap.app.main.Controller-class.html#__init__,Method mousetrap.app.ui.dialogs.CairoTransGui.__init__()=mousetrap.app.ui.dialogs.CairoTransGui-class.html#__init__,Method mousetrap.app.ui.dialogs.IdmSettings.__init__()=mousetrap.app.ui.dialogs.IdmSettings-class.html#__init__,Method mousetrap.app.ui.main.MainGui.__init__()=mousetrap.app.ui.main.MainGui-class.html#__init__,Method mousetrap.app.ui.scripts.joystick.ScriptClass.__init__()=mousetrap.app.ui.scripts.joystick.ScriptClass-class.html#__init__,Method mousetrap.app.ui.scripts.screen.ScriptClass.__init__()=mousetrap.app.ui.scripts.screen.ScriptClass-class.html#__init__,Method mousetrap.app.ui.settings_gui.PreffGui.__init__()=mousetrap.app.ui.settings_gui.PreffGui-class.html#__init__,Method mousetrap.app.ui.widgets.Mapper.__init__()=mousetrap.app.ui.widgets.Mapper-class.html#__init__,Method mousetrap.ocvfw._ocv.OcvfwBase.__init__()=mousetrap.ocvfw._ocv.OcvfwBase-class.html#__init__,Method mousetrap.ocvfw._ocv.OcvfwCtypes.__init__()=mousetrap.ocvfw._ocv.OcvfwCtypes-class.html#__init__,Method mousetrap.ocvfw._ocv.OcvfwPython.__init__()=mousetrap.ocvfw._ocv.OcvfwPython-class.html#__init__,Method mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase.__init__()=mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase-class.html#__init__,Method mousetrap.ocvfw.backends.OcvfwCtypes.OcvfwCtypes.__init__()=mousetrap.ocvfw.backends.OcvfwCtypes.OcvfwCtypes-class.html#__init__,Method mousetrap.ocvfw.backends.OcvfwPython.OcvfwPython.__init__()=mousetrap.ocvfw.backends.OcvfwPython.OcvfwPython-class.html#__init__,Method mousetrap.ocvfw.dev.camera.Capture.__init__()=mousetrap.ocvfw.dev.camera.Capture-class.html#__init__,Method mousetrap.ocvfw.dev.camera.Graphic.__init__()=mousetrap.ocvfw.dev.camera.Graphic-class.html#__init__,Method mousetrap.ocvfw.dev.camera.Point.__init__()=mousetrap.ocvfw.dev.camera.Point-class.html#__init__,Method mousetrap.ocvfw.idm.finger.Module.__init__()=mousetrap.ocvfw.idm.finger.Module-class.html#__init__,Method mousetrap.ocvfw.idm.forehead.Module.__init__()=mousetrap.ocvfw.idm.forehead.Module-class.html#__init__"><a title="mousetrap.app.addons.cpu.Addon.__init__
+mousetrap.app.addons.handler.AddonsBase.__init__
+mousetrap.app.addons.handler.AddonsHandler.__init__
+mousetrap.app.addons.recalc.Addon.__init__
+mousetrap.app.lib.httpd.HttpdServer.__init__
+mousetrap.app.main.Controller.__init__
+mousetrap.app.ui.dialogs.CairoTransGui.__init__
+mousetrap.app.ui.dialogs.IdmSettings.__init__
+mousetrap.app.ui.main.MainGui.__init__
+mousetrap.app.ui.scripts.joystick.ScriptClass.__init__
+mousetrap.app.ui.scripts.screen.ScriptClass.__init__
+mousetrap.app.ui.settings_gui.PreffGui.__init__
+mousetrap.app.ui.widgets.Mapper.__init__
+mousetrap.ocvfw._ocv.OcvfwBase.__init__
+mousetrap.ocvfw._ocv.OcvfwCtypes.__init__
+mousetrap.ocvfw._ocv.OcvfwPython.__init__
+mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase.__init__
+mousetrap.ocvfw.backends.OcvfwCtypes.OcvfwCtypes.__init__
+mousetrap.ocvfw.backends.OcvfwPython.OcvfwPython.__init__
+mousetrap.ocvfw.dev.camera.Capture.__init__
+mousetrap.ocvfw.dev.camera.Graphic.__init__
+mousetrap.ocvfw.dev.camera.Point.__init__
+mousetrap.ocvfw.idm.finger.Module.__init__
+mousetrap.ocvfw.idm.forehead.Module.__init__" class="py-name" href="#" onclick="return doclink('link-14', '__init__', 'link-14');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">bus_name</tt><tt class="py-op">,</tt> <tt id="link-15" class="py-name"><a title="mousetrap.app.lib.dbusd.DBUS_PATH" class="py-name" href="#" onclick="return doclink('link-15', 'DBUS_PATH', 'link-10');">DBUS_PATH</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">dbus</tt><tt class="py-op">.</tt><tt class="py-name">service</tt><tt class="py-op">.</tt><tt class="py-name">method</tt><tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="mousetrap.app.lib.dbusd.DBUS_NAME" class="py-name" href="#" onclick="return doclink('link-16', 'DBUS_NAME', 'link-9');">DBUS_NAME</a></tt><tt class="py-op">)</tt> </tt>
+<a name="DbusServer.move"></a><div id="DbusServer.move-def"><a name="L62"></a><tt class="py-lineno">62</tt> <a class="py-toggle" href="#" id="DbusServer.move-toggle" onclick="return toggle('DbusServer.move');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.dbusd.DbusServer-class.html#move">move</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">action</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DbusServer.move-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DbusServer.move-expanded"><a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">        Just Move the mouse to de required position.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-name">action</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt class="py-comment">#X, Y = action.split(",")</tt> </tt>
+<a name="start"></a><div id="start-def"><a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-comment">#mouseTrap.move( "click", X, Y )</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt> <a class="py-toggle" href="#" id="start-toggle" onclick="return toggle('start');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.dbusd-module.html#start">start</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="start-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="start-expanded"><a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line"><tt class="py-docstring">    Start's the dbus server and store it in the global variable</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring">    dbusserver, so it won't be started twice.</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-17" class="py-name"><a title="mousetrap.app.lib.dbusd.dbusserver" class="py-name" href="#" onclick="return doclink('link-17', 'dbusserver', 'link-5');">dbusserver</a></tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-18" class="py-name"><a title="mousetrap.app.lib.dbusd.dbusserver" class="py-name" href="#" onclick="return doclink('link-18', 'dbusserver', 'link-5');">dbusserver</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">        <tt id="link-19" class="py-name"><a title="mousetrap.app.lib.dbusd.dbusserver" class="py-name" href="#" onclick="return doclink('link-19', 'dbusserver', 'link-5');">dbusserver</a></tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name" targets="Class mousetrap.app.lib.dbusd.DbusServer=mousetrap.app.lib.dbusd.DbusServer-class.html"><a title="mousetrap.app.lib.dbusd.DbusServer" class="py-name" href="#" onclick="return doclink('link-20', 'DbusServer', 'link-20');">DbusServer</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">        <tt id="link-21" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-21', 'debug', 'link-3');">debug</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Function mousetrap.app.debug.exception()=mousetrap.app.debug-module.html#exception,Function mousetrap.ocvfw.debug.exception()=mousetrap.ocvfw.debug-module.html#exception"><a title="mousetrap.app.debug.exception
+mousetrap.ocvfw.debug.exception" class="py-name" href="#" onclick="return doclink('link-22', 'exception', 'link-22');">exception</a></tt><tt class="py-op">(</tt> <tt class="py-string">"mouseTrap.mTDbus"</tt><tt class="py-op">,</tt> <tt class="py-string">"The dbus server load failed"</tt> <tt class="py-op">)</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"> </tt>
+<a name="shutdown"></a><div id="shutdown-def"><a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt> <a class="py-toggle" href="#" id="shutdown-toggle" onclick="return toggle('shutdown');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.dbusd-module.html#shutdown">shutdown</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="shutdown-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="shutdown-expanded"><a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line"><tt class="py-docstring">    Fake shutdown</tt> </tt>
+<a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="mousetrap-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MouseTrap</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Feb 25 13:39:49 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

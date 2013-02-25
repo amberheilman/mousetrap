@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>mousetrap.app.ui.main</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="mousetrap-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MouseTrap</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="mousetrap-module.html">Package&nbsp;mousetrap</a> ::
+        <a href="mousetrap.app-module.html">Package&nbsp;app</a> ::
+        <a href="mousetrap.app.ui-module.html">Package&nbsp;ui</a> ::
+        Module&nbsp;main
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="mousetrap.app.ui.main-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="mousetrap.app.ui.main-module.html">Module mousetrap.app.ui.main</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># MouseTrap</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2009 Flavio Percoco Premoli</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># This file is part of mouseTrap.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># MouseTrap is free software: you can redistribute it and/or modify</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># it under the terms of the GNU General Public License v2 as published</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># by the Free Software Foundation.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># mouseTrap is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment"># GNU General Public License for more details.</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment"># You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment"># along with mouseTrap.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">"""The main GUI of mousetrap."""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable mousetrap.__id__=mousetrap-module.html#__id__,Variable mousetrap.app.__id__=mousetrap.app-module.html#__id__,Variable mousetrap.app.addons.__id__=mousetrap.app.addons-module.html#__id__,Variable mousetrap.app.commons.__id__=mousetrap.app.commons-module.html#__id__,Variable mousetrap.app.debug.__id__=mousetrap.app.debug-module.html#__id__,Variable mousetrap.app.environment.__id__=mousetrap.app.environment-module.html#__id__,Variable mousetrap.app.lib.__id__=mousetrap.app.lib-module.html#__id__,Variable mousetrap.app.lib.dbusd.__id__=mousetrap.app.lib.dbusd-module.html#__id__,Variable mousetrap.app.lib.httpd.__id__=mousetrap.app.lib.httpd-module.html#__id__,Variable mousetrap.app.lib.mouse.__id__=mousetrap.app.lib.mouse-module.html#__id__,Variable mousetrap.app.lib.settings.__id__=mousetrap.app.lib.settings-module.html#__id__,Variable mousetrap.app.main.__id__=mousetrap.app.main-module.html#__id__,Variable mousetrap.app.ui.__id__=mousetrap.app.ui-module.html#__id__,Variable mousetrap.app.ui.dialogs.__id__=mousetrap.app.ui.dialogs-module.html#__id__,Variable mousetrap.app.ui.i18n.__id__=mousetrap.app.ui.i18n-module.html#__id__,Variable mousetrap.app.ui.main.__id__=mousetrap.app.ui.main-module.html#__id__,Variable mousetrap.app.ui.scripts.__id__=mousetrap.app.ui.scripts-module.html#__id__,Variable mousetrap.app.ui.scripts.joystick.__id__=mousetrap.app.ui.scripts.joystick-module.html#__id__,Variable mousetrap.app.ui.scripts.screen.__id__=mousetrap.app.ui.scripts.screen-module.html#__id__,Variable mousetrap.app.ui.settings_gui.__id__=mousetrap.app.ui.settings_gui-module.html#__id__,Variable mousetrap.app.ui.widgets.__id__=mousetrap.app.ui.widgets-module.html#__id__,Variable mousetrap.ocvfw.__id__=mousetrap.ocvfw-module.html#__id__,Variable mousetrap.ocvfw._ocv.__id__=mousetrap.ocvfw._ocv-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwBase.__id__=mousetrap.ocvfw.backends.OcvfwBase-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwCtypes.__id__=mousetrap.ocvfw.backends.OcvfwCtypes-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwPython.__id__=mousetrap.ocvfw.backends.OcvfwPython-module.html#__id__,Variable mousetrap.ocvfw.commons.__id__=mousetrap.ocvfw.commons-module.html#__id__,Variable mousetrap.ocvfw.debug.__id__=mousetrap.ocvfw.debug-module.html#__id__,Variable mousetrap.ocvfw.dev.__id__=mousetrap.ocvfw.dev-module.html#__id__,Variable mousetrap.ocvfw.dev.camera.__id__=mousetrap.ocvfw.dev.camera-module.html#__id__,Variable mousetrap.ocvfw.idm.__id__=mousetrap.ocvfw.idm-module.html#__id__,Variable mousetrap.ocvfw.idm.finger.__id__=mousetrap.ocvfw.idm.finger-module.html#__id__,Variable mousetrap.ocvfw.idm.forehead.__id__=mousetrap.ocvfw.idm.forehead-module.html#__id__,Variable mousetrap.ocvfw.pocv.__id__=mousetrap.ocvfw.pocv-module.html#__id__"><a title="mousetrap.__id__
+mousetrap.app.__id__
+mousetrap.app.addons.__id__
+mousetrap.app.commons.__id__
+mousetrap.app.debug.__id__
+mousetrap.app.environment.__id__
+mousetrap.app.lib.__id__
+mousetrap.app.lib.dbusd.__id__
+mousetrap.app.lib.httpd.__id__
+mousetrap.app.lib.mouse.__id__
+mousetrap.app.lib.settings.__id__
+mousetrap.app.main.__id__
+mousetrap.app.ui.__id__
+mousetrap.app.ui.dialogs.__id__
+mousetrap.app.ui.i18n.__id__
+mousetrap.app.ui.main.__id__
+mousetrap.app.ui.scripts.__id__
+mousetrap.app.ui.scripts.joystick.__id__
+mousetrap.app.ui.scripts.screen.__id__
+mousetrap.app.ui.settings_gui.__id__
+mousetrap.app.ui.widgets.__id__
+mousetrap.ocvfw.__id__
+mousetrap.ocvfw._ocv.__id__
+mousetrap.ocvfw.backends.OcvfwBase.__id__
+mousetrap.ocvfw.backends.OcvfwCtypes.__id__
+mousetrap.ocvfw.backends.OcvfwPython.__id__
+mousetrap.ocvfw.commons.__id__
+mousetrap.ocvfw.debug.__id__
+mousetrap.ocvfw.dev.__id__
+mousetrap.ocvfw.dev.camera.__id__
+mousetrap.ocvfw.idm.__id__
+mousetrap.ocvfw.idm.finger.__id__
+mousetrap.ocvfw.idm.forehead.__id__
+mousetrap.ocvfw.pocv.__id__" class="py-name" href="#" onclick="return doclink('link-0', '__id__', 'link-0');">__id__</a></tt>        <tt class="py-op">=</tt> <tt class="py-string">"$Id$"</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-name">__version__</tt>   <tt class="py-op">=</tt> <tt class="py-string">"$Revision$"</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-name">__date__</tt>      <tt class="py-op">=</tt> <tt class="py-string">"$Date$"</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"Copyright (c) 2008 Flavio Percoco Premoli"</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-name">__license__</tt>   <tt class="py-op">=</tt> <tt class="py-string">"GPLv2"</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module mousetrap.app.ui.dialogs=mousetrap.app.ui.dialogs-module.html"><a title="mousetrap.app.ui.dialogs" class="py-name" href="#" onclick="return doclink('link-1', 'dialogs', 'link-1');">dialogs</a></tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module mousetrap.app.ui.settings_gui=mousetrap.app.ui.settings_gui-module.html"><a title="mousetrap.app.ui.settings_gui" class="py-name" href="#" onclick="return doclink('link-2', 'settings_gui', 'link-2');">settings_gui</a></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Package mousetrap=mousetrap-module.html"><a title="mousetrap" class="py-name" href="#" onclick="return doclink('link-3', 'mousetrap', 'link-3');">mousetrap</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Package mousetrap.app=mousetrap.app-module.html"><a title="mousetrap.app" class="py-name" href="#" onclick="return doclink('link-4', 'app', 'link-4');">app</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module mousetrap.app.debug=mousetrap.app.debug-module.html,Function mousetrap.app.debug.debug()=mousetrap.app.debug-module.html#debug,Module mousetrap.ocvfw.debug=mousetrap.ocvfw.debug-module.html,Function mousetrap.ocvfw.debug.debug()=mousetrap.ocvfw.debug-module.html#debug"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-5', 'debug', 'link-5');">debug</a></tt> <tt class="py-keyword">as</tt> <tt id="link-6" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-6', 'debug', 'link-5');">debug</a></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-7" class="py-name"><a title="mousetrap" class="py-name" href="#" onclick="return doclink('link-7', 'mousetrap', 'link-3');">mousetrap</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="mousetrap.app" class="py-name" href="#" onclick="return doclink('link-8', 'app', 'link-4');">app</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Module mousetrap.app.environment=mousetrap.app.environment-module.html"><a title="mousetrap.app.environment" class="py-name" href="#" onclick="return doclink('link-9', 'environment', 'link-9');">environment</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">env</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-10" class="py-name"><a title="mousetrap" class="py-name" href="#" onclick="return doclink('link-10', 'mousetrap', 'link-3');">mousetrap</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="mousetrap.app" class="py-name" href="#" onclick="return doclink('link-11', 'app', 'link-4');">app</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Package mousetrap.app.addons=mousetrap.app.addons-module.html"><a title="mousetrap.app.addons" class="py-name" href="#" onclick="return doclink('link-12', 'addons', 'link-12');">addons</a></tt> <tt class="py-keyword">import</tt> <tt id="link-13" class="py-name" targets="Module mousetrap.app.addons.cpu=mousetrap.app.addons.cpu-module.html"><a title="mousetrap.app.addons.cpu" class="py-name" href="#" onclick="return doclink('link-13', 'cpu', 'link-13');">cpu</a></tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="MainGui"></a><div id="MainGui-def"><a name="L37"></a><tt class="py-lineno"> 37</tt> <a class="py-toggle" href="#" id="MainGui-toggle" onclick="return toggle('MainGui');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html">MainGui</a><tt class="py-op">(</tt> <tt class="py-base-class">gtk</tt><tt class="py-op">.</tt><tt class="py-base-class">Window</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MainGui-expanded"><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">    MouseTrap main GUI Class</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="MainGui.__init__"></a><div id="MainGui.__init__-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="MainGui.__init__-toggle" onclick="return toggle('MainGui.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#__init__">__init__</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">controller</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui.__init__-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">        The main GUI constructor</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">        - controller: The mouseTrap's controller.</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Window</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method mousetrap.app.addons.cpu.Addon.__init__()=mousetrap.app.addons.cpu.Addon-class.html#__init__,Method mousetrap.app.addons.handler.AddonsBase.__init__()=mousetrap.app.addons.handler.AddonsBase-class.html#__init__,Method mousetrap.app.addons.handler.AddonsHandler.__init__()=mousetrap.app.addons.handler.AddonsHandler-class.html#__init__,Method mousetrap.app.addons.recalc.Addon.__init__()=mousetrap.app.addons.recalc.Addon-class.html#__init__,Method mousetrap.app.lib.httpd.HttpdServer.__init__()=mousetrap.app.lib.httpd.HttpdServer-class.html#__init__,Method mousetrap.app.main.Controller.__init__()=mousetrap.app.main.Controller-class.html#__init__,Method mousetrap.app.ui.dialogs.CairoTransGui.__init__()=mousetrap.app.ui.dialogs.CairoTransGui-class.html#__init__,Method mousetrap.app.ui.dialogs.IdmSettings.__init__()=mousetrap.app.ui.dialogs.IdmSettings-class.html#__init__,Method mousetrap.app.ui.main.MainGui.__init__()=mousetrap.app.ui.main.MainGui-class.html#__init__,Method mousetrap.app.ui.scripts.joystick.ScriptClass.__init__()=mousetrap.app.ui.scripts.joystick.ScriptClass-class.html#__init__,Method mousetrap.app.ui.scripts.screen.ScriptClass.__init__()=mousetrap.app.ui.scripts.screen.ScriptClass-class.html#__init__,Method mousetrap.app.ui.settings_gui.PreffGui.__init__()=mousetrap.app.ui.settings_gui.PreffGui-class.html#__init__,Method mousetrap.app.ui.widgets.Mapper.__init__()=mousetrap.app.ui.widgets.Mapper-class.html#__init__,Method mousetrap.ocvfw._ocv.OcvfwBase.__init__()=mousetrap.ocvfw._ocv.OcvfwBase-class.html#__init__,Method mousetrap.ocvfw._ocv.OcvfwCtypes.__init__()=mousetrap.ocvfw._ocv.OcvfwCtypes-class.html#__init__,Method mousetrap.ocvfw._ocv.OcvfwPython.__init__()=mousetrap.ocvfw._ocv.OcvfwPython-class.html#__init__,Method mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase.__init__()=mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase-class.html#__init__,Method mousetrap.ocvfw.backends.OcvfwCtypes.OcvfwCtypes.__init__()=mousetrap.ocvfw.backends.OcvfwCtypes.OcvfwCtypes-class.html#__init__,Method mousetrap.ocvfw.backends.OcvfwPython.OcvfwPython.__init__()=mousetrap.ocvfw.backends.OcvfwPython.OcvfwPython-class.html#__init__,Method mousetrap.ocvfw.dev.camera.Capture.__init__()=mousetrap.ocvfw.dev.camera.Capture-class.html#__init__,Method mousetrap.ocvfw.dev.camera.Graphic.__init__()=mousetrap.ocvfw.dev.camera.Graphic-class.html#__init__,Method mousetrap.ocvfw.dev.camera.Point.__init__()=mousetrap.ocvfw.dev.camera.Point-class.html#__init__,Method mousetrap.ocvfw.idm.finger.Module.__init__()=mousetrap.ocvfw.idm.finger.Module-class.html#__init__,Method mousetrap.ocvfw.idm.forehead.Module.__init__()=mousetrap.ocvfw.idm.forehead.Module-class.html#__init__"><a title="mousetrap.app.addons.cpu.Addon.__init__
+mousetrap.app.addons.handler.AddonsBase.__init__
+mousetrap.app.addons.handler.AddonsHandler.__init__
+mousetrap.app.addons.recalc.Addon.__init__
+mousetrap.app.lib.httpd.HttpdServer.__init__
+mousetrap.app.main.Controller.__init__
+mousetrap.app.ui.dialogs.CairoTransGui.__init__
+mousetrap.app.ui.dialogs.IdmSettings.__init__
+mousetrap.app.ui.main.MainGui.__init__
+mousetrap.app.ui.scripts.joystick.ScriptClass.__init__
+mousetrap.app.ui.scripts.screen.ScriptClass.__init__
+mousetrap.app.ui.settings_gui.PreffGui.__init__
+mousetrap.app.ui.widgets.Mapper.__init__
+mousetrap.ocvfw._ocv.OcvfwBase.__init__
+mousetrap.ocvfw._ocv.OcvfwCtypes.__init__
+mousetrap.ocvfw._ocv.OcvfwPython.__init__
+mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase.__init__
+mousetrap.ocvfw.backends.OcvfwCtypes.OcvfwCtypes.__init__
+mousetrap.ocvfw.backends.OcvfwPython.OcvfwPython.__init__
+mousetrap.ocvfw.dev.camera.Capture.__init__
+mousetrap.ocvfw.dev.camera.Graphic.__init__
+mousetrap.ocvfw.dev.camera.Point.__init__
+mousetrap.ocvfw.idm.finger.Module.__init__
+mousetrap.ocvfw.idm.forehead.Module.__init__" class="py-name" href="#" onclick="return doclink('link-14', '__init__', 'link-14');">__init__</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt> <tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctr</tt>    <tt class="py-op">=</tt> <tt class="py-name">controller</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cfg</tt>    <tt class="py-op">=</tt> <tt class="py-name">controller</tt><tt class="py-op">.</tt><tt class="py-name">cfg</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method mousetrap.app.main.Controller.script()=mousetrap.app.main.Controller-class.html#script"><a title="mousetrap.app.main.Controller.script" class="py-name" href="#" onclick="return doclink('link-15', 'script', 'link-15');">script</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctr</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="mousetrap.app.main.Controller.script" class="py-name" href="#" onclick="return doclink('link-16', 'script', 'link-15');">script</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-comment">#self.set_default_size(200, 400)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="MainGui.setWindowsIcon"></a><div id="MainGui.setWindowsIcon-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="MainGui.setWindowsIcon-toggle" onclick="return toggle('MainGui.setWindowsIcon');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#setWindowsIcon">setWindowsIcon</a><tt class="py-op">(</tt> <tt class="py-param">self</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui.setWindowsIcon-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui.setWindowsIcon-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">        Sets the mainGui icon</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">icon_theme</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">icon_theme_get_default</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">            <tt class="py-name">icon</tt> <tt class="py-op">=</tt> <tt class="py-name">icon_theme</tt><tt class="py-op">.</tt><tt class="py-name">load_icon</tt><tt class="py-op">(</tt><tt class="py-string">"mousetrap"</tt><tt class="py-op">,</tt> <tt class="py-number">48</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">window_set_default_icon</tt><tt class="py-op">(</tt><tt class="py-name">icon</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="MainGui.build_interface"></a><div id="MainGui.build_interface-def"><a name="L74"></a><tt class="py-lineno"> 74</tt> <a class="py-toggle" href="#" id="MainGui.build_interface-toggle" onclick="return toggle('MainGui.build_interface');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#build_interface">build_interface</a><tt class="py-op">(</tt> <tt class="py-param">self</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui.build_interface-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui.build_interface-expanded"><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">        Builds the interface</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method mousetrap.app.ui.main.MainGui.setWindowsIcon()=mousetrap.app.ui.main.MainGui-class.html#setWindowsIcon,Method mousetrap.app.ui.settings_gui.PreffGui.setWindowsIcon()=mousetrap.app.ui.settings_gui.PreffGui-class.html#setWindowsIcon"><a title="mousetrap.app.ui.main.MainGui.setWindowsIcon
+mousetrap.app.ui.settings_gui.PreffGui.setWindowsIcon" class="py-name" href="#" onclick="return doclink('link-17', 'setWindowsIcon', 'link-17');">setWindowsIcon</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-name">accelGroup</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">AccelGroup</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">add_accel_group</tt><tt class="py-op">(</tt> <tt class="py-name">accelGroup</tt> <tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">accelGroup</tt> <tt class="py-op">=</tt> <tt class="py-name">accelGroup</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">set_title</tt><tt class="py-op">(</tt> <tt class="py-string">"MouseTrap"</tt> <tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt> <tt class="py-string">"destroy"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method mousetrap.app.ui.main.MainGui.close()=mousetrap.app.ui.main.MainGui-class.html#close,Method mousetrap.app.ui.settings_gui.PreffGui.close()=mousetrap.app.ui.settings_gui.PreffGui-class.html#close"><a title="mousetrap.app.ui.main.MainGui.close
+mousetrap.app.ui.settings_gui.PreffGui.close" class="py-name" href="#" onclick="return doclink('link-18', 'close', 'link-18');">close</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="mousetrap.app.ui.main.MainGui.setWindowsIcon
+mousetrap.app.ui.settings_gui.PreffGui.setWindowsIcon" class="py-name" href="#" onclick="return doclink('link-19', 'setWindowsIcon', 'link-17');">setWindowsIcon</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">VBox</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">buttonsBox</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">HButtonBox</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-comment">#self.buttonsBox = gtk.HBox(False,0)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">prefButton</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Button</tt><tt class="py-op">(</tt><tt class="py-name">stock</tt><tt class="py-op">=</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_PREFERENCES</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">prefButton</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"clicked"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method mousetrap.app.ui.main.MainGui._show_settings_gui()=mousetrap.app.ui.main.MainGui-class.html#_show_settings_gui"><a title="mousetrap.app.ui.main.MainGui._show_settings_gui" class="py-name" href="#" onclick="return doclink('link-20', '_show_settings_gui', 'link-20');">_show_settings_gui</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">buttonsBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">prefButton</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt> <tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">closeButton</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Button</tt><tt class="py-op">(</tt><tt class="py-name">stock</tt><tt class="py-op">=</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_QUIT</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">closeButton</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"clicked"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="mousetrap.app.ui.main.MainGui.close
+mousetrap.app.ui.settings_gui.PreffGui.close" class="py-name" href="#" onclick="return doclink('link-21', 'close', 'link-18');">close</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">buttonsBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">closeButton</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt> <tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">helpButton</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Button</tt><tt class="py-op">(</tt><tt class="py-name">stock</tt><tt class="py-op">=</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_HELP</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">helpButton</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"clicked"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method mousetrap.app.ui.main.MainGui._loadHelp()=mousetrap.app.ui.main.MainGui-class.html#_loadHelp"><a title="mousetrap.app.ui.main.MainGui._loadHelp" class="py-name" href="#" onclick="return doclink('link-22', '_loadHelp', 'link-22');">_loadHelp</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">buttonsBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">helpButton</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt> <tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">buttonsBox</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt> <tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">adds_vbox</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">VBox</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">adds_vbox</tt><tt class="py-op">.</tt><tt class="py-name">show_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">adds_vbox</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt> <tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cap_image</tt>    <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Image</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cfg</tt><tt class="py-op">.</tt><tt class="py-name">getboolean</tt><tt class="py-op">(</tt><tt class="py-string">"gui"</tt><tt class="py-op">,</tt> <tt class="py-string">"showCapture"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cap_expander</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">expander_new_with_mnemonic</tt><tt class="py-op">(</tt><tt class="py-string">"_Camera Image"</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cap_expander</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method mousetrap.ocvfw.dev.camera.Capture.add()=mousetrap.ocvfw.dev.camera.Capture-class.html#add"><a title="mousetrap.ocvfw.dev.camera.Capture.add" class="py-name" href="#" onclick="return doclink('link-23', 'add', 'link-23');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cap_image</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cap_expander</tt><tt class="py-op">.</tt><tt class="py-name">set_expanded</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">            <tt class="py-comment">#expander.connect('notify::expanded', self.expanded_cb)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cap_expander</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cfg</tt><tt class="py-op">.</tt><tt class="py-name">getboolean</tt><tt class="py-op">(</tt><tt class="py-string">"gui"</tt><tt class="py-op">,</tt> <tt class="py-string">"showPointMapper"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">map_expander</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">expander_new_with_mnemonic</tt><tt class="py-op">(</tt><tt class="py-string">"_Script Mapper"</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">map_expander</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="mousetrap.ocvfw.dev.camera.Capture.add" class="py-name" href="#" onclick="return doclink('link-24', 'add', 'link-23');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="mousetrap.app.main.Controller.script" class="py-name" href="#" onclick="return doclink('link-25', 'script', 'link-15');">script</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">map_expander</tt><tt class="py-op">.</tt><tt class="py-name">set_expanded</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-comment">#expander.connect('notify::expanded', self.expanded_cb)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">map_expander</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-comment">#         flipButton = gtk.Button( _("Flip Image") )</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-comment">#         flipButton.connect("clicked", self.recalcPoint, "flip" )</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-comment">#         hBox.pack_start( flipButton, False, False )</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-comment">#         recalcButton = gtk.Button( _("Recalc Point") )</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-comment">#         recalcButton.connect("clicked", self.recalcPoint )</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-comment">#         hBox.pack_start( recalcButton, False, False )</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-comment">#         self.vBox.pack_end(hBox, False, False )</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-comment">#         self.buttonsBox.show_all()</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">statusbar</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Statusbar</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">statusbar_id</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">statusbar</tt><tt class="py-op">.</tt><tt class="py-name">get_context_id</tt><tt class="py-op">(</tt><tt class="py-string">"statusbar"</tt><tt class="py-op">)</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">statusbar</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt><tt class="py-op">.</tt><tt class="py-name">show_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="mousetrap.ocvfw.dev.camera.Capture.add" class="py-name" href="#" onclick="return doclink('link-26', 'add', 'link-23');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">vBox</tt><tt class="py-op">)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">show</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">         </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt id="link-27" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-27', 'debug', 'link-5');">debug</a></tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-28', 'debug', 'link-5');">debug</a></tt><tt class="py-op">(</tt><tt class="py-string">"ui.main"</tt><tt class="py-op">,</tt> <tt class="py-string">"Interface Built"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="MainGui.load_addons"></a><div id="MainGui.load_addons-def"><a name="L157"></a><tt class="py-lineno">157</tt> <a class="py-toggle" href="#" id="MainGui.load_addons-toggle" onclick="return toggle('MainGui.load_addons');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#load_addons">load_addons</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui.load_addons-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui.load_addons-expanded"><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-docstring">        Loads the enabled addons</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring">         </tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-29" class="py-name"><a title="mousetrap.ocvfw.dev.camera.Capture.add" class="py-name" href="#" onclick="return doclink('link-29', 'add', 'link-23');">add</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cfg</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method mousetrap.app.lib.settings.Settings.getList()=mousetrap.app.lib.settings.Settings-class.html#getList"><a title="mousetrap.app.lib.settings.Settings.getList" class="py-name" href="#" onclick="return doclink('link-30', 'getList', 'link-30');">getList</a></tt><tt class="py-op">(</tt><tt class="py-string">"main"</tt><tt class="py-op">,</tt> <tt class="py-string">"addon"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">            <tt class="py-name">tmp</tt> <tt class="py-op">=</tt> <tt class="py-name">__import__</tt><tt class="py-op">(</tt><tt class="py-string">"mousetrap.app.addons.%s"</tt> <tt class="py-op">%</tt> <tt id="link-31" class="py-name"><a title="mousetrap.ocvfw.dev.camera.Capture.add" class="py-name" href="#" onclick="return doclink('link-31', 'add', 'link-23');">add</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">                    <tt class="py-name">globals</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">locals</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">''</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">            <tt class="py-name">setattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name"><a title="mousetrap.ocvfw.dev.camera.Capture.add" class="py-name" href="#" onclick="return doclink('link-32', 'add', 'link-23');">add</a></tt><tt class="py-op">,</tt> <tt class="py-name">tmp</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Class mousetrap.app.addons.cpu.Addon=mousetrap.app.addons.cpu.Addon-class.html,Class mousetrap.app.addons.recalc.Addon=mousetrap.app.addons.recalc.Addon-class.html"><a title="mousetrap.app.addons.cpu.Addon
+mousetrap.app.addons.recalc.Addon" class="py-name" href="#" onclick="return doclink('link-33', 'Addon', 'link-33');">Addon</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctr</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt id="link-34" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-34', 'debug', 'link-5');">debug</a></tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-35', 'debug', 'link-5');">debug</a></tt><tt class="py-op">(</tt><tt class="py-string">"ui.main"</tt><tt class="py-op">,</tt> <tt class="py-string">"Addons loaded"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="MainGui.update_frame"></a><div id="MainGui.update_frame-def"><a name="L173"></a><tt class="py-lineno">173</tt> <a class="py-toggle" href="#" id="MainGui.update_frame-toggle" onclick="return toggle('MainGui.update_frame');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#update_frame">update_frame</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">cap</tt><tt class="py-op">,</tt> <tt class="py-param">point</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui.update_frame-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui.update_frame-expanded"><a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-docstring">        Updates the image</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt class="py-docstring">        - img: The IPLimage object.</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">cap</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method mousetrap.ocvfw.dev.camera.Capture.image()=mousetrap.ocvfw.dev.camera.Capture-class.html#image"><a title="mousetrap.ocvfw.dev.camera.Capture.image" class="py-name" href="#" onclick="return doclink('link-36', 'image', 'link-36');">image</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-comment">#sets new pixbuf</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cap_image</tt><tt class="py-op">.</tt><tt class="py-name">set_from_pixbuf</tt><tt class="py-op">(</tt><tt class="py-name">cap</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method mousetrap.ocvfw.dev.camera.Capture.to_gtk_buff()=mousetrap.ocvfw.dev.camera.Capture-class.html#to_gtk_buff"><a title="mousetrap.ocvfw.dev.camera.Capture.to_gtk_buff" class="py-name" href="#" onclick="return doclink('link-37', 'to_gtk_buff', 'link-37');">to_gtk_buff</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">scale_simple</tt><tt class="py-op">(</tt><tt class="py-number">200</tt><tt class="py-op">,</tt> <tt class="py-number">160</tt><tt class="py-op">,</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">gdk</tt><tt class="py-op">.</tt><tt class="py-name">INTERP_BILINEAR</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-comment">#     def recalcPoint( self, widget, flip = ''):</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt class="py-comment">#         """</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt class="py-comment">#         Enables the Flip of the Image in the X axis</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"><tt class="py-comment">#         This is for webcams that capture images as a mirror.</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"><tt class="py-comment">#         Arguments:</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"><tt class="py-comment">#         - self: The main object pointer.</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt class="py-comment">#         - *args: Widget related arguments.</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-comment">#         """</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-comment">#         if flip:</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"><tt class="py-comment">#             self.settings.set( "cam", "flipImage",  str(not self.settings.getboolean( "cam", "flipImage" )) )</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"><tt class="py-comment">#         mouseTrap.calcPoint()</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"> </tt>
+<a name="MainGui._newStockImageButton"></a><div id="MainGui._newStockImageButton-def"><a name="L205"></a><tt class="py-lineno">205</tt> <a class="py-toggle" href="#" id="MainGui._newStockImageButton-toggle" onclick="return toggle('MainGui._newStockImageButton');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#_newStockImageButton">_newStockImageButton</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">label</tt><tt class="py-op">,</tt> <tt class="py-param">stock</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui._newStockImageButton-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui._newStockImageButton-expanded"><a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"><tt class="py-docstring">        Creates an image button from gtk's stock.</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"><tt class="py-docstring">        - label: The buttons label</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"><tt class="py-docstring">        - stock: The Stock image the button will use. E.g: gtk.STOCK_GO-FORWARD</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"><tt class="py-docstring">        Returns buttonLabelBox A gtk.HBox that contains the new image stock button.</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-name">buttonLabelBox</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">VBox</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">        <tt class="py-name">im</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">image_new_from_stock</tt><tt class="py-op">(</tt> <tt class="py-name">stock</tt><tt class="py-op">,</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">ICON_SIZE_BUTTON</tt> <tt class="py-op">)</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">        <tt class="py-name">label</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Label</tt><tt class="py-op">(</tt> <tt class="py-name">label</tt> <tt class="py-op">)</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-comment">#label.set_alignment( 0.0, 0.5 )</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-name">label</tt><tt class="py-op">.</tt><tt class="py-name">set_use_underline</tt><tt class="py-op">(</tt> <tt class="py-name">True</tt> <tt class="py-op">)</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-name">buttonLabelBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt> <tt class="py-name">im</tt> <tt class="py-op">)</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-name">buttonLabelBox</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt> <tt class="py-name">label</tt> <tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-name">buttonLabelBox</tt><tt class="py-op">.</tt><tt class="py-name">show_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">buttonLabelBox</tt> </tt>
+</div><a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"> </tt>
+<a name="MainGui._show_settings_gui"></a><div id="MainGui._show_settings_gui-def"><a name="L231"></a><tt class="py-lineno">231</tt> <a class="py-toggle" href="#" id="MainGui._show_settings_gui-toggle" onclick="return toggle('MainGui._show_settings_gui');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#_show_settings_gui">_show_settings_gui</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui._show_settings_gui-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui._show_settings_gui-expanded"><a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"><tt class="py-docstring">        Starts the preferences GUI</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line"><tt class="py-docstring">        - *args: The widget callback arguments.</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">        <tt id="link-38" class="py-name"><a title="mousetrap.app.ui.settings_gui" class="py-name" href="#" onclick="return doclink('link-38', 'settings_gui', 'link-2');">settings_gui</a></tt><tt class="py-op">.</tt><tt id="link-39" class="py-name" targets="Function mousetrap.app.ui.settings_gui.showPreffGui()=mousetrap.app.ui.settings_gui-module.html#showPreffGui"><a title="mousetrap.app.ui.settings_gui.showPreffGui" class="py-name" href="#" onclick="return doclink('link-39', 'showPreffGui', 'link-39');">showPreffGui</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctr</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line"> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line"> </tt>
+<a name="MainGui._loadHelp"></a><div id="MainGui._loadHelp-def"><a name="L243"></a><tt class="py-lineno">243</tt> <a class="py-toggle" href="#" id="MainGui._loadHelp-toggle" onclick="return toggle('MainGui._loadHelp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#_loadHelp">_loadHelp</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui._loadHelp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui._loadHelp-expanded"><a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-docstring">        Shows the user manual.</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line"><tt class="py-docstring">        - *args: The widget callback arguments.</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line"> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">            <tt class="py-keyword">import</tt> <tt class="py-name">gnome</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">            <tt class="py-name">gnome</tt><tt class="py-op">.</tt><tt class="py-name">help_display_uri</tt><tt class="py-op">(</tt><tt class="py-string">"ghelp:%s/docs/mousetrap.xml"</tt> <tt class="py-op">%</tt> <tt class="py-name">env</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Variable mousetrap.app.environment.mTDataDir=mousetrap.app.environment-module.html#mTDataDir"><a title="mousetrap.app.environment.mTDataDir" class="py-name" href="#" onclick="return doclink('link-40', 'mTDataDir', 'link-40');">mTDataDir</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">            <tt id="link-41" class="py-name"><a title="mousetrap.app.ui.dialogs" class="py-name" href="#" onclick="return doclink('link-41', 'dialogs', 'link-1');">dialogs</a></tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Function mousetrap.app.ui.dialogs.errorDialog()=mousetrap.app.ui.dialogs-module.html#errorDialog"><a title="mousetrap.app.ui.dialogs.errorDialog" class="py-name" href="#" onclick="return doclink('link-42', 'errorDialog', 'link-42');">errorDialog</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">            <tt class="py-string">"mouseTrap needs &lt;b&gt;gnome&lt;/b&gt; module to show the help. Please install gnome-python and try again."</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt> <tt class="py-op">)</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">            <tt id="link-43" class="py-name"><a title="mousetrap.app.debug
+mousetrap.app.debug.debug
+mousetrap.ocvfw.debug
+mousetrap.ocvfw.debug.debug" class="py-name" href="#" onclick="return doclink('link-43', 'debug', 'link-5');">debug</a></tt><tt class="py-op">.</tt><tt id="link-44" class="py-name" targets="Function mousetrap.app.debug.exception()=mousetrap.app.debug-module.html#exception,Function mousetrap.ocvfw.debug.exception()=mousetrap.ocvfw.debug-module.html#exception"><a title="mousetrap.app.debug.exception
+mousetrap.ocvfw.debug.exception" class="py-name" href="#" onclick="return doclink('link-44', 'exception', 'link-44');">exception</a></tt><tt class="py-op">(</tt> <tt class="py-string">"mainGui"</tt><tt class="py-op">,</tt> <tt class="py-string">"The help load failed"</tt> <tt class="py-op">)</tt> </tt>
+</div><a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"> </tt>
+<a name="MainGui.close"></a><div id="MainGui.close-def"><a name="L260"></a><tt class="py-lineno">260</tt> <a class="py-toggle" href="#" id="MainGui.close-toggle" onclick="return toggle('MainGui.close');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main.MainGui-class.html#close">close</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainGui.close-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainGui.close-expanded"><a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"><tt class="py-docstring">        Close Function for the quit button. This will kill mouseTrap.</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line"><tt class="py-docstring">        - *args: The widget callback arguments.</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctr</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method mousetrap.app.main.Controller.quit()=mousetrap.app.main.Controller-class.html#quit"><a title="mousetrap.app.main.Controller.quit" class="py-name" href="#" onclick="return doclink('link-45', 'quit', 'link-45');">quit</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line"> </tt>
+<a name="showMainGui"></a><div id="showMainGui-def"><a name="L270"></a><tt class="py-lineno">270</tt> <a class="py-toggle" href="#" id="showMainGui-toggle" onclick="return toggle('showMainGui');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.ui.main-module.html#showMainGui">showMainGui</a><tt class="py-op">(</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="showMainGui-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="showMainGui-expanded"><a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line"><tt class="py-docstring">    Loads the mainGUI components and launch it.</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"><tt class="py-docstring">    Arguments:</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line"><tt class="py-docstring">    - mouseTrap: The mouseTrap object pointer</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line">    <tt class="py-name">gui</tt> <tt class="py-op">=</tt> <tt id="link-46" class="py-name" targets="Class mousetrap.app.ui.main.MainGui=mousetrap.app.ui.main.MainGui-class.html"><a title="mousetrap.app.ui.main.MainGui" class="py-name" href="#" onclick="return doclink('link-46', 'MainGui', 'link-46');">MainGui</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">    <tt class="py-name">gui</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method mousetrap.app.ui.main.MainGui.build_interface()=mousetrap.app.ui.main.MainGui-class.html#build_interface"><a title="mousetrap.app.ui.main.MainGui.build_interface" class="py-name" href="#" onclick="return doclink('link-47', 'build_interface', 'link-47');">build_interface</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">gui</tt> </tt>
+</div><a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="mousetrap-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MouseTrap</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Feb 25 13:39:48 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

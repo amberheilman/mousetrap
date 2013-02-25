@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>mousetrap.app.lib.settings</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="mousetrap-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MouseTrap</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="mousetrap-module.html">Package&nbsp;mousetrap</a> ::
+        <a href="mousetrap.app-module.html">Package&nbsp;app</a> ::
+        <a href="mousetrap.app.lib-module.html">Package&nbsp;lib</a> ::
+        Module&nbsp;settings
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="mousetrap.app.lib.settings-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="mousetrap.app.lib.settings-module.html">Module mousetrap.app.lib.settings</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># MouseTrap</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2009 Flavio Percoco Premoli</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># This file is part of mouseTrap.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># MouseTrap is free software: you can redistribute it and/or modify</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># it under the terms of the GNU General Public License v2 as published</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># by the Free Software Foundation.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># mouseTrap is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment"># GNU General Public License for more details.</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment"># You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment"># along with mouseTrap.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">"""MouseTrap's settings handler."""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable mousetrap.__id__=mousetrap-module.html#__id__,Variable mousetrap.app.__id__=mousetrap.app-module.html#__id__,Variable mousetrap.app.addons.__id__=mousetrap.app.addons-module.html#__id__,Variable mousetrap.app.commons.__id__=mousetrap.app.commons-module.html#__id__,Variable mousetrap.app.debug.__id__=mousetrap.app.debug-module.html#__id__,Variable mousetrap.app.environment.__id__=mousetrap.app.environment-module.html#__id__,Variable mousetrap.app.lib.__id__=mousetrap.app.lib-module.html#__id__,Variable mousetrap.app.lib.dbusd.__id__=mousetrap.app.lib.dbusd-module.html#__id__,Variable mousetrap.app.lib.httpd.__id__=mousetrap.app.lib.httpd-module.html#__id__,Variable mousetrap.app.lib.mouse.__id__=mousetrap.app.lib.mouse-module.html#__id__,Variable mousetrap.app.lib.settings.__id__=mousetrap.app.lib.settings-module.html#__id__,Variable mousetrap.app.main.__id__=mousetrap.app.main-module.html#__id__,Variable mousetrap.app.ui.__id__=mousetrap.app.ui-module.html#__id__,Variable mousetrap.app.ui.dialogs.__id__=mousetrap.app.ui.dialogs-module.html#__id__,Variable mousetrap.app.ui.i18n.__id__=mousetrap.app.ui.i18n-module.html#__id__,Variable mousetrap.app.ui.main.__id__=mousetrap.app.ui.main-module.html#__id__,Variable mousetrap.app.ui.scripts.__id__=mousetrap.app.ui.scripts-module.html#__id__,Variable mousetrap.app.ui.scripts.joystick.__id__=mousetrap.app.ui.scripts.joystick-module.html#__id__,Variable mousetrap.app.ui.scripts.screen.__id__=mousetrap.app.ui.scripts.screen-module.html#__id__,Variable mousetrap.app.ui.settings_gui.__id__=mousetrap.app.ui.settings_gui-module.html#__id__,Variable mousetrap.app.ui.widgets.__id__=mousetrap.app.ui.widgets-module.html#__id__,Variable mousetrap.ocvfw.__id__=mousetrap.ocvfw-module.html#__id__,Variable mousetrap.ocvfw._ocv.__id__=mousetrap.ocvfw._ocv-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwBase.__id__=mousetrap.ocvfw.backends.OcvfwBase-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwCtypes.__id__=mousetrap.ocvfw.backends.OcvfwCtypes-module.html#__id__,Variable mousetrap.ocvfw.backends.OcvfwPython.__id__=mousetrap.ocvfw.backends.OcvfwPython-module.html#__id__,Variable mousetrap.ocvfw.commons.__id__=mousetrap.ocvfw.commons-module.html#__id__,Variable mousetrap.ocvfw.debug.__id__=mousetrap.ocvfw.debug-module.html#__id__,Variable mousetrap.ocvfw.dev.__id__=mousetrap.ocvfw.dev-module.html#__id__,Variable mousetrap.ocvfw.dev.camera.__id__=mousetrap.ocvfw.dev.camera-module.html#__id__,Variable mousetrap.ocvfw.idm.__id__=mousetrap.ocvfw.idm-module.html#__id__,Variable mousetrap.ocvfw.idm.finger.__id__=mousetrap.ocvfw.idm.finger-module.html#__id__,Variable mousetrap.ocvfw.idm.forehead.__id__=mousetrap.ocvfw.idm.forehead-module.html#__id__,Variable mousetrap.ocvfw.pocv.__id__=mousetrap.ocvfw.pocv-module.html#__id__"><a title="mousetrap.__id__
+mousetrap.app.__id__
+mousetrap.app.addons.__id__
+mousetrap.app.commons.__id__
+mousetrap.app.debug.__id__
+mousetrap.app.environment.__id__
+mousetrap.app.lib.__id__
+mousetrap.app.lib.dbusd.__id__
+mousetrap.app.lib.httpd.__id__
+mousetrap.app.lib.mouse.__id__
+mousetrap.app.lib.settings.__id__
+mousetrap.app.main.__id__
+mousetrap.app.ui.__id__
+mousetrap.app.ui.dialogs.__id__
+mousetrap.app.ui.i18n.__id__
+mousetrap.app.ui.main.__id__
+mousetrap.app.ui.scripts.__id__
+mousetrap.app.ui.scripts.joystick.__id__
+mousetrap.app.ui.scripts.screen.__id__
+mousetrap.app.ui.settings_gui.__id__
+mousetrap.app.ui.widgets.__id__
+mousetrap.ocvfw.__id__
+mousetrap.ocvfw._ocv.__id__
+mousetrap.ocvfw.backends.OcvfwBase.__id__
+mousetrap.ocvfw.backends.OcvfwCtypes.__id__
+mousetrap.ocvfw.backends.OcvfwPython.__id__
+mousetrap.ocvfw.commons.__id__
+mousetrap.ocvfw.debug.__id__
+mousetrap.ocvfw.dev.__id__
+mousetrap.ocvfw.dev.camera.__id__
+mousetrap.ocvfw.idm.__id__
+mousetrap.ocvfw.idm.finger.__id__
+mousetrap.ocvfw.idm.forehead.__id__
+mousetrap.ocvfw.pocv.__id__" class="py-name" href="#" onclick="return doclink('link-0', '__id__', 'link-0');">__id__</a></tt>        <tt class="py-op">=</tt> <tt class="py-string">"$Id$"</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-name">__version__</tt>   <tt class="py-op">=</tt> <tt class="py-string">"$Revision$"</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-name">__date__</tt>      <tt class="py-op">=</tt> <tt class="py-string">"$Date$"</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"Copyright (c) 2008 Flavio Percoco Premoli"</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-name">__license__</tt>   <tt class="py-op">=</tt> <tt class="py-string">"GPLv2"</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">ConfigParser</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Package mousetrap=mousetrap-module.html"><a title="mousetrap" class="py-name" href="#" onclick="return doclink('link-1', 'mousetrap', 'link-1');">mousetrap</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Package mousetrap.app=mousetrap.app-module.html"><a title="mousetrap.app" class="py-name" href="#" onclick="return doclink('link-2', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module mousetrap.app.environment=mousetrap.app.environment-module.html"><a title="mousetrap.app.environment" class="py-name" href="#" onclick="return doclink('link-3', 'environment', 'link-3');">environment</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">env</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="Settings"></a><div id="Settings-def"><a name="L34"></a><tt class="py-lineno"> 34</tt> <a class="py-toggle" href="#" id="Settings-toggle" onclick="return toggle('Settings');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="mousetrap.app.lib.settings.Settings-class.html">Settings</a><tt class="py-op">(</tt> <tt class="py-base-class">ConfigParser</tt><tt class="py-op">.</tt><tt class="py-base-class">ConfigParser</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Settings-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Settings-expanded"><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="Settings.optionxform"></a><div id="Settings.optionxform-def"><a name="L36"></a><tt class="py-lineno"> 36</tt> <a class="py-toggle" href="#" id="Settings.optionxform-toggle" onclick="return toggle('Settings.optionxform');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.settings.Settings-class.html#optionxform">optionxform</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">optionstr</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Settings.optionxform-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Settings.optionxform-expanded"><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">        Keeps the options cases instead of </tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">        converting them in lowercase.</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">        - optionstr: The option string.</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">optionstr</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="Settings.getList"></a><div id="Settings.getList-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="Settings.getList-toggle" onclick="return toggle('Settings.getList');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.settings.Settings-class.html#getList">getList</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">section</tt><tt class="py-op">,</tt> <tt class="py-param">option</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Settings.getList-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Settings.getList-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        Gets a section parsed as string</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        and returns it as list</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">        - section: The section where option is.</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        - option: The needed option value.</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">[</tt> <tt class="py-name">val</tt> <tt class="py-keyword">for</tt> <tt class="py-name">val</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">section</tt><tt class="py-op">,</tt> <tt class="py-name">option</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">"|"</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-name">val</tt> <tt class="py-op">!=</tt> <tt class="py-string">""</tt> <tt class="py-op">]</tt> </tt>
+</div><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="Settings.setList"></a><div id="Settings.setList-def"><a name="L59"></a><tt class="py-lineno"> 59</tt> <a class="py-toggle" href="#" id="Settings.setList-toggle" onclick="return toggle('Settings.setList');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.settings.Settings-class.html#setList">setList</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">section</tt><tt class="py-op">,</tt> <tt class="py-param">option</tt><tt class="py-op">,</tt> <tt class="py-param">arr</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Settings.setList-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Settings.setList-expanded"><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">        Sets a new list type option.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">        - self: The main object pointer.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">        - section: The section where option will be.</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">        - option: The option to set.</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">        - arr: The List to transform in string.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method mousetrap.ocvfw._ocv.OcvfwBase.set()=mousetrap.ocvfw._ocv.OcvfwBase-class.html#set,Method mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase.set()=mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase-class.html#set"><a title="mousetrap.ocvfw._ocv.OcvfwBase.set
+mousetrap.ocvfw.backends.OcvfwBase.OcvfwBase.set" class="py-name" href="#" onclick="return doclink('link-4', 'set', 'link-4');">set</a></tt><tt class="py-op">(</tt><tt class="py-name">section</tt><tt class="py-op">,</tt> <tt class="py-name">option</tt><tt class="py-op">,</tt> <tt class="py-string">"|"</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">arr</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="Settings.write_first"></a><div id="Settings.write_first-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="Settings.write_first-toggle" onclick="return toggle('Settings.write_first');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.settings.Settings-class.html#write_first">write_first</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">conf_file</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Settings.write_first-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Settings.write_first-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">        Writes the first configuration file in case it doesn't exists.</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">        self: The main object pointer</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">        conf_file: The config file to write.</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">with</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">conf_file</tt><tt class="py-op">,</tt> <tt class="py-string">"w"</tt><tt class="py-op">)</tt> <tt class="py-keyword">as</tt> <tt class="py-name">conf</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"[gui]"</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nshowCapture = True"</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nshowMainGui = True"</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nshowPointMapper = True"</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\n\n[access]"</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nreqMovement = 10"</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">             </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\n\n[scripts]"</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nname = joystick"</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\n\n[cam]"</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nmouseMode = forehead"</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\ninputDevIndex = 0"</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nflipImage = False"</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\n\n[main]"</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\ndebugLevel = 10"</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nalgorithm = forehead"</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nstartCam = True"</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\naddon = "</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\n\n[mouse]"</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\ndefClick = b1c"</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">conf</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"\nstepSpeed = 5"</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="load"></a><div id="load-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="load-toggle" onclick="return toggle('load');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="mousetrap.app.lib.settings-module.html#load">load</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="load-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="load-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-name">cfg</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name" targets="Class mousetrap.app.lib.settings.Settings=mousetrap.app.lib.settings.Settings-class.html"><a title="mousetrap.app.lib.settings.Settings" class="py-name" href="#" onclick="return doclink('link-5', 'Settings', 'link-5');">Settings</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt class="py-name">created</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">exists</tt><tt class="py-op">(</tt> <tt class="py-name">env</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Variable mousetrap.app.environment.configPath=mousetrap.app.environment-module.html#configPath"><a title="mousetrap.app.environment.configPath" class="py-name" href="#" onclick="return doclink('link-6', 'configPath', 'link-6');">configPath</a></tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">mkdir</tt><tt class="py-op">(</tt> <tt class="py-name">env</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="mousetrap.app.environment.configPath" class="py-name" href="#" onclick="return doclink('link-7', 'configPath', 'link-6');">configPath</a></tt> <tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">exists</tt><tt class="py-op">(</tt> <tt class="py-name">env</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Variable mousetrap.app.environment.configFile=mousetrap.app.environment-module.html#configFile"><a title="mousetrap.app.environment.configFile" class="py-name" href="#" onclick="return doclink('link-8', 'configFile', 'link-8');">configFile</a></tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">cfg</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method mousetrap.app.lib.settings.Settings.write_first()=mousetrap.app.lib.settings.Settings-class.html#write_first"><a title="mousetrap.app.lib.settings.Settings.write_first" class="py-name" href="#" onclick="return doclink('link-9', 'write_first', 'link-9');">write_first</a></tt><tt class="py-op">(</tt><tt class="py-name">env</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="mousetrap.app.environment.configFile" class="py-name" href="#" onclick="return doclink('link-10', 'configFile', 'link-8');">configFile</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">created</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">    <tt class="py-name">cfg</tt><tt class="py-op">.</tt><tt class="py-name">readfp</tt><tt class="py-op">(</tt><tt class="py-name">open</tt><tt class="py-op">(</tt> <tt class="py-name">env</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="mousetrap.app.environment.configFile" class="py-name" href="#" onclick="return doclink('link-11', 'configFile', 'link-8');">configFile</a></tt> <tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">created</tt><tt class="py-op">,</tt> <tt class="py-name">cfg</tt> </tt>
+</div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="mousetrap-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MouseTrap</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Feb 25 13:39:49 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
