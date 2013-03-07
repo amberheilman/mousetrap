@@ -29,36 +29,42 @@ __license__   = "GPLv2"
 
 from warnings import *
 from .. import debug
-from .. import commons as co
-from mousetrap.ocvfw import _ocv as ocv
 from gi.repository import GObject
-
-Camera = None
 
 try:
     import gtk
 except ImportError:
     debug.info("Camera", "Gtk not imported")
 
-def _camera(backend):
-    if not hasattr(ocv, backend):
-        debug.warning("Camera", "Not such backend %s falling back to OcvfwPython" % backend)
-        backend = "OcvfwPython"
-    
-    bknd = getattr(ocv, backend)
+class Camera(object):
 
-    @co.singleton
-    class Camera(bknd):
-        def __init__(self):
-            bknd.__init__(self)
 
-    return Camera()
+    def set_camera_idx(self, idx):
+        """
+        Changes the camera device index.
+
+        Arguments:
+        - self: The main object pointer.
+        - idx: The camera index. For Example: 0 for /dev/video0
+        """
+        self.idx = idx
+
+    def start_camera(self, params = None):
+        """
+        Starts the camera capture.
+
+        Arguments:
+        - params: A list with the capture properties.
+        """
+        self.capture = cv.VideoCapture( int(self.idx) )
+        debug.debug( "ocvfw", "cmStartCamera: Camera Started" )
+
 
 class Capture(object):
 
     def __init__(self, image=None, fps=100, async=False, idx=0, backend="OcvfwPython"):
 
-	global Camera
+	global Camera()
 
         self.__lock        = False
         self.__flip        = {}
@@ -66,7 +72,6 @@ class Capture(object):
         self.__props       = { "color" : "rgb" }
         
 
-        Camera = _camera(backend)
         Camera.set_camera_idx(idx)
         Camera.start_camera()
         debug.debug("Camera", "Loaded backend %s" % backend)

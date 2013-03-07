@@ -99,7 +99,7 @@ class OcvfwBase:
         if type(size) == "<type 'tuple'>":
             size = co.cv.cvSize( size[0], size[1])
 
-	return co.cv.CreateImage( size, num, ch)
+        return co.cv.cvCreateImage( size, num, ch)
 
     def set_camera_idx(self, idx):
         """
@@ -119,7 +119,7 @@ class OcvfwBase:
         - self: The main object pointer.
         - num: An int value.
         """
-        return co.hg.WaitKey(num)
+        return co.hg.cvWaitKey(num)
     
     def start_camera(self, params = None):
         """
@@ -128,7 +128,7 @@ class OcvfwBase:
         Arguments:
         - params: A list with the capture properties. NOTE: Not implemented yet.
         """
-        self.capture = co.hg.CaptureFromCAM( int(self.idx) )
+        self.capture = co.hg.cvCreateCameraCapture( int(self.idx) )
         debug.debug( "ocvfw", "cmStartCamera: Camera Started" )
     
     def query_image(self, bgr=False, flip=False):
@@ -142,27 +142,22 @@ class OcvfwBase:
         Returns The image even if it was stored in self.img
         """
 
-        frame = co.cv.QueryFrame( self.capture )
-	cv.ShowImage("Feed", frame) #remove
-        if not  self.img:
-            self.storage        = co.cv.CreateMemStorage(0)
-            self.imgSize        = co.cv.GetSize (frame)
-            self.img            = co.cv.CreateImage ( self.imgSize, 8, 3 )
-            #self.img.origin     = frame.origin
-            self.grey           = co.cv.CreateImage ( self.imgSize, 8, 1 )
-            self.yCrCb          = co.cv.CreateImage ( self.imgSize, 8, 3 )
-            self.prevGrey       = co.cv.CreateImage ( self.imgSize, 8, 1 )
-            self.pyramid        = co.cv.CreateImage ( self.imgSize, 8, 1 )
-            self.prevPyramid    = co.cv.CreateImage ( self.imgSize, 8, 1 )
-            #self.small_img       = co.cv.CreateImage( co.cv.cvSize( co.cv.cvRound ( self.imgSize.width/self.imageScale),
-            #                       co.cv.Round ( self.imgSize.height/self.imageScale) ), 8, 3 )
-            a = co.cv.Round(self.img.width/self.imageScale)
-            b = co.cv.Round(self.img.height/self.imageScale)
-            c = (a, b)
-            self.small_img      = co.cv.CreateImage( c, 8, 3 )
+        frame = co.hg.cvQueryFrame( self.capture )
 
-	self.img = frame
-        co.cv.CvtColor(self.img, self.grey, co.cv.CV_BGR2GRAY)
+        if not  self.img:
+            self.storage        = co.cv.cvCreateMemStorage(0)
+            self.imgSize        = co.cv.cvGetSize (frame)
+            self.img            = co.cv.cvCreateImage ( self.imgSize, 8, 3 )
+            #self.img.origin     = frame.origin
+            self.grey           = co.cv.cvCreateImage ( self.imgSize, 8, 1 )
+            self.yCrCb          = co.cv.cvCreateImage ( self.imgSize, 8, 3 )
+            self.prevGrey       = co.cv.cvCreateImage ( self.imgSize, 8, 1 )
+            self.pyramid        = co.cv.cvCreateImage ( self.imgSize, 8, 1 )
+            self.prevPyramid    = co.cv.cvCreateImage ( self.imgSize, 8, 1 )
+            self.small_img       = co.cv.cvCreateImage( co.cv.cvSize( co.cv.cvRound ( self.imgSize.width/self.imageScale),
+                                    co.cv.cvRound ( self.imgSize.height/self.imageScale) ), 8, 3 )
+        self.img = frame
+        co.cv.cvCvtColor(self.img, self.grey, co.cv.CV_BGR2GRAY)
 
         self.wait_key(10)
         return True
@@ -276,5 +271,4 @@ class OcvfwBase:
         self.prevPyramid, self.pyramid         = self.pyramid, self.prevPyramid
         self.img_lkpoints["last"], self.img_lkpoints["current"] = \
                                    self.img_lkpoints["current"], self.img_lkpoints["last"]
-
 

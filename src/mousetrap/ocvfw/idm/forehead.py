@@ -28,7 +28,6 @@ __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
 import mousetrap.ocvfw.debug as debug
-import mousetrap.ocvfw.commons as commons
 from mousetrap.ocvfw.dev.camera import Capture, Point
 
 a_name = "Forehead"
