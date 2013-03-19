@@ -27,7 +27,6 @@ import time
 import debug
 import commons as co
 import cv2 #remove
-import cv2.cv as cv
 import numpy
 
 class OcvfwBase:
@@ -203,8 +202,8 @@ class OcvfwBase:
 
 	self.prevGrey = numpy.asarray(self.prevGrey[:,:])
 	prevGrey = cv2.cvtColor(self.prevGrey, cv2.COLOR_BGR2GRAY)
-
-	self.grey = numpy.asarray(self.grey[:,:])
+	
+	self.grey = nympy.asarray(self.grey[:,:])
         grey = cv2.cvtColor(self.grey, cv2.COLOR_BGR2GRAY)
 
 	# calculate the optical flow
@@ -385,8 +384,6 @@ class OcvfwPython(OcvfwBase):
         cascade = co.cv.Load( haarCascade ) #, self.imgSize )
         if not cascade:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
-
-	debug.exception( "ocvfw", self.img)
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
  	imageROI = co.cv.GetSubRect(self.img, rect)

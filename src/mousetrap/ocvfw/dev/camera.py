@@ -27,11 +27,11 @@ __date__      = "$Date$"
 __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
-import gobject
 from warnings import *
 from .. import debug
 from .. import commons as co
 from mousetrap.ocvfw import _ocv as ocv
+from gi.repository import GObject
 
 Camera = None
 
@@ -58,7 +58,7 @@ class Capture(object):
 
     def __init__(self, image=None, fps=100, async=False, idx=0, backend="OcvfwPython"):
 
-        global Camera
+	global Camera
 
         self.__lock        = False
         self.__flip        = {}
@@ -103,7 +103,7 @@ class Capture(object):
         self.async = async
 
         if self.async:
-            gobject.timeout_add(self.fps, self.sync)
+            GObject.timeout_add(self.fps, self.sync)
 
     def sync(self):
         """
@@ -114,13 +114,13 @@ class Capture(object):
         """
 
         Camera.query_image()
-
+	
         if not self.__image:
-            self.__images_cn   = { 1 : co.cv.cvCreateImage ( Camera.imgSize, 8, 1 ),
-                                   3 : co.cv.cvCreateImage ( Camera.imgSize, 8, 3 ),
-                                   4 : co.cv.cvCreateImage ( Camera.imgSize, 8, 4 ) }
+            self.__images_cn   = { 1 : co.cv.CreateImage ( Camera.imgSize, 8, 1 ),
+                                   3 : co.cv.CreateImage ( Camera.imgSize, 8, 3 ),
+                                   4 : co.cv.CreateImage ( Camera.imgSize, 8, 4 ) }
 
-        self.__color       = "bgr"
+	self.__color       = "bgr"
         self.__image_orig  = self.__image = Camera.img
 
         if self.__color != self.__color_set:
@@ -168,13 +168,13 @@ class Capture(object):
         if self.__image is None:
             return False
 
-        tmp = co.cv.cvCreateImage( co.cv.cvSize( width, height ), 8, self.__ch )
-        co.cv.cvResize( self.__image, tmp, co.cv.CV_INTER_AREA )
+        tmp = co.cv.CreateImage( ( width, height ), 8, self.__ch )
+        co.cv.Resize( self.__image, tmp, co.cv.CV_INTER_AREA )
 
         if not copy:
             self.__image = tmp
 
-        return tmp
+	return tmp
 
     def to_gtk_buff(self):
         """
@@ -191,10 +191,10 @@ class Capture(object):
                                                  gtk.gdk.COLORSPACE_RGB, 
                                                  img.depth)
         else:
-            buff = gtk.gdk.pixbuf_new_from_data(img.imageData, 
+	    buff = gtk.gdk.pixbuf_new_from_data(img.tostring(), 
                                                 gtk.gdk.COLORSPACE_RGB, False, 8,
                                                 int(img.width), int(img.height), 
-                                                img.widthStep )
+                                                img.width )
         return buff
 
     def points(self):
@@ -225,7 +225,7 @@ class Capture(object):
         #debug.debug("Camera", "Showing existing rectangles -> %d" % len(rectangles))
 
         for rect in rectangles:
-            co.cv.cvRectangle( self.__image, co.cv.cvPoint(rect.x, rect.y), co.cv.cvPoint(rect.size[0], rect.size[1]), co.cv.CV_RGB(255,0,0), 3, 8, 0 )
+            co.cv.Rectangle( self.__image, co.cv.cvPoint(rect.x, rect.y), co.cv.cvPoint(rect.size[0], rect.size[1]), co.cv.CV_RGB(255,0,0), 3, 8, 0 )
 
     def draw_point(self, x, y):
         co.cv.cvCircle(self.__image, (x,y), 3, co.cv.cvScalar(0, 255, 0, 0), -1, 8, 0)
@@ -254,9 +254,9 @@ class Capture(object):
         rect = args[0]
 
         if len(args) > 1:
-            rect = co.cv.cvRect( args[0], args[1], args[2], args[3] )
+            rect = co.cv.Rectangle( args[0], args[1], args[2], args[3] )
 
-        return co.cv.cvGetSubRect(self.__image, rect)
+        return co.cv.GetSubRect(self.__image, rect)
 
 
     def flip(self, flip):
@@ -269,10 +269,10 @@ class Capture(object):
         """
 
         if "hor" or "both" in flip:
-            co.cv.cvFlip( self.__image, self.__image, 1)
+            co.cv.Flip( self.__image, self.__image, 1)
 
         if "ver" or "both" in flip:
-            co.cv.cvFlip( self.__image, self.__image, 0)
+            co.cv.Flip( self.__image, self.__image, 0)
 
         return self.__image
 
@@ -291,7 +291,7 @@ class Capture(object):
 
         if new_color:
             tmp = self.__images_cn[channel]
-            co.cv.cvCvtColor( self.__image, tmp, self.__color_int['cv_%s2%s' % (self.__color, new_color) ])
+            co.cv.CvtColor( self.__image, tmp, self.__color_int['cv_%s2%s' % (self.__color, new_color) ])
             self.__color = new_color
             self.__ch = channel
 
@@ -371,9 +371,11 @@ class Capture(object):
 
         if roi is None:
             return Camera.get_haar_points(haar_csd)
-
-        roi = co.cv.cvRect(roi["start"], roi["end"], roi["width"], roi["height"])
-        return Camera.get_haar_roi_points(haar_csd, roi, orig)
+	roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
+	#roi = co.cv.Rectangle(self.__image, (roi["start"], roi["end"]), (roi["width"], roi["height"]), (0,0,255))
+        #roi pt1 and pt2 needs to be a vertex and added color
+	#might need to remove and reestablish point values
+	return Camera.get_haar_roi_points(haar_csd, roi, orig)
 
     def message(self, message):
         """
@@ -463,7 +465,7 @@ class Point(Graphic):
         self.__ocv = None
         self.last  = None
         self.diff  = None
-        self.orig  = co.cv.cvPoint( self.x, self.y )
+        self.orig  = ( self.x, self.y )
 
     def set_opencv(self, opencv):
         """
@@ -483,10 +485,10 @@ class Point(Graphic):
             self.last = self.__ocv
 
             # Update the diff attr
-            self.rel_diff = co.cv.cvPoint( self.last.x - self.x,
+            self.rel_diff = ( self.last.x - self.x,
                                         self.last.y - self.y )
 
-            self.abs_diff = co.cv.cvPoint( self.x - self.orig.x,
+            self.abs_diff = ( self.x - self.orig.x,
                                         self.y - self.orig.y )
 
         self.__ocv = opencv
@@ -501,3 +503,4 @@ class Point(Graphic):
         - self: The main object pointer.
         """
         return self.__ocv
+
