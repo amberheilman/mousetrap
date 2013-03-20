@@ -368,14 +368,15 @@ class Capture(object):
         - roi: The roi image coords if needed.
         - orig: The roi's origin if needed.
         """
-
+        debug.debug("Camera", "In get_area")
         if roi is None:
+            debug.debug("Camera - get_area", "roi is None")
             return Camera.get_haar_points(haar_csd)
-	roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
-	#roi = co.cv.Rectangle(self.__image, (roi["start"], roi["end"]), (roi["width"], roi["height"]), (0,0,255))
-        #roi pt1 and pt2 needs to be a vertex and added color
-	#might need to remove and reestablish point values
-	return Camera.get_haar_roi_points(haar_csd, roi, orig)
+        roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
+        #roi = co.cv.Rectangle(self.__image, (roi["start"], roi["end"]), (roi["width"], roi["height"]), (0,0,255))
+            #roi pt1 and pt2 needs to be a vertex and added color
+        #might need to remove and reestablish point values
+        return Camera.get_haar_roi_points(haar_csd, roi, orig)
 
     def message(self, message):
         """

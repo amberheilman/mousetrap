@@ -124,6 +124,7 @@ class Module(object):
         """
 
         if not hasattr(self.cap, "forehead"):
+            debug.debug("forehead","get_caputre")
             self.get_forehead()
 
         #return self.cap.resize(200, 160, True)
@@ -143,7 +144,7 @@ class Module(object):
     def get_forehead(self):
         eyes = False
         #self.cap.add_message("Getting Forehead!!!")
-
+        debug.debug("forehead", "get_forehead")
         face     = self.cap.get_area(commons.haar_cds['Face'])
 
         if face:

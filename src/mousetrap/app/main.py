@@ -77,7 +77,7 @@ class Controller():
         Arguments:
         - self: The main object pointer.
         """
-
+        debug.debug("main","in start")
         if self.cfg is None:
             conf_created, self.cfg = settings.load()
 
@@ -93,10 +93,12 @@ class Controller():
             self.idm.set_capture(self.cfg.getint("cam", "inputDevIndex"))
 
             GObject.timeout_add(150, self.update_frame)
+            debug.debug("main", "Past update frame")
             GObject.timeout_add(50, self.update_pointers)
             
             debug.info("mousetrap", "Idm loaded and started")
 
+        debug.debug("main", "Start building interface")
         # Lets build the interface
         self.itf = MainGui(self)
         self.itf.build_interface()
@@ -235,8 +237,10 @@ class Controller():
         Arguments:
         - self: The main object pointer.
         """
+        debug.debug("main","update_frame")
         self.itf.update_frame(self.idm.get_capture(), self.idm.get_pointer())
-        return True
+        debug.debug("main", "update_frame 2")
+        return True 
 
     def update_pointers(self):
         """

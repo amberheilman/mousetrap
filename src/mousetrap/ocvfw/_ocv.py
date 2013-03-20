@@ -54,7 +54,7 @@ class OcvfwBase:
             debug.debug("OcvfwBase", "Changed %s value to %s" % (key, value))
             return True
         
-	debug.debug("OcvfwBase", "%s not found" % (key))
+        debug.debug("OcvfwBase", "%s not found" % (key))
         return False
 
     def lk_swap(self, set=None):
@@ -107,7 +107,15 @@ class OcvfwBase:
         Arguments:
         - params: A list with the capture properties. NOTE: Not implemented yet.
         """
-        self.capture = co.cv.CaptureFromCAM(int(self.idx) )
+        self.capture = cv.CaptureFromCAM(self.idx )	
+        #Test to make sure camera starts properly
+        while True:
+		print "hi"
+		frame = cv.QueryFrame( self.capture )
+		cv.ShowImage("webcam", frame)
+		if self.wait_key(50) == 27:
+        		break
+        print "out" 
         debug.debug( "ocvfw", "cmStartCamera: Camera Started" )
     
     def query_image(self, bgr=False, flip=False):
@@ -121,21 +129,22 @@ class OcvfwBase:
         Returns The image even if it was stored in self.img
         """
 
-        frame = co.cv.QueryFrame( self.capture )
+        frame = cv.QueryFrame( self.capture )
+    
 
         if not  self.img:
             self.storage        = co.cv.CreateMemStorage(0)
             self.imgSize        = co.cv.GetSize (frame)
-	    self.img            = co.cv.CreateImage ( self.imgSize, 8, 3 )
+            self.img            = co.cv.CreateImage ( self.imgSize, 8, 3 )
             #self.img.origin     = frame.origin
             self.grey           = co.cv.CreateImage ( self.imgSize, 8, 1 )
             self.yCrCb          = co.cv.CreateImage ( self.imgSize, 8, 3 )
             self.prevGrey       = co.cv.CreateImage ( self.imgSize, 8, 1 )
             self.pyramid        = co.cv.CreateImage ( self.imgSize, 8, 1 )
             self.prevPyramid    = co.cv.CreateImage ( self.imgSize, 8, 1 )
-	    #a = co.cv.Round(self.img.width/self.imageScale)
-	    #b = co.cv.Round(self.img.height/self.imageScale)
-	    #c = (a, b)
+            #a = co.cv.Round(self.img.width/self.imageScale)
+            #b = co.cv.Round(self.img.height/self.imageScale)
+            #c = (a, b)
             self.small_img      = co.cv.CreateImage( 
 				( co.cv.Round(self.img.width/self.imageScale),
 				  co.cv.Round(self.img.height/self.imageScale) ),
@@ -143,7 +152,6 @@ class OcvfwBase:
 
 
         self.img = frame
-	co.cv.CvtColor(self.img, self.grey, co.cv.CV_BGR2GRAY)
 
         self.wait_key(10)
         return True
@@ -159,14 +167,17 @@ class OcvfwBase:
 
         #Point = co.cv.Point( point.x, point.y )
 
-        self.img_lkpoints["current"] = [ point.x, point.y ] #co.cv.PointTo32f ( Point ) ]
+        self.img_lkpoints["current"] = numpy.asarray([ point.x, point.y ]) #co.cv.PointTo32f ( Point ) ]
+        #elf.img_lkpoints["current"] = cv.fromarray(self.img_lkpoints["current"])
 
-        if self.img_lkpoints["current"]:
-            co.cv.FindCornerSubPix (
+        self.grey = numpy.asarray(self.grey[:,:])	#new
+
+        if numpy.all(self.img_lkpoints["current"]):
+            cv2.cornerSubPix(				# was cv.FindCornerSubPix
                 self.grey,
                 self.img_lkpoints["current"],
                 (20, 20), (-1, -1),
-                (co.cv.CV_TERMCRIT_ITER | co.cv.CV_TERMCRIT_EPS, 20, 0.03))
+                (cv.CV_TERMCRIT_ITER | cv.CV_TERMCRIT_EPS, 20, 0.03))
 
             point.set_opencv( Point )
             self.img_lkpoints["points"].append(point)
@@ -199,26 +210,25 @@ class OcvfwBase:
         Arguments:
         - self: The main object pointer.
         """
-	debug.debug("Ocvfw", help(cv2)) #remove
 
-	self.prevGrey = numpy.asarray(self.prevGrey[:,:])
-	prevGrey = cv2.cvtColor(self.prevGrey, cv2.COLOR_BGR2GRAY)
+        self.prevGrey = numpy.asarray(self.prevGrey[:,:])
+        prevGrey = cv2.cvtColor(self.prevGrey, cv2.COLOR_BGR2GRAY)
 
-	self.grey = numpy.asarray(self.grey[:,:])
+        self.grey = numpy.asarray(self.grey[:,:])
         grey = cv2.cvtColor(self.grey, cv2.COLOR_BGR2GRAY)
 
-	# calculate the optical flow
+	   # calculate the optical flow
         nextPts, status, err = cv2.calcOpticalFlowPyrLK (
             prevGrey, #prevImg
-	    grey, #nextImg
-	    self.prevPyramid, #prevPts
-	    self.pyramid, #nextPts
-	    None, #status
-	    (20, 20), #winSize
-	    2, #maxLevel
-            (cv2.TERM_CRITERIA_MAX_ITER|cv2.TERM_CRITERIA_EPS, 20, 0.03), #criteria
-	    cv2.OPTFLOW_USE_INITIAL_FLOW #flags
-	    )
+            grey, #nextImg
+    	    self.prevPyramid, #prevPts
+    	    self.pyramid, #nextPts
+    	    None, #status
+    	    (20, 20), #winSize
+    	    2, #maxLevel
+                (cv2.TERM_CRITERIA_MAX_ITER|cv2.TERM_CRITERIA_EPS, 20, 0.03), #criteria
+    	    cv2.OPTFLOW_USE_INITIAL_FLOW #flags
+    	    )
 
 
         if isinstance(optical_flow[0], tuple):
@@ -357,17 +367,19 @@ class OcvfwPython(OcvfwBase):
         if not cascade:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
-	co.cv.Resize( self.img, self.small_img, co.cv.CV_INTER_LINEAR )
+        co.cv.Resize( self.img, self.small_img, co.cv.CV_INTER_LINEAR )
 
         #co.cv.ClearMemStorage( self.storage )
 
         points = co.cv.HaarDetectObjects( self.small_img, cascade, self.storage, 1.2, 2, method, (20, 20) )
+       
         if points:
-	    matches = [ [ ( int(r[0][0]*self.imageScale), int(r[0][1]*self.imageScale)), \
-                          ( int((r[0][0]+r[0][3])*self.imageScale), int((r[0][0]+r[0][2])*self.imageScale) )] \
-                          for r in points]
-			
+            matches = [ [ ( int(r[0][0]*self.imageScale), int(r[0][1]*self.imageScale)), \
+                        ( int((r[0][0]+r[0][3])*self.imageScale), int((r[0][0]+r[0][2])*self.imageScale) )] \
+                        for r in points]
+           
             debug.debug( "ocvfw", "cmGetHaarPoints: detected some matches" )
+            debug.debug("ocvfw-getHaarPoints", matches)
             return matches
 
     def get_haar_roi_points(self, haarCascade, rect, origSize=(0, 0), method=co.cv.CV_HAAR_DO_CANNY_PRUNING):
@@ -386,10 +398,10 @@ class OcvfwPython(OcvfwBase):
         if not cascade:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
-	debug.exception( "ocvfw", self.img)
+        debug.exception( "ocvfw-get_haar_roi_points", self.img)
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
- 	imageROI = co.cv.GetSubRect(self.img, rect)
+        imageROI = co.cv.GetSubRect(self.img, rect)
 
         if cascade:
             points = co.cv.HaarDetectObjects( imageROI, cascade, self.storage,
@@ -398,8 +410,7 @@ class OcvfwPython(OcvfwBase):
             debug.exception( "ocvfw", "The Haar Classifier Cascade load Failed (ROI)" )
 
         if points:
-
-	    matches = [ [ ( int(r[0][0]*origSize[0]), int(r[0][1]*origSize[1])), \
+            matches = [ [ ( int(r[0][0]*origSize[0]), int(r[0][1]*origSize[1])), \
                           ( int((r[0][0]+r[0][3])+origSize[0]), int((r[0][1]+r[0][2])*origSize[1]) )] \
                           for r in points]
 
