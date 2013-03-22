@@ -1,0 +1,108 @@
+# -*- coding: utf-8 -*-
+
+# MouseTrap
+#
+# Copyright 2009 Flavio Percoco Premoli
+#
+# This file is part of mouseTrap.
+#
+# MouseTrap is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License v2 as published
+# by the Free Software Foundation.
+#
+# mouseTrap is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with mouseTrap.  If not, see <http://www.gnu.org/licenses/>.
+
+""" Holds mouseTrap internal information. """
+
+__id__        = "$Id$"
+__version__   = "$Revision$"
+__date__      = "$Date$"
+__copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli."
+__license__   = "GPLv2"
+
+import sys
+import os
+import gtk
+
+## MouseTrap's PID
+pid = os.getpid()
+
+## mouseTrap Version
+version     = "0.4"
+
+## "--prefix" parameter used when configuring the build.
+prefix      = "/usr/local"
+
+## The package name (should be "mousetrap").
+package     = "mousetrap"
+
+## The name of the data directory (usually "share").
+datadirname = "%s/share" % prefix
+
+## Directly mouseTrap data dir
+mTDataDir = "%s/mouseTrap" % datadirname
+
+## The username
+# username = os.getlogin()
+
+## The current running desktop manager.
+try:
+    dbusd.bus.get_object("org.gnome.SessionManager", "/")
+    desktop = "gnome"
+except:
+    desktop = "other"
+
+## The name of the O.S
+osName = os.name
+
+## The application's path
+appPath = os.path.dirname(__file__)
+
+## The user's home directory
+home = os.path.expanduser("~")
+
+## Configurations dir
+configPath = home + "/.mousetrap/"
+
+## Configurations dir
+configPath = "%s/.mousetrap/" % home
+
+## Scripts Path
+scriptsPath = "%s/scripts/" % configPath
+
+## Profiles Path
+profilesPath = "%s/profiles/" % scriptsPath
+
+## The config file
+configFile = configPath + "userSettings.cfg"
+
+## The debug file
+debugFile = configPath + "mouseTrap.debug"
+
+## The language path
+langPath = "%s/locale/" % datadirname
+
+## Screen Resolution
+screen       = { 'width'  : gtk.gdk.screen_width(),
+                 'height' : gtk.gdk.screen_height()}
+
+## Mose Movement Modes
+mouseModes = { }
+
+###################################################
+#                                                 #
+#          MOUSETRAP'S STATES DEFINITION          #
+#                                                 #
+###################################################
+
+## Mousetrap is active and the mouse pointer can be moved
+ACTIVE = "active"
+
+## Mousetrap is active and the click dialog is not hidden.
+CLKDLG = "clk-dialog"

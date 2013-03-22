@@ -28,7 +28,7 @@ __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
 import mousetrap.ocvfw.debug as debug
-from mousetrap.ocvfw.dev.camera import Capture, Point
+from mousetrap.ocvfw.camera import Capture, Point
 
 a_name = "Forehead"
 a_description = "Forehead point tracker based on LK Algorithm"
