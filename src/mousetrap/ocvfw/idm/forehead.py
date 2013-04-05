@@ -104,7 +104,7 @@ class Module(object):
         """
         
         debug.debug("mousetrap.ocvfw.idm", "Setting Capture")
-        
+        debug.debug("forehead", "set_capture")
         self.cap = Capture(async=True, idx=cam, backend="OcvfwPython")
         self.cap.change(color="rgb")
         self.cap.set_camera("lk_swap", True)
@@ -177,5 +177,6 @@ class Module(object):
 
         self.foreheadOrig = None
 
+        debug.debug("forehead", "Leaving get_forehead")
         return False
 

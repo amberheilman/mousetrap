@@ -92,6 +92,7 @@ class Controller():
             self.idm = idm.Module(self)
             self.idm.set_capture(self.cfg.getint("cam", "inputDevIndex"))
 
+            #Will return false when cap.image() is false in ui/main
             GObject.timeout_add(150, self.update_frame)
             debug.debug("main", "Past update frame")
             GObject.timeout_add(50, self.update_pointers)
@@ -237,9 +238,9 @@ class Controller():
         Arguments:
         - self: The main object pointer.
         """
-        debug.debug("main","update_frame")
+        debug.debug("main","entered update_frame")
         self.itf.update_frame(self.idm.get_capture(), self.idm.get_pointer())
-        debug.debug("main", "update_frame 2")
+        debug.debug("main", "leaving update_frame")
         return True 
 
     def update_pointers(self):
@@ -249,6 +250,7 @@ class Controller():
         Arguments:
         - self: The main object pointer.
         """
+        debug.debug("Main", "Entering update_pointers")
         self.itf.script.update_items(self.idm.get_pointer())
         return True
 

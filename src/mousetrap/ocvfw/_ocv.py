@@ -111,7 +111,6 @@ class OcvfwBase:
         #Test to make sure camera starts properly
         count = 1
         while True:
-            print "hi"
             frame = cv.QueryFrame( self.capture )
             cv.ShowImage("webcam", frame)
             count = count + 1
@@ -119,8 +118,7 @@ class OcvfwBase:
                 break
             if count > 50:
                 break
-        print "out" 
-        debug.debug( "ocvfw", "cmStartCamera: Camera Started" )
+        debug.debug( "ocvfw", "_ocv.py start_camera: Camera Started" )
     
     def query_image(self, bgr=False, flip=False):
         """
@@ -174,10 +172,11 @@ class OcvfwBase:
         self.img_lkpoints["current"] = numpy.asarray([ point.x, point.y ]) #co.cv.PointTo32f ( Point ) ]
         #elf.img_lkpoints["current"] = cv.fromarray(self.img_lkpoints["current"])
 
-        self.grey = numpy.asarray(self.grey[:,:])	#new
+        #self.grey = numpy.asarray(self.grey[:,:])	#new
 
         if numpy.all(self.img_lkpoints["current"]):
-            cv2.cornerSubPix(				# was cv.FindCornerSubPix
+            co.cv.FindCornerSubPix(
+            # cv2.cornerSubPix(				# was cv.FindCornerSubPix
                 self.grey,
                 self.img_lkpoints["current"],
                 (20, 20), (-1, -1),
@@ -365,7 +364,7 @@ class OcvfwPython(OcvfwBase):
 
         Returns a list with the matches.
         """
-
+        debug.debug("_ocv", "Entered get_haar_points")
         cascade = co.cv.Load( haarCascade) #, self.imgSize )
 
         if not cascade:
@@ -397,7 +396,7 @@ class OcvfwPython(OcvfwBase):
 
         Returns a list with the matches.
         """
-
+        debug.debug("_ocv","Entered get_haar_roi_points")
         cascade = co.cv.Load( haarCascade ) #, self.imgSize )
         if not cascade:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
@@ -405,6 +404,7 @@ class OcvfwPython(OcvfwBase):
         debug.exception( "ocvfw-get_haar_roi_points", self.img)
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
+        debug.debug("_ocv - get_haar_roi_points Rect",rect)
         imageROI = co.cv.GetSubRect(self.img, rect)
 
         if cascade:
@@ -420,7 +420,7 @@ class OcvfwPython(OcvfwBase):
 
             debug.debug( "ocvfw", "cmGetHaarROIPoints: detected some matches" )
             return matches
-
+        debug.debug("_ocv","get_haar_roi_points - no maches found")
 
 
 
