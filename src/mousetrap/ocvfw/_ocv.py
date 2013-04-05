@@ -109,12 +109,16 @@ class OcvfwBase:
         """
         self.capture = cv.CaptureFromCAM(self.idx )	
         #Test to make sure camera starts properly
+        count = 1
         while True:
-		print "hi"
-		frame = cv.QueryFrame( self.capture )
-		cv.ShowImage("webcam", frame)
-		if self.wait_key(50) == 27:
-        		break
+            print "hi"
+            frame = cv.QueryFrame( self.capture )
+            cv.ShowImage("webcam", frame)
+            count = count + 1
+            if cv2.waitKey(50) == 27:
+                break
+            if count > 50:
+                break
         print "out" 
         debug.debug( "ocvfw", "cmStartCamera: Camera Started" )
     
