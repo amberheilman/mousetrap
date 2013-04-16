@@ -19,7 +19,7 @@
 # along with mouseTrap.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import gtk, gobject
+import gtk, GObject
 import mousetrap.app.debug as debug
 import mousetrap.app.environment as env
 

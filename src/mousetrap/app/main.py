@@ -36,7 +36,7 @@ __license__   = "GPLv2"
 import sys
 sys.argv[0] = "mousetrap"
 
-import gobject
+from gi.repository import GObject
 import debug
 import getopt
 import environment as env
@@ -65,7 +65,7 @@ class Controller():
         # We don't want to load the settings each time we need them. do we?
         self.cfg = None
 
-        self.loop = gobject.MainLoop()
+        self.loop = GObject.MainLoop()
         self.httpd = httpd.HttpdServer(20433)
         self.dbusd = dbusd.DbusServer()
 
@@ -77,7 +77,7 @@ class Controller():
         Arguments:
         - self: The main object pointer.
         """
-
+        debug.debug("main","in start")
         if self.cfg is None:
             conf_created, self.cfg = settings.load()
 
@@ -92,11 +92,14 @@ class Controller():
             self.idm = idm.Module(self)
             self.idm.set_capture(self.cfg.getint("cam", "inputDevIndex"))
 
-            gobject.timeout_add(150, self.update_frame)
-            gobject.timeout_add(50, self.update_pointers)
+            #Will return false when cap.image() is false in ui/main
+            GObject.timeout_add(150, self.update_frame)
+            debug.debug("main", "Past update frame")
+            GObject.timeout_add(50, self.update_pointers)
             
             debug.info("mousetrap", "Idm loaded and started")
 
+        debug.debug("main", "Start building interface")
         # Lets build the interface
         self.itf = MainGui(self)
         self.itf.build_interface()
@@ -108,7 +111,7 @@ class Controller():
             
         debug.info("mousetrap", "MouseTrap's Interface Built and Loaded")
 
-        gobject.threads_init()
+        GObject.threads_init()
         self.loop.run()
 
     def proc_args(self):
@@ -235,8 +238,10 @@ class Controller():
         Arguments:
         - self: The main object pointer.
         """
+        debug.debug("main","entered update_frame")
         self.itf.update_frame(self.idm.get_capture(), self.idm.get_pointer())
-        return True
+        debug.debug("main", "leaving update_frame")
+        return True 
 
     def update_pointers(self):
         """
@@ -245,6 +250,7 @@ class Controller():
         Arguments:
         - self: The main object pointer.
         """
+        debug.debug("Main", "Entering update_pointers")
         self.itf.script.update_items(self.idm.get_pointer())
         return True
 

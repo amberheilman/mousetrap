@@ -178,10 +178,11 @@ class MainGui( gtk.Window ):
         - self: The main object pointer.
         - img: The IPLimage object.
         """
-
+        debug.debug("ui/main","Entering update_frame")
         if not cap.image():
+            debug.debug("ui/main - update_frame","No cap.image()")
             return False
-
+        
         #sets new pixbuf
         self.cap_image.set_from_pixbuf(cap.to_gtk_buff().scale_simple(200, 160, gtk.gdk.INTERP_BILINEAR))
 
