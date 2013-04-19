@@ -30,6 +30,7 @@ __license__   = "GPLv2"
 import gtk
 import cairo
 import gobject
+from gi.repository import GObject
 from gtk import gdk
 from math import pi
 
