@@ -108,6 +108,7 @@ class Module(object):
         self.cap = Capture(async=True, idx=cam, backend="OcvfwPython")
         self.cap.change(color="rgb")
         self.cap.set_camera("lk_swap", True)
+        debug.debug("forehead","leaving set_capture")
 	
     def calc_motion(self):
         if not hasattr(self.cap, "forehead"):

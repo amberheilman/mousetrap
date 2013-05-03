@@ -58,13 +58,14 @@ class Capture(object):
 
     def __init__(self, image=None, fps=100, async=False, idx=0, backend="OcvfwPython"):
 
-	global Camera
+        global Camera
 
         self.__lock        = False
         self.__flip        = {}
         self.__color       = "bgr"
         self.__props       = { "color" : "rgb" }
         
+        debug.debug("camera","In init.")
 
         Camera = _camera(backend)
         Camera.set_camera_idx(idx)
@@ -87,7 +88,13 @@ class Capture(object):
         self.last_update   = 0
         self.last_duration = 0
 
+        if(async):
+            debug.debug("camera","init- async = true")
+        else:
+            debug.debug("camera","init- async = false")
+            
         self.set_async(fps, async)
+        debug.debug("camera","leaving init")
 
     def set_async(self, fps=100, async=False):
         """
@@ -98,12 +105,19 @@ class Capture(object):
         - fps: The frames per second to be queried.
         - async: Enable/Disable asynchronous image querying. Default: False
         """
-
+        
+        if(async):
+            debug.debug("camera","set_async. Async = true")
+        else:
+            debug.debug("camera","set_async. Async = false")
         self.fps   = fps
         self.async = async
 
         if self.async:
+            debug.debug("camera","set_async - timeout_add self.sync")
             GObject.timeout_add(self.fps, self.sync)
+        
+        debug.debug("camera","leaving set_async")
 
     def sync(self):
         """
@@ -112,28 +126,31 @@ class Capture(object):
         Arguments:
         - self: The main object pointer.
         """
-
+        debug.debug("camera","entered sync")
         Camera.query_image()
+        #cv.ShowImage("webcam", self.img)
 	
         if not self.__image:
             self.__images_cn   = { 1 : co.cv.CreateImage ( Camera.imgSize, 8, 1 ),
                                    3 : co.cv.CreateImage ( Camera.imgSize, 8, 3 ),
                                    4 : co.cv.CreateImage ( Camera.imgSize, 8, 4 ) }
 
-	self.__color       = "bgr"
+        self.__color       = "bgr"
         self.__image_orig  = self.__image = Camera.img
 
         if self.__color != self.__color_set:
             self.__image = self.color(self.__color_set)
 
         # TODO: Workaround, I've to fix it
-        if len(Camera.img_lkpoints["last"]) > 0:
+        """if len(Camera.img_lkpoints["last"]) > 0:
             Camera.show_lkpoints()
 
         if Camera.lk_swap():
             Camera.swap_lkpoints()
 
-        self.show_rectangles(self.rectangles())
+        self.show_rectangles(self.rectangles())"""
+        
+        debug.debug("camera","Leaving sync")
 
         return self.async
 
@@ -174,7 +191,7 @@ class Capture(object):
         if not copy:
             self.__image = tmp
 
-	return tmp
+        return tmp
 
     def to_gtk_buff(self):
         """
@@ -191,7 +208,7 @@ class Capture(object):
                                                  gtk.gdk.COLORSPACE_RGB, 
                                                  img.depth)
         else:
-	    buff = gtk.gdk.pixbuf_new_from_data(img.tostring(), 
+            buff = gtk.gdk.pixbuf_new_from_data(img.tostring(), 
                                                 gtk.gdk.COLORSPACE_RGB, False, 8,
                                                 int(img.width), int(img.height), 
                                                 img.width )

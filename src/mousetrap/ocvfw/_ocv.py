@@ -49,12 +49,13 @@ class OcvfwBase:
     def set(self, key, value):
         """
         """
+        debug.debug("_ocv","In set")
         if hasattr(self, "%s" % key):
             getattr(self, "%s" % key)(value)
-            debug.debug("OcvfwBase", "Changed %s value to %s" % (key, value))
+            debug.debug("_ocv - set", "Changed %s value to %s" % (key, value))
             return True
         
-        debug.debug("OcvfwBase", "%s not found" % (key))
+        debug.debug("_ocv - set", "%s not found" % (key))
         return False
 
     def lk_swap(self, set=None):
@@ -108,8 +109,13 @@ class OcvfwBase:
         - params: A list with the capture properties. NOTE: Not implemented yet.
         """
         self.capture = cv.CaptureFromCAM(self.idx )	
+
+        if not self.capture:
+            debug.debug( "_ocv", "Camera Capture Failed")
+        else:
+            debug.debug( "_ocv", "Camera Capture success")
         #Test to make sure camera starts properly
-        count = 1
+        """count = 1
         while True:
             frame = cv.QueryFrame( self.capture )
             cv.ShowImage("webcam", frame)
@@ -117,7 +123,7 @@ class OcvfwBase:
             if cv2.waitKey(50) == 27:
                 break
             if count > 50:
-                break
+                break"""
         debug.debug( "ocvfw", "_ocv.py start_camera: Camera Started" )
     
     def query_image(self, bgr=False, flip=False):
@@ -130,9 +136,11 @@ class OcvfwBase:
 
         Returns The image even if it was stored in self.img
         """
+        debug.debug("_ocv","Entered query_image")
 
         frame = cv.QueryFrame( self.capture )
-    
+        #cv.ShowImage("webcam", frame)
+        
 
         if not  self.img:
             self.storage        = co.cv.CreateMemStorage(0)
@@ -156,6 +164,7 @@ class OcvfwBase:
         self.img = frame
 
         self.wait_key(10)
+        debug.debug("_ocv","leaving query_image")
         return True
     
     def set_lkpoint(self, point):
@@ -182,7 +191,7 @@ class OcvfwBase:
                 (20, 20), (-1, -1),
                 (cv.CV_TERMCRIT_ITER | cv.CV_TERMCRIT_EPS, 20, 0.03))
 
-            point.set_opencv( Point )
+            point.set_opencv( point )
             self.img_lkpoints["points"].append(point)
 
             setattr(point.parent, point.label, point)

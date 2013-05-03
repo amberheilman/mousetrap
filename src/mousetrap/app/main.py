@@ -62,6 +62,7 @@ class Controller():
         - self: The main object pointer.
         """
 
+        debug.debug("main","in init")
         # We don't want to load the settings each time we need them. do we?
         self.cfg = None
 
@@ -91,11 +92,12 @@ class Controller():
             idm = pocv.get_idm(self.cfg.get("main", "algorithm"))
             self.idm = idm.Module(self)
             self.idm.set_capture(self.cfg.getint("cam", "inputDevIndex"))
+            debug.debug("main(app)","start-past set_capture")
 
             #Will return false when cap.image() is false in ui/main
-            GObject.timeout_add(150, self.update_frame)
+            GObject.timeout_add(150, self.update_frame)    #Thread that updates the image on the screen
             debug.debug("main", "Past update frame")
-            GObject.timeout_add(50, self.update_pointers)
+            GObject.timeout_add(50, self.update_pointers)   #Thread that moves the mouse
             
             debug.info("mousetrap", "Idm loaded and started")
 
@@ -252,6 +254,7 @@ class Controller():
         """
         debug.debug("Main", "Entering update_pointers")
         self.itf.script.update_items(self.idm.get_pointer())
+        debug.debug("Main", "Leaving update_pointers")
         return True
 
     def quit(self, exitcode=1):  
