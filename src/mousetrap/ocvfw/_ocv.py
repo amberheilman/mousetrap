@@ -184,12 +184,12 @@ class OcvfwBase:
         #self.grey = numpy.asarray(self.grey[:,:])	#new
 
         if numpy.all(self.img_lkpoints["current"]):
-            co.cv.FindCornerSubPix(
+            """co.cv.FindCornerSubPix(
             # cv2.cornerSubPix(				# was cv.FindCornerSubPix
                 self.grey,
                 self.img_lkpoints["current"],
                 (20, 20), (-1, -1),
-                (cv.CV_TERMCRIT_ITER | cv.CV_TERMCRIT_EPS, 20, 0.03))
+                (cv.CV_TERMCRIT_ITER | cv.CV_TERMCRIT_EPS, 20, 0.03))"""
 
             point.set_opencv( point )
             self.img_lkpoints["points"].append(point)
