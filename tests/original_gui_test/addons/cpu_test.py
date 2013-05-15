@@ -3,9 +3,15 @@
 # addons.cpu_test.py
 
 import os # Misc. Operating System Interfaces
-from gi.repository import GObject # GLib Object System
-import mousetrap.app.debug as debug
-import mousetrap.app.environment as env
+#from gi.repository import GObject # GLib Object System
+import pygtk
+pygtk.require('2.0')
+import gobject
+
+import sys
+sys.path.append("../")
+import debug_test as debug
+import environment_test as env
 
 from subprocess import Popen, PIPE # subprocess management
 # Popen - ?

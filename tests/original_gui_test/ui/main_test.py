@@ -14,7 +14,7 @@ class MainGui(gtk.Window):
 	MouseTrap Main GUI Class
 	'''
 	
-	def __init__(self, controller):
+	def __init__(self): #, controller):
 		'''
 		The main GUI constructor
 		
@@ -24,9 +24,9 @@ class MainGui(gtk.Window):
 		'''
 		
 		gtk.Window.__init__(self)
-		self.ctr = controller
-		self.cfg = controller.cfg
-		self.script = self.ctr.script()
+		#self.ctr = controller
+		#self.cfg = controller.cfg
+		#self.script = self.ctr.script()
 		
 	def setWindowsIcon(self):
 		'''
@@ -63,7 +63,7 @@ class MainGui(gtk.Window):
 		# set the title of the window
 		self.set_title("Mousetrap")
 		# create an "exit" button
-		self.connect("destory", self.close)
+		self.connect("destroy", self.close)
 		self.setWindowsIcon()
 		
 		# create a vertical box to pack items in to
@@ -75,7 +75,7 @@ class MainGui(gtk.Window):
 		# create a "preferences" button with the default image,
 		# attach en event to it, and pack it in to the buttonsBox
 		self.prefButton = gtk.Button(stock=gtk.STOCK_PREFERENCES)
-		self.prefButton.connect("clicked", self.__show__settings__gui)
+		self.prefButton.connect("clicked", self._show_settings_gui_test)
 		self.buttonsBox.pack_start(self.prefButton, True, True)
 		
 		# create a "close" button
@@ -162,13 +162,24 @@ class MainGui(gtk.Window):
 		'''
 		self.str.quit(0)
 		
-def showMainGui():
-	'''
-	Loads the mainGUI components and launch it.
-	
-	Arguments:
-	- mouseTrap: The mouseTrap object pointer.
-	'''
+#def showMainGui():
+#	'''
+#	Loads the mainGUI components and launch it.
+#	
+#	Arguments:
+#	- mouseTrap: The mouseTrap object pointer.
+#	'''
+#	gui = MainGui()
+#	gui.build_interface()
+#	return gui
+
+# My addon
+
+def main():
+	gtk.main()
+
+if __name__ == '__main__':
 	gui = MainGui()
 	gui.build_interface()
-	return gui
+	main()
+

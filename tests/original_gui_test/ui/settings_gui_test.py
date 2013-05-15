@@ -4,13 +4,12 @@
 
 import gtk
 import sys
-sys.path.append('/home/MouseTrap/wne/tests/original_gui_test/ocvfw')
-sys.path.append('/home/MouseTrap/wne/tests/original_gui_test')
-sys.path.append('/home/MouseTrap/wne/tests/original_gui_test/scripts')
-sys.path.append('/home/MouseTrap/wne/tests/original_gui_test/addons')
+sys.path.append("../")
+sys.path.append("../scripts")
+sys.path.append("../addons")
 import dialogs_test
 from i18n_test import _
-import pocv_test
+from ocvfw import pocv_test
 import environment_test as env
 
 from scripts_init_test import get_scripts_list
@@ -24,7 +23,7 @@ class PreffGui(gtk.Window):
 	- gtk.Window: The gtk.Window Object.
 	'''
 	
-	def __init__(self, controller):
+	def __init__(self): # , controller):
 		'''
 		The Class Constructor.
 		
@@ -35,9 +34,9 @@ class PreffGui(gtk.Window):
 		
 		gtk.Window.__init__(self)
 		
-		self.ctr = controller
-		self.cfg = self.ctr.cfg
-		self.adds = AddonsHandler(self.ctr)
+		#self.ctr = controller
+		#self.cfg = self.ctr.cfg
+		#self.adds = AddonsHandler(self.ctr)
 		self.preffWidgets = dict()
 		
 	def setWindowsIcon(self):
@@ -566,7 +565,7 @@ class PreffGui(gtk.Window):
 		
 		# 
 		adj = gtk.Adjustment(startValue, min_, max_, 1, 1, 0)
-		spingButton = gtk.SpinButton(adj, 0.0, 0)
+		spinButton = gtk.SpinButton(adj, 0.0, 0)
 		spinButton.set_wrap(True)
 		spinButton.connect("value-changed", self._spinChanged, section, option)
 		spinHbox.pack_start(spinButton, 0.0, 0)
@@ -595,6 +594,14 @@ class PreffGui(gtk.Window):
 		- mouseTrap: The mouseTrap object pointer.
 		'''
 		# 
-		gui = PreffGui(controller)
+		gui = PreffGui()
 		gui.setWindowsIcon()
 		gui.buildInterface()
+
+def main():
+	gtk.main()
+
+if __name__ == '__main__':
+	show_gui = PreffGui()
+	show_gui.showPreffGui()
+	main()
