@@ -29,7 +29,7 @@ __license__   = "GPLv2"
 
 import mousetrap.ocvfw.debug as debug
 import mousetrap.ocvfw.commons as commons
-from mousetrap.ocvfw.dev.camera import Capture, Point
+from mousetrap.ocvfw.dev.camera import Capture, Point, Graphic
 
 a_name = "Forehead"
 a_description = "Forehead point tracker based on LK Algorithm"
@@ -104,11 +104,9 @@ class Module(object):
         """
         
         debug.debug("mousetrap.ocvfw.idm", "Setting Capture")
-        debug.debug("forehead", "set_capture")
         self.cap = Capture(async=True, idx=cam, backend="OcvfwPython")
         self.cap.change(color="rgb")
         self.cap.set_camera("lk_swap", True)
-        debug.debug("forehead","leaving set_capture")
 	
     def calc_motion(self):
         if not hasattr(self.cap, "forehead"):
@@ -125,7 +123,6 @@ class Module(object):
         """
 
         if not hasattr(self.cap, "forehead"):
-            debug.debug("forehead","get_caputre")
             self.get_forehead()
 
         #return self.cap.resize(200, 160, True)
@@ -145,7 +142,6 @@ class Module(object):
     def get_forehead(self):
         eyes = False
         #self.cap.add_message("Getting Forehead!!!")
-        debug.debug("forehead", "get_forehead")
         face     = self.cap.get_area(commons.haar_cds['Face'])
 
         if face:
@@ -154,7 +150,7 @@ class Module(object):
             endF     = face[areas.index(max(areas))][1]
 
             # Shows the face rectangle
-            #self.cap.add( Graphic("rect", "Face", ( startF.x, startF.y ), (endF.x, endF.y), parent=self.cap) )
+            #self.cap.add( Graphic("rect", "Face", ( startF[0], startF[1] ), (endF[0], endF[1]), parent=self.cap) )
 
             eyes = self.cap.get_area( 
                 commons.haar_cds['Eyes'],
@@ -170,7 +166,7 @@ class Module(object):
             point1, point2   = eyes[areas.index(max(areas))][0], eyes[areas.index(max(areas))][1]
 
             # Shows the eyes rectangle
-            #self.cap.add(Graphic("rect", "Face", ( point1.x, point1.y ), (point2.x, point2.y), parent=self.cap))
+            #self.cap.add(Graphic("rect", "Face", ( point1[0], point1[1] ), (point2[0], point2[1]), parent=self.cap))
 
             X, Y = ( (point1[0] + point2[0]) / 2 ), ( point1[1] + ( (point1[1] + point2[1]) / 2 ) ) / 2 #replaced x and y
             self.cap.add( Point("point", "forehead", ( X, Y ), parent=self.cap, follow=True) )
@@ -178,6 +174,5 @@ class Module(object):
 
         self.foreheadOrig = None
 
-        debug.debug("forehead", "Leaving get_forehead")
         return False
 

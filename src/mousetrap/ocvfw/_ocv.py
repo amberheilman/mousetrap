@@ -29,6 +29,7 @@ import commons as co
 import cv2 #remove
 import cv2.cv as cv
 import numpy
+import array
 
 class OcvfwBase:
     
@@ -49,7 +50,6 @@ class OcvfwBase:
     def set(self, key, value):
         """
         """
-        debug.debug("_ocv","In set")
         if hasattr(self, "%s" % key):
             getattr(self, "%s" % key)(value)
             debug.debug("_ocv - set", "Changed %s value to %s" % (key, value))
@@ -110,21 +110,7 @@ class OcvfwBase:
         """
         self.capture = cv.CaptureFromCAM(self.idx )	
 
-        if not self.capture:
-            debug.debug( "_ocv", "Camera Capture Failed")
-        else:
-            debug.debug( "_ocv", "Camera Capture success")
-        #Test to make sure camera starts properly
-        """count = 1
-        while True:
-            frame = cv.QueryFrame( self.capture )
-            cv.ShowImage("webcam", frame)
-            count = count + 1
-            if cv2.waitKey(50) == 27:
-                break
-            if count > 50:
-                break"""
-        debug.debug( "ocvfw", "_ocv.py start_camera: Camera Started" )
+        debug.debug( "ocvfw", "start_camera: Camera Started" )
     
     def query_image(self, bgr=False, flip=False):
         """
@@ -136,9 +122,10 @@ class OcvfwBase:
 
         Returns The image even if it was stored in self.img
         """
-        debug.debug("_ocv","Entered query_image")
 
         frame = cv.QueryFrame( self.capture )
+
+	#Test to make sure camera starts properly
         #cv.ShowImage("webcam", frame)
         
 
@@ -160,11 +147,9 @@ class OcvfwBase:
 				  co.cv.Round(self.img.height/self.imageScale) ),
 				8, 3 )
 
-
         self.img = frame
 
         self.wait_key(10)
-        debug.debug("_ocv","leaving query_image")
         return True
     
     def set_lkpoint(self, point):
@@ -178,19 +163,18 @@ class OcvfwBase:
 
         #Point = co.cv.Point( point.x, point.y )
 
-        self.img_lkpoints["current"] = numpy.asarray([ point.x, point.y ]) #co.cv.PointTo32f ( Point ) ]
-        #elf.img_lkpoints["current"] = cv.fromarray(self.img_lkpoints["current"])
+	self.img_lkpoints["current"] = numpy.zeros((point.x, point.y), numpy.float32)
+        self.img_lkpoints["current"] = cv.fromarray(self.img_lkpoints["current"])
 
-        #self.grey = numpy.asarray(self.grey[:,:])	#new
+        self.grey = numpy.asarray(self.grey[:,:])	#new
 
         if numpy.all(self.img_lkpoints["current"]):
-            """co.cv.FindCornerSubPix(
-            # cv2.cornerSubPix(				# was cv.FindCornerSubPix
+            #co.cv.FindCornerSubPix(
+            cv2.cornerSubPix(				# was cv.FindCornerSubPix
                 self.grey,
                 self.img_lkpoints["current"],
-                (20, 20), (-1, -1),
-                (cv.CV_TERMCRIT_ITER | cv.CV_TERMCRIT_EPS, 20, 0.03))"""
-
+                (20, 20), (0,0),
+                (cv.CV_TERMCRIT_ITER | cv.CV_TERMCRIT_EPS, 20, 0.03))
             point.set_opencv( point )
             self.img_lkpoints["points"].append(point)
 
@@ -241,7 +225,7 @@ class OcvfwBase:
                 (cv2.TERM_CRITERIA_MAX_ITER|cv2.TERM_CRITERIA_EPS, 20, 0.03), #criteria
     	    cv2.OPTFLOW_USE_INITIAL_FLOW #flags
     	    )
-
+	cv.ShowImage("test",self.grey)
 
         if isinstance(optical_flow[0], tuple):
             self.img_lkpoints["current"], status = optical_flow[0]
@@ -373,7 +357,7 @@ class OcvfwPython(OcvfwBase):
 
         Returns a list with the matches.
         """
-        debug.debug("_ocv", "Entered get_haar_points")
+
         cascade = co.cv.Load( haarCascade) #, self.imgSize )
 
         if not cascade:
@@ -405,12 +389,11 @@ class OcvfwPython(OcvfwBase):
 
         Returns a list with the matches.
         """
-        debug.debug("_ocv","Entered get_haar_roi_points")
         cascade = co.cv.Load( haarCascade ) #, self.imgSize )
         if not cascade:
             debug.exception( "ocvfw", "The Haar Classifier Cascade load failed" )
 
-        debug.exception( "ocvfw-get_haar_roi_points", self.img)
+        debug.debug( "ocvfw-get_haar_roi_points", self.img)
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
         debug.debug("_ocv - get_haar_roi_points Rect",rect)
@@ -429,7 +412,6 @@ class OcvfwPython(OcvfwBase):
 
             debug.debug( "ocvfw", "cmGetHaarROIPoints: detected some matches" )
             return matches
-        debug.debug("_ocv","get_haar_roi_points - no maches found")
 
 
 

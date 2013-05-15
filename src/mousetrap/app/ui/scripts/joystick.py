@@ -56,11 +56,9 @@ class ScriptClass(Mapper):
         self.connect("expose_event", self.expose_event)
 
     def update_items(self, point):
-        print "ui/scripts/joystick - In update_items."
         self.point = point
         self.calc_move()
         self.queue_draw()
-        print "ui/scripts/joystick - Leaving update_items"
 
     def expose_event(self, widget, event):
         self.width, self.height = self.allocation[2], self.allocation[3]

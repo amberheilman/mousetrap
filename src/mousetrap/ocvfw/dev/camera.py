@@ -64,8 +64,6 @@ class Capture(object):
         self.__flip        = {}
         self.__color       = "bgr"
         self.__props       = { "color" : "rgb" }
-        
-        debug.debug("camera","In init.")
 
         Camera = _camera(backend)
         Camera.set_camera_idx(idx)
@@ -87,14 +85,8 @@ class Capture(object):
 
         self.last_update   = 0
         self.last_duration = 0
-
-        if(async):
-            debug.debug("camera","init- async = true")
-        else:
-            debug.debug("camera","init- async = false")
             
         self.set_async(fps, async)
-        debug.debug("camera","leaving init")
 
     def set_async(self, fps=100, async=False):
         """
@@ -105,19 +97,12 @@ class Capture(object):
         - fps: The frames per second to be queried.
         - async: Enable/Disable asynchronous image querying. Default: False
         """
-        
-        if(async):
-            debug.debug("camera","set_async. Async = true")
-        else:
-            debug.debug("camera","set_async. Async = false")
+
         self.fps   = fps
         self.async = async
 
         if self.async:
-            debug.debug("camera","set_async - timeout_add self.sync")
             GObject.timeout_add(self.fps, self.sync)
-        
-        debug.debug("camera","leaving set_async")
 
     def sync(self):
         """
@@ -126,7 +111,6 @@ class Capture(object):
         Arguments:
         - self: The main object pointer.
         """
-        debug.debug("camera","entered sync")
         Camera.query_image()
         #cv.ShowImage("webcam", self.img)
 	
@@ -149,8 +133,6 @@ class Capture(object):
             Camera.swap_lkpoints()
 
         self.show_rectangles(self.rectangles())"""
-        
-        debug.debug("camera","Leaving sync")
 
         return self.async
 
@@ -385,13 +367,13 @@ class Capture(object):
         - roi: The roi image coords if needed.
         - orig: The roi's origin if needed.
         """
-        debug.debug("Camera", "In get_area")
+
         if roi is None:
-            debug.debug("Camera - get_area", "roi is None")
             return Camera.get_haar_points(haar_csd)
-        #roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
-        roi = (267, 183, 225, 297)
-        #roi = co.cv.Rectangle(self.__image, (roi["start"], roi["end"]), (roi["width"], roi["height"]), (0,0,255))
+
+        roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
+        #roi = co.cv.Rectangle(self.__image, (roi[0], roi[1]), (roi[2], roi[3]), (0,0,255)) 
+						# was roi["start"], roi["end"]), (roi["width"], roi["height"]
             #roi pt1 and pt2 needs to be a vertex and added color
         #might need to remove and reestablish point values
         return Camera.get_haar_roi_points(haar_csd, roi, orig)

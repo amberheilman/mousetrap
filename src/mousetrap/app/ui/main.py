@@ -150,9 +150,6 @@ class MainGui( gtk.Window ):
         self.vBox.show_all()
         self.add(self.vBox)
         self.show()
-        
-        debug.debug("ui.main", "Interface Built")
-
 
     def load_addons(self):
         """
@@ -167,8 +164,6 @@ class MainGui( gtk.Window ):
                     globals(), locals(),[''])
 
             setattr(self, add, tmp.Addon(self.ctr))
-        debug.debug("ui.main", "Addons loaded")
-
 
     def update_frame(self, cap, point):
         """
@@ -178,9 +173,7 @@ class MainGui( gtk.Window ):
         - self: The main object pointer.
         - img: The IPLimage object.
         """
-        debug.debug("ui/main","Entering update_frame")
         if not cap.image():
-            debug.debug("ui/main - update_frame","No cap.image()")
             return False
         
         #sets new pixbuf
