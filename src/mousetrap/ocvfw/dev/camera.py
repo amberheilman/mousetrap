@@ -191,9 +191,12 @@ class Capture(object):
                                                  img.depth)
         else:
             buff = gtk.gdk.pixbuf_new_from_data(img.tostring(), 
-                                                gtk.gdk.COLORSPACE_RGB, False, 8,
-                                                int(img.width), int(img.height), 
-                                                img.width )
+                                                 gtk.gdk.COLORSPACE_RGB,
++                                                False,                      # has alpha channel
++                                                img.depth,
++                                                img.width,
++                                                img.height,
++                                                img.width*img.nChannels,)
         return buff
 
     def points(self):
