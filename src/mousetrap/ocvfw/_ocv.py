@@ -396,7 +396,8 @@ class OcvfwPython(OcvfwBase):
         debug.debug( "ocvfw-get_haar_roi_points", self.img)
 
         #remove, DNE co.cv.ClearMemStorage(self.storage)
-        debug.debug("_ocv - get_haar_roi_points Rect",rect)
+        debug.debug("before GetSubRect - rect",rect)
+	debug.debug("before GetSubRect - self.img", self.img)
         imageROI = co.cv.GetSubRect(self.img, rect)
 
         if cascade:

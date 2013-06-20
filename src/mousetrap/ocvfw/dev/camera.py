@@ -374,7 +374,9 @@ class Capture(object):
         if roi is None:
             return Camera.get_haar_points(haar_csd)
 
-        roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
+	#FIXME:This should not be hard coded
+	roi = (250, 120, 390, 360)
+        #roi = (roi["start"], roi["end"], roi["width"], roi["height"]) #get_haar_roi_points needs a list
         #roi = co.cv.Rectangle(self.__image, (roi[0], roi[1]), (roi[2], roi[3]), (0,0,255)) 
 						# was roi["start"], roi["end"]), (roi["width"], roi["height"]
             #roi pt1 and pt2 needs to be a vertex and added color
