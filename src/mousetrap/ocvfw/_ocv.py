@@ -395,11 +395,11 @@ class OcvfwPython(OcvfwBase):
 
         debug.debug( "ocvfw-get_haar_roi_points", self.img)
 
-        #FIXME: Work around to fix when the rect is too big
-	if (rect[0]+rect[2]) > self.img.width:
+        #remove, DNE co.cv.ClearMemStorage(self.storage)
+
+	if ((rect[0]+rect[2]) > self.img.width) or ((rect[1]+rect[3]) > self.img.height):
 		rect = (rect[0], rect[1], self.img.width-rect[0],self.img.height-rect[1])
-	if (rect[1]+rect[3]) > self.img.height:
-		rect = (rect[0], rect[1], self.img.width-rect[0],self.img.height-rect[1])
+		debug.debug("GetSubRect", "Rect was too big. Fixed size")
 
         debug.debug("before GetSubRect - rect",rect)
 	debug.debug("before GetSubRect - self.img", self.img)

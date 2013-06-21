@@ -27,7 +27,8 @@ __date__      = "$Date$"
 __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
-import gtk
+from gi.repository import GObject
+from gi.repository import Gtk
 import dialogs
 from i18n import _
 from mousetrap.ocvfw import pocv
@@ -36,7 +37,7 @@ import mousetrap.app.environment as env
 from mousetrap.app.ui.scripts import get_scripts_list
 from mousetrap.app.addons.handler import AddonsHandler
 
-class PreffGui( gtk.Window ):
+class PreffGui( Gtk.Window ):
     """
     The Class for the preferences GUI.
 
@@ -53,7 +54,7 @@ class PreffGui( gtk.Window ):
         - mouseTrap: The mouseTrap object pointer.
         """
 
-        gtk.Window.__init__( self )
+        GObject.GObject.__init__( self )
 
         self.ctr = controller
         self.cfg = self.ctr.cfg
@@ -68,7 +69,7 @@ class PreffGui( gtk.Window ):
         - self: The main object pointer.
         """
 
-        icon_theme = gtk.icon_theme_get_default()
+        icon_theme = Gtk.IconTheme.get_default()
         try:
             icon = icon_theme.load_icon("mouseTrap", 48, 0)
         except:
@@ -84,7 +85,7 @@ class PreffGui( gtk.Window ):
         - self: The main object pointer.
         """
 
-        accelGroup = gtk.AccelGroup()
+        accelGroup = Gtk.AccelGroup()
         self.add_accel_group( accelGroup )
 
         accelGroup = accelGroup
@@ -93,10 +94,10 @@ class PreffGui( gtk.Window ):
         self.set_size_request( 600 , 400)
         self.connect( "destroy", self.close)
 
-        self.table = gtk.Table( 3, 6, False )
+        self.table = Gtk.Table( 3, 6, False )
 
-        self.noteBook = gtk.Notebook()
-        self.noteBook.set_tab_pos( gtk.POS_TOP )
+        self.noteBook = Gtk.Notebook()
+        self.noteBook.set_tab_pos( Gtk.PositionType.TOP )
         self.table.attach( self.noteBook, 0, 6, 0, 1 )
         self.noteBook.show()
 
@@ -110,23 +111,23 @@ class PreffGui( gtk.Window ):
         ####################
         # Bottom's buttons #
         ####################
-        self.buttonsBox = gtk.HBox( False, spacing=6 )
+        self.buttonsBox = Gtk.HBox( False, spacing=6 )
 
-        self.acceptButton = gtk.Button( _("Accept"), stock=gtk.STOCK_OK)
+        self.acceptButton = Gtk.Button( _("Accept"), stock=Gtk.STOCK_OK)
         self.acceptButton.connect("clicked", self.acceptButtonClick )
-        self.buttonsBox.pack_end( self.acceptButton )
+        self.buttonsBox.pack_end( self.acceptButton, True, True, 0 )
 
-        cancelButton = gtk.Button( _("Accept"), stock=gtk.STOCK_CANCEL )
+        cancelButton = Gtk.Button( _("Accept"), stock=Gtk.STOCK_CANCEL )
         cancelButton.connect("clicked", self.close )
-        self.buttonsBox.pack_end( cancelButton)
+        self.buttonsBox.pack_end( cancelButton, True, True, 0)
 
-        self.applyButton = gtk.Button( _("Accept"), stock=gtk.STOCK_APPLY )
+        self.applyButton = Gtk.Button( _("Accept"), stock=Gtk.STOCK_APPLY )
         self.applyButton.connect( "clicked", self.applyButtonClick )
-        self.buttonsBox.pack_end( self.applyButton )
+        self.buttonsBox.pack_end( self.applyButton, True, True, 0 )
 
         self.buttonsBox.show_all()
 
-        self.table.attach(self.buttonsBox, 1, 2, 2, 3, 'fill', False)
+        self.table.attach_defaults(self.buttonsBox, 1, 2, 2, 3)
         self.table.show()
         self.add( self.table )
         self.show()
@@ -139,9 +140,9 @@ class PreffGui( gtk.Window ):
         - self: The main object pointer.
         """
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
 
-        general_box = gtk.VBox( spacing = 6 )
+        general_box = Gtk.VBox( spacing = 6 )
 
 #         mWindowActive = gtk.CheckButton( _("Show main window") )
 #         mWindowActive.set_active( self.cfg.getboolean( "gui", "showMainGui" ) )
@@ -149,28 +150,28 @@ class PreffGui( gtk.Window ):
 #
 #         mainGuiBox.pack_start( mWindowActive, False, False )
 
-        cAmActive = gtk.CheckButton( _("Activate Camera module") )
+        cAmActive = Gtk.CheckButton( _("Activate Camera module") )
         cAmActive.set_active( self.cfg.getboolean( "main", "startCam" ) )
         cAmActive.connect( "toggled", self._checkToggled, "main", "startCam" )
 
-        general_box.pack_start( cAmActive, False, False )
+        general_box.pack_start( cAmActive, False, False, 0 )
 
-        flipImage = gtk.CheckButton( _("Flip Image") )
+        flipImage = Gtk.CheckButton( _("Flip Image") )
         flipImage.set_active( self.cfg.getboolean( "cam",  "flipImage" ) )
         flipImage.connect( "toggled", self._checkToggled, "cam", "flipImage" )
 
-        general_box.pack_start( flipImage, False, False )
+        general_box.pack_start( flipImage, False, False, 0 )
 
         inputDevIndex = self.addSpin( _("Input Video Device Index: "), "inputDevIndex",
                         self.cfg.getint( "cam", "inputDevIndex" ), "cam", "inputDevIndex", 0)
-        general_box.pack_start( inputDevIndex, False, False )
+        general_box.pack_start( inputDevIndex, False, False, 0 )
 
         general_box.show_all()
 
         frame.add( general_box )
         frame.show()
 
-        self.noteBook.insert_page(frame, gtk.Label( _("General") ) )
+        self.noteBook.insert_page(frame, Gtk.Label(label= _("General")), -1)
 
     def cam_tab( self ):
         """
@@ -180,28 +181,28 @@ class PreffGui( gtk.Window ):
         - self: The main object pointer.
         """
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
 
-        camBox = gtk.VBox( spacing = 6 )
+        camBox = Gtk.VBox( spacing = 6 )
 
-        mapperActive = gtk.CheckButton( _("Show Point Mapper") )
+        mapperActive = Gtk.CheckButton( _("Show Point Mapper") )
         mapperActive.set_active( self.cfg.getboolean( "gui", "showPointMapper" ) )
         mapperActive.connect( "toggled", self._checkToggled, "gui", "showPointMapper" )
 
-        camBox.pack_start( mapperActive, False, False )
+        camBox.pack_start( mapperActive, False, False, 0 )
 
-        showCapture = gtk.CheckButton( _("Show Capture") )
+        showCapture = Gtk.CheckButton( _("Show Capture") )
         showCapture.set_active( self.cfg.getboolean( "gui", "showCapture" ) )
         showCapture.connect( "toggled", self._checkToggled, "gui", "showCapture" )
 
-        camBox.pack_start( showCapture, False, False )
+        camBox.pack_start( showCapture, False, False, 0 )
 
         camBox.show_all()
 
         frame.add( camBox )
         frame.show()
 
-        self.noteBook.insert_page(frame, gtk.Label( _("Camera") ) )
+        self.noteBook.insert_page(frame, Gtk.Label(label= _("Camera")), -1)
 
     def algorithm_tab( self ):
         """
@@ -211,17 +212,17 @@ class PreffGui( gtk.Window ):
         - self: The main object pointer.
         """
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
 
-        algo_box = gtk.VBox( spacing = 6 )
+        algo_box = Gtk.VBox( spacing = 6 )
 
-        liststore = gtk.ListStore(bool, str, str, str)
+        liststore = Gtk.ListStore(bool, str, str, str)
 
-        conf_button = gtk.Button(stock=gtk.STOCK_PREFERENCES)
+        conf_button = Gtk.Button(stock=Gtk.STOCK_PREFERENCES)
         conf_button.connect('clicked', self.show_alg_pref, liststore)
         conf_button.set_sensitive(False)
 
-        scripts_combo = gtk.combo_box_new_text()
+        scripts_combo = Gtk.ComboBoxText()
         scripts_combo.append_text(self.cfg.get("scripts", "name"))
         
         for script in get_scripts_list():
@@ -231,21 +232,21 @@ class PreffGui( gtk.Window ):
         scripts_combo.connect('changed', self._comboChanged, "scripts", "name")
         scripts_combo.set_active(0)
         
-        tree_view = gtk.TreeView(liststore)
+        tree_view = Gtk.TreeView(liststore)
         tree_view.connect("cursor-changed", self._tree_view_click, conf_button)
 
-        toggle_cell = gtk.CellRendererToggle()
+        toggle_cell = Gtk.CellRendererToggle()
         toggle_cell.set_radio(True)
         toggle_cell.connect( 'toggled', self._toggle_cell_changed, liststore)
         toggle_cell.set_property('activatable', True)
         #toggle_cell.set_property('background-set' , True)
 
-        name_cell = gtk.CellRendererText()
-        desc_cell = gtk.CellRendererText()
+        name_cell = Gtk.CellRendererText()
+        desc_cell = Gtk.CellRendererText()
 
-        toggle_column = gtk.TreeViewColumn(_('Active Algorithms'), toggle_cell)
-        name_column = gtk.TreeViewColumn(_('Installed Algorithms'))
-        desc_column = gtk.TreeViewColumn(_('Description'))
+        toggle_column = Gtk.TreeViewColumn(_('Active Algorithms'), toggle_cell)
+        name_column = Gtk.TreeViewColumn(_('Installed Algorithms'))
+        desc_column = Gtk.TreeViewColumn(_('Description'))
 
         for alg in pocv.get_idms_list():
             alg_inf = pocv.get_idm_inf(alg)
@@ -256,7 +257,10 @@ class PreffGui( gtk.Window ):
             state = False
             if alg_inf["name"].lower() in self.cfg.get("main", "algorithm").lower():
                 state = True
-            liststore.append([state, alg_inf["name"], alg_inf["dsc"], alg_inf["stgs"]])
+	    # FIXME: I don't know what the purpose of this liststore is,
+            # but it wants strings, so let's not argue for now. ;)
+            liststore.append([state, alg_inf["name"], alg_inf["dsc"], str(alg_inf["stgs"])])
+
             #liststore.append([False, "%s: %s" % (alg_inf["name"], alg_inf["dsc"]), alg_inf["stgs"]])
 
         tree_view.append_column(toggle_column)
@@ -272,16 +276,16 @@ class PreffGui( gtk.Window ):
         name_column.set_attributes(name_cell, text=1)
         desc_column.set_attributes(desc_cell, text=2)
 
-        algo_box.pack_start(tree_view)
-        algo_box.pack_start(conf_button, False, False)
-        algo_box.pack_start(scripts_combo, False, False)
+        algo_box.pack_start(tree_view, True, True, 0)
+        algo_box.pack_start(conf_button, False, False, 0)
+        algo_box.pack_start(scripts_combo, False, False, 0)
 
         algo_box.show_all()
 
         frame.add( algo_box )
         frame.show()
 
-        self.noteBook.insert_page(frame, gtk.Label( _("Algorithm") ) )
+        self.noteBook.insert_page(frame, Gtk.Label(label= _("Algorithm")), -1)
     
     def addons_tab( self ):
         """
@@ -291,29 +295,29 @@ class PreffGui( gtk.Window ):
         - self: The main object pointer.
         """
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
 
-        algo_box = gtk.VBox( spacing = 6 )
+        algo_box = Gtk.VBox( spacing = 6 )
 
-        liststore = gtk.ListStore(bool, str, str, str)
+        liststore = Gtk.ListStore(bool, str, str, str)
 
-        conf_button = gtk.Button(stock=gtk.STOCK_PREFERENCES)
+        conf_button = Gtk.Button(stock=Gtk.STOCK_PREFERENCES)
         conf_button.connect('clicked', self.show_alg_pref, liststore)
         conf_button.set_sensitive(False)
 
-        tree_view = gtk.TreeView(liststore)
+        tree_view = Gtk.TreeView(liststore)
         tree_view.connect("cursor-changed", self._tree_view_click, conf_button)
 
-        toggle_cell = gtk.CellRendererToggle()
+        toggle_cell = Gtk.CellRendererToggle()
         toggle_cell.connect( 'toggled', self._enable_disable_addon, liststore)
         toggle_cell.set_property('activatable', True)
 
-        name_cell = gtk.CellRendererText()
-        desc_cell = gtk.CellRendererText()
+        name_cell = Gtk.CellRendererText()
+        desc_cell = Gtk.CellRendererText()
 
-        toggle_column = gtk.TreeViewColumn(_('Active'), toggle_cell)
-        name_column = gtk.TreeViewColumn(_('Name'))
-        desc_column = gtk.TreeViewColumn(_('Description'))
+        toggle_column = Gtk.TreeViewColumn(_('Active'), toggle_cell)
+        name_column = Gtk.TreeViewColumn(_('Name'))
+        desc_column = Gtk.TreeViewColumn(_('Description'))
 
         for add in self.adds.get_addons_list():
             add_inf = self.adds.get_addon_inf(add)
@@ -324,7 +328,9 @@ class PreffGui( gtk.Window ):
             state = False
             if add_inf["name"].lower() in self.cfg.getList("main", "addon"):
                 state = True
-            liststore.append([state, add_inf["name"], add_inf["dsc"], add_inf["stgs"]])
+	    # FIXME: I don't know what the purpose of this liststore is,
+            # but it wants strings, so let's not argue for now. ;)
+            liststore.append([state, add_inf["name"], add_inf["dsc"], str(add_inf["stgs"])])	
 
         tree_view.append_column(toggle_column)
         tree_view.append_column(name_column)
@@ -339,15 +345,15 @@ class PreffGui( gtk.Window ):
         name_column.set_attributes(name_cell, text=1)
         desc_column.set_attributes(desc_cell, text=2)
 
-        algo_box.pack_start(tree_view)
-        algo_box.pack_start(conf_button, False, False)
+        algo_box.pack_start(tree_view, True, True, 0)
+        algo_box.pack_start(conf_button, False, False, 0)
 
         algo_box.show_all()
 
         frame.add( algo_box )
         frame.show()
 
-        self.noteBook.insert_page(frame, gtk.Label( _("Addons") ) )
+        self.noteBook.insert_page(frame, Gtk.Label(label= _("Addons")), -1)
 
     def mouseTab( self ):
         """
@@ -357,12 +363,12 @@ class PreffGui( gtk.Window ):
         - self: The main object pointer.
         """
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
 
-        camBox = gtk.VBox( spacing = 6 )
+        camBox = Gtk.VBox( spacing = 6 )
 
         reqMov = self.addSpin( _("Step Speed: "), "stepSpeed", self.cfg.getint( "mouse", "stepSpeed" ), "mouse", "stepSpeed" )
-        camBox.pack_start( reqMov, False, False )
+        camBox.pack_start( reqMov, False, False, 0 )
 
         ###############################################
         #                                             #
@@ -402,7 +408,7 @@ class PreffGui( gtk.Window ):
         frame.add( camBox )
         frame.show()
 
-        self.noteBook.insert_page(frame, gtk.Label( _("Mouse") ) )
+        self.noteBook.insert_page(frame, Gtk.Label(label= _("Mouse")), -1)
 
     def debug_tab( self ):
         """
@@ -413,31 +419,32 @@ class PreffGui( gtk.Window ):
         """
 
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
 
-        debugBox = gtk.VBox( spacing = 6 )
+        debugBox = Gtk.VBox( spacing = 6 )
 
-        levelHbox = gtk.HBox( spacing = 4 )
+        levelHbox = Gtk.HBox( spacing = 4 )
 
-        levellabel = gtk.Label( _("Debugging Level:") )
+        levellabel = Gtk.Label(label= _("Debugging Level:") )
         levellabel.set_alignment( 0.0, 0.5 )
         levellabel.show()
-        levelHbox.pack_start( levellabel, False, False )
+        levelHbox.pack_start( levellabel, False, False, 0 )
 
-        adj = gtk.Adjustment( self.cfg.getint( "main", "debugLevel" ), 10, 50, 10, 1, 0)
-        levelSpin = gtk.SpinButton( adj, 0.0, 0 )
+        adj = Gtk.Adjustment( self.cfg.getint( "main", "debugLevel" ), 10, 50, 10, 1, 0)
+        levelSpin = Gtk.SpinButton()
+        levelSpin.set_adjustment(adj)
         levelSpin.set_wrap( True )
-        levelHbox.pack_start( levelSpin, False, False )
+        levelHbox.pack_start( levelSpin, False, False, 0 )
         levelSpin.connect( "value-changed", self._spinChanged, "main", "debugLevel" )
 
-        debugBox.pack_start( levelHbox, False, False )
+        debugBox.pack_start( levelHbox, False, False, 0 )
 
         debugBox.show_all()
 
         frame.add( debugBox )
         frame.show()
 
-        self.noteBook.insert_page(frame, gtk.Label( _("Debug") ) )
+        self.noteBook.insert_page(frame, Gtk.Label(label= _("Debug")), -1)
 
 
     def show_alg_pref(self, widget, liststore):
@@ -578,18 +585,19 @@ class PreffGui( gtk.Window ):
         - startValue: The start value.
         """
 
-        spinHbox = gtk.HBox( spacing = 4 )
+        spinHbox = Gtk.HBox( spacing = 4 )
 
-        spinLbl = gtk.Label( label )
+        spinLbl = Gtk.Label(label= label )
         spinLbl.set_alignment( 0.0, 0.5 )
         spinLbl.show()
-        spinHbox.pack_start( spinLbl, False, False )
+        spinHbox.pack_start( spinLbl, False, False, 0 )
 
-        adj = gtk.Adjustment( startValue, min_, max_, 1, 1, 0)
-        spinButton = gtk.SpinButton( adj, 0.0, 0 )
+        adj = Gtk.Adjustment( startValue, min_, max_, 1, 1, 0)
+        spinButton = Gtk.SpinButton()
+        spinButton.set_adjustment(adj)
         spinButton.set_wrap( True )
         spinButton.connect( "value-changed", self._spinChanged, section, option )
-        spinHbox.pack_start( spinButton, False, False )
+        spinHbox.pack_start( spinButton, False, False, 0 )
 
         spinLbl.set_mnemonic_widget( spinButton )
 

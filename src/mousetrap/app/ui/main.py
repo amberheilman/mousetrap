@@ -27,14 +27,17 @@ __date__      = "$Date$"
 __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
-import gtk
+from gi.repository import Gdk
+from gi.repository import GObject
+from gi.repository import Gtk
+from gi.repository import GdkPixbuf
 import dialogs
 import settings_gui
 import mousetrap.app.debug as debug
 import mousetrap.app.environment as env
 from mousetrap.app.addons import cpu
 
-class MainGui( gtk.Window ):
+class MainGui( Gtk.Window ):
     """
     MouseTrap main GUI Class
     """
@@ -48,7 +51,7 @@ class MainGui( gtk.Window ):
         - controller: The mouseTrap's controller.
         """
 
-        gtk.Window.__init__( self )
+        GObject.GObject.__init__( self )
         self.ctr    = controller
         self.cfg    = controller.cfg
         self.script = self.ctr.script()
@@ -62,13 +65,13 @@ class MainGui( gtk.Window ):
         - self: The main object pointer
         """
 
-        icon_theme = gtk.icon_theme_get_default()
+        icon_theme = Gtk.IconTheme.get_default()
         try:
             icon = icon_theme.load_icon("mousetrap", 48, 0)
         except:
             return
 
-        gtk.window_set_default_icon(icon)
+        self.set_default_icon(icon)
 
 
     def build_interface( self ):
@@ -81,7 +84,7 @@ class MainGui( gtk.Window ):
 
         self.setWindowsIcon()
 
-        accelGroup = gtk.AccelGroup()
+        accelGroup = Gtk.AccelGroup()
         self.add_accel_group( accelGroup )
 
         self.accelGroup = accelGroup
@@ -90,44 +93,44 @@ class MainGui( gtk.Window ):
         self.connect( "destroy", self.close)
         self.setWindowsIcon()
 
-        self.vBox = gtk.VBox()
+        self.vBox = Gtk.VBox()
 
-        self.buttonsBox = gtk.HButtonBox()
+        self.buttonsBox = Gtk.HButtonBox()
         #self.buttonsBox = gtk.HBox(False,0)
 
-        self.prefButton = gtk.Button(stock=gtk.STOCK_PREFERENCES)
+        self.prefButton = Gtk.Button(stock=Gtk.STOCK_PREFERENCES)
         self.prefButton.connect("clicked", self._show_settings_gui)
-        self.buttonsBox.pack_start( self.prefButton, True, True )
+        self.buttonsBox.pack_start( self.prefButton, True, True, 0)
 
-        self.closeButton = gtk.Button(stock=gtk.STOCK_QUIT)
+        self.closeButton = Gtk.Button(stock=Gtk.STOCK_QUIT)
         self.closeButton.connect("clicked", self.close)
-        self.buttonsBox.pack_start( self.closeButton, True, True )
+        self.buttonsBox.pack_start( self.closeButton, True, True, 0 )
 
-        self.helpButton = gtk.Button(stock=gtk.STOCK_HELP)
+        self.helpButton = Gtk.Button(stock=Gtk.STOCK_HELP)
         self.helpButton.connect("clicked", self._loadHelp)
-        self.buttonsBox.pack_start( self.helpButton, True, True )
+        self.buttonsBox.pack_start( self.helpButton, True, True, 0 )
 
-        self.vBox.pack_start( self.buttonsBox, False, False )
+        self.vBox.pack_start( self.buttonsBox, False, False, 0 )
 
-        self.adds_vbox = gtk.VBox()
+        self.adds_vbox = Gtk.VBox()
         self.adds_vbox.show_all()
-        self.vBox.pack_start( self.adds_vbox, False, False )
+        self.vBox.pack_start( self.adds_vbox, False, False, 0 )
 
-        self.cap_image    = gtk.Image()
+        self.cap_image    = Gtk.Image()
 
         if self.cfg.getboolean("gui", "showCapture"):
-            self.cap_expander = gtk.expander_new_with_mnemonic("_Camera Image")
+            self.cap_expander = Gtk.Expander.new_with_mnemonic("_Camera Image")
             self.cap_expander.add(self.cap_image)
             self.cap_expander.set_expanded(True)
             #expander.connect('notify::expanded', self.expanded_cb)
-            self.vBox.pack_start(self.cap_expander)
+            self.vBox.pack_start(self.cap_expander, True, True, 0)
 
         if self.cfg.getboolean("gui", "showPointMapper"):
-            self.map_expander = gtk.expander_new_with_mnemonic("_Script Mapper")
+            self.map_expander = Gtk.Expander.new_with_mnemonic("_Script Mapper")
             self.map_expander.add(self.script)
             self.map_expander.set_expanded(True)
             #expander.connect('notify::expanded', self.expanded_cb)
-            self.vBox.pack_start(self.map_expander)
+            self.vBox.pack_start(self.map_expander, True, True, 0)
 
 #
 #         flipButton = gtk.Button( _("Flip Image") )
@@ -142,10 +145,10 @@ class MainGui( gtk.Window ):
 #
 #         self.buttonsBox.show_all()
 
-        self.statusbar = gtk.Statusbar()
+        self.statusbar = Gtk.Statusbar()
         self.statusbar_id = self.statusbar.get_context_id("statusbar")
 
-        self.vBox.pack_start(self.statusbar, True, True)
+        self.vBox.pack_start(self.statusbar, True, True, 0)
 
         self.vBox.show_all()
         self.add(self.vBox)
@@ -177,7 +180,7 @@ class MainGui( gtk.Window ):
             return False
         
         #sets new pixbuf
-        self.cap_image.set_from_pixbuf(cap.to_gtk_buff().scale_simple(200, 160, gtk.gdk.INTERP_BILINEAR))
+        self.cap_image.set_from_pixbuf(cap.to_gtk_buff().scale_simple(200, 160, GdkPixbuf.InterpType.BILINEAR))
 
 #     def recalcPoint( self, widget, flip = ''):
 #         """
@@ -208,16 +211,16 @@ class MainGui( gtk.Window ):
         Returns buttonLabelBox A gtk.HBox that contains the new image stock button.
         """
 
-        buttonLabelBox = gtk.VBox()
+        buttonLabelBox = Gtk.VBox()
 
-        im = gtk.image_new_from_stock( stock, gtk.ICON_SIZE_BUTTON )
+        im = Gtk.Image.new_from_stock( stock, Gtk.IconSize.BUTTON )
 
-        label = gtk.Label( label )
+        label = Gtk.Label(label= label )
         #label.set_alignment( 0.0, 0.5 )
         label.set_use_underline( True )
 
-        buttonLabelBox.pack_start( im )
-        buttonLabelBox.pack_start( label )
+        buttonLabelBox.pack_start( im , True, True, 0)
+        buttonLabelBox.pack_start( label , True, True, 0)
         buttonLabelBox.show_all()
 
         return buttonLabelBox
@@ -243,12 +246,10 @@ class MainGui( gtk.Window ):
         - *args: The widget callback arguments.
         """
 
+	uri = "ghelp:%s/docs/mousetrap.xml" % env.mTDataDir
         try:
-            import gnome
-            gnome.help_display_uri("ghelp:%s/docs/mousetrap.xml" % env.mTDataDir)
-        except ImportError:
-            dialogs.errorDialog(
-            "mouseTrap needs <b>gnome</b> module to show the help. Please install gnome-python and try again.", None )
+            Gtk.show_uri(Gdk.Screen.get_default(), uri, Gtk.get_current_event_time())
+        except:
             debug.exception( "mainGui", "The help load failed" )
 
     def close( self, *args ):
