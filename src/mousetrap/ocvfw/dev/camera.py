@@ -27,18 +27,16 @@ __date__      = "$Date$"
 __copyright__ = "Copyright (c) 2008 Flavio Percoco Premoli"
 __license__   = "GPLv2"
 
+from gi.repository import GdkPixbuf
+from gi.repository import GObject
+from gi.repository import Gtk
+
 from warnings import *
 from .. import debug
 from .. import commons as co
 from mousetrap.ocvfw import _ocv as ocv
-from gi.repository import GObject
 
 Camera = None
-
-try:
-    import gtk
-except ImportError:
-    debug.info("Camera", "Gtk not imported")
 
 def _camera(backend):
     if not hasattr(ocv, backend):
@@ -186,17 +184,18 @@ class Capture(object):
         img = self.__image
 
         if "as_numpy_array" in dir(img):
-            buff = gtk.gdk.pixbuf_new_from_array(img.as_numpy_array(), 
-                                                 gtk.gdk.COLORSPACE_RGB, 
+            buff = GdkPixbuf.Pixbuf.new_from_array(img.as_numpy_array(),
+                                                 GdkPixbuf.Colorspace.RGB,  
                                                  img.depth)
         else:
-            buff = gtk.gdk.pixbuf_new_from_data(img.tostring(), 
-                                                 gtk.gdk.COLORSPACE_RGB,
-+                                                False,                      # has alpha channel
-+                                                img.depth,
-+                                                img.width,
-+                                                img.height,
-+                                                img.width*img.nChannels,)
+            buff = GdkPixbuf.Pixbuf.new_from_data(img.tostring(),
+                                                GdkPixbuf.Colorspace.RGB, 
+						False,                      # has alpha channel
++                                               img.depth,
++                                               img.width,
++                                               img.height,
++                                               img.width*img.nChannels, 	# stride or widthStep
+						None, None)			#Bug workaround for memory management
         return buff
 
     def points(self):
