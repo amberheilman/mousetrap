@@ -526,4 +526,3 @@ class OcvfwPython(OcvfwBase):
             mv.append(center)
 
         return mv
-
