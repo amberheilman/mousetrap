@@ -75,7 +75,7 @@ class PreffGui( Gtk.Window ):
         except:
             return
 
-        gtk.window_set_default_icon(icon)
+        Gtk.Window_set_default_icon(icon)
 
     def buildInterface( self ):
         """
@@ -91,7 +91,7 @@ class PreffGui( Gtk.Window ):
         accelGroup = accelGroup
 
         self.set_title( _("mouseTrap Preferences") )
-        self.set_size_request( 600 , 400)
+        self.set_size_request( 300 , 100)
         self.connect( "destroy", self.close)
 
         self.table = Gtk.Table( 3, 6, False )

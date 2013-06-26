@@ -55,7 +55,7 @@ class MainGui( Gtk.Window ):
         self.ctr    = controller
         self.cfg    = controller.cfg
         self.script = self.ctr.script()
-        #self.set_default_size(200, 400)
+        self.set_default_size(200, 400)
 
     def setWindowsIcon( self ):
         """
