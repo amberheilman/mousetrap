@@ -1,0 +1,10 @@
+git clone https://github.com/amberheilman/mousetrap.git
+cd mousetrap
+git checkout logan_test
+./autoconfig.sh
+make
+sudo make install
+cd src
+mousetrap        # This will fail the first time.
+vim ~/.mousetrap/userSettings.cfg	# Set ShowPointMapper to False.
+mousetrap
