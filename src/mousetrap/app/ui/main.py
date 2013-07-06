@@ -31,8 +31,8 @@ from gi.repository import Gdk
 from gi.repository import GObject
 from gi.repository import Gtk
 from gi.repository import GdkPixbuf
-import dialogs
-import settings_gui
+from . import dialogs
+from . import settings_gui
 import mousetrap.app.debug as debug
 import mousetrap.app.environment as env
 from mousetrap.app.addons import cpu

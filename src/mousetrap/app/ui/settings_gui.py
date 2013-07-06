@@ -29,8 +29,8 @@ __license__   = "GPLv2"
 
 from gi.repository import GObject
 from gi.repository import Gtk
-import dialogs
-from i18n import _
+from . import dialogs
+from .i18n import _
 from mousetrap.ocvfw import pocv
 import mousetrap.app.environment as env
 
