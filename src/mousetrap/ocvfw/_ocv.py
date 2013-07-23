@@ -415,8 +415,13 @@ class OcvfwPython(OcvfwBase):
             matches = [ [ ( int(r[0][0]*origSize[0]), int(r[0][1]*origSize[1])), \
                           ( int((r[0][0]+r[0][3])+origSize[0]), int((r[0][1]+r[0][2])*origSize[1]) )] \
                           for r in points]
+	    #matches = [ [ ( int(r[0][0]), int(r[0][1])), \
+             #             ( int((r[0][0]+r[0][3])), int((r[0][1]+r[0][2])) )] \
+              #            for r in points]
+	   #FIXME: I don't think the  matches are right
 
             debug.debug( "ocvfw", "cmGetHaarROIPoints: detected some matches" )
+	    debug.debug("ocvfw-getHaarROIPoints", matches)
             return matches
 
 
