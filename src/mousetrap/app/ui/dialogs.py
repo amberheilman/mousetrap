@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MouseTrap
 #
 # Copyright 2009 Flavio Percoco Premoli
