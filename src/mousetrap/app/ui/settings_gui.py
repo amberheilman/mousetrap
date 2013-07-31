@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # -*- coding: utf-8 -*-
 
@@ -96,11 +95,11 @@ class PreffGui( Gtk.Window ):
 		self.set_size_request( 300, 100)
 		self.connect( "destroy", self.close)
 
-		self.table = Gtk.Table( 3, 6, False )
+		self.window = Gtk.Grid()
 
 		self.noteBook = Gtk.Notebook()
 		self.noteBook.set_tab_pos( Gtk.PositionType.TOP )
-		self.table.attach( self.noteBook, 0, 6, 0, 1 )
+		self.window.add( self.noteBook )
 		self.noteBook.show()
 
 		self.main_gui_tab()
@@ -129,9 +128,9 @@ class PreffGui( Gtk.Window ):
 
 		self.buttonsBox.show_all()
 
-		self.table.attach_defaults(self.buttonsBox, 1, 2, 2, 3)
-		self.table.show()
-		self.add( self.table )
+		self.window.attach_next_to(self.buttonsBox, self.noteBook, Gtk.PositionType.BOTTOM, 1, 1)
+		self.window.show_all()
+		self.add( self.window )
 		self.show()
 
 	def main_gui_tab( self ):
