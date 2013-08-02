@@ -124,13 +124,13 @@ class Capture(object):
             self.__image = self.color(self.__color_set)
 
         # TODO: Workaround, I've to fix it
-        """if len(Camera.img_lkpoints["last"]) > 0:
+        if len(Camera.img_lkpoints["last"]) > 0:
             Camera.show_lkpoints()
 
         if Camera.lk_swap():
             Camera.swap_lkpoints()
 
-        self.show_rectangles(self.rectangles())"""
+        self.show_rectangles(self.rectangles())
 
         return self.async
 
@@ -226,7 +226,7 @@ class Capture(object):
         #debug.debug("Camera", "Showing existing rectangles -> %d" % len(rectangles))
 
         for rect in rectangles:
-            co.cv.Rectangle( self.__image, co.cv.cvPoint(rect.x, rect.y), co.cv.cvPoint(rect.size[0], rect.size[1]), co.cv.CV_RGB(255,0,0), 3, 8, 0 )
+            co.cv.Rectangle( self.__image, (rect.x, rect.y), (rect.size[0], rect.size[1]), co.cv.CV_RGB(255,0,0), 3, 8, 0 )
 
     def draw_point(self, x, y):
         co.cv.cvCircle(self.__image, (x,y), 3, co.cv.cvScalar(0, 255, 0, 0), -1, 8, 0)

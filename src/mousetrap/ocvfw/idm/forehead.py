@@ -155,14 +155,11 @@ class Module(object):
 	    debug.debug("face areas", areas)
 
             # Shows the face rectangle
-            #self.cap.add( Graphic("rect", "Face", ( startF[0], startF[1] ), (endF[0], endF[1]), parent=self.cap) )
+            self.cap.add( Graphic("rect", "Face", ( startF[0], startF[1] ), (endF[0], endF[1]), parent=self.cap) )
 
             eyes = self.cap.get_area( 
                 commons.haar_cds['Eyes'],
-		{"start" : startF[0],
-                "end" : startF[1],
-                "width" : endF[0] - startF[0],
-                "height" : endF[1] - startF[1]},
+		{"start" : startF[0], "end" : startF[1], "width" : endF[0] - startF[0],"height" : endF[1] - startF[1]},
                 (startF[0], startF[1]) ) # replaced x and y
 	    debug.debug("eyes - get_area", eyes)
 
@@ -178,7 +175,7 @@ class Module(object):
 
             X, Y = ( (point1[0] + point2[0]) / 2 ), ( point1[1] + ( (point1[1] + point2[1]) / 2 ) ) / 2 #replaced x and y
             self.cap.add( Point("point", "forehead", ( X, Y ), parent=self.cap, follow=True) )
-	    debug.debug("forehead point", self.cap.forehead.orig)
+	    debug.debug("forehead point", self.foreheadOrig)
             return True
 
         self.foreheadOrig = None
