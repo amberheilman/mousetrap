@@ -176,7 +176,7 @@ class MainGui( Gtk.Window ):
 			return False
 		
 		#sets new pixbuf
-		self.cap_image.set_from_pixbuf(cap.to_gtk_buff().scale_simple(200, 160, Gdk.Pixbuf.Interptype.BILINEAR))
+		self.cap_image.set_from_pixbuf(cap.to_gtk_buff().scale_simple(200, 160, GdkPixbuf.InterpType.BILINEAR))
 		
 #	def recalPoint(self, widget, flip = ''):
 #		'''
