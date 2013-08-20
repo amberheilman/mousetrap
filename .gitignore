@@ -65,3 +65,5 @@ src/mousetrap/app/mousetrap
 po/Makefile.in.in
 aclocal.m4
 *.py.bak
+docs/doxygen/Doxyfile
+po/Makefile.in
