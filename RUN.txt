@@ -1,7 +1,7 @@
 git clone https://github.com/amberheilman/mousetrap.git
 cd mousetrap
 git checkout logan_test
-./autoconfig.sh
+./autogen.sh
 make
 sudo make install
 cd src
