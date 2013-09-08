@@ -125,6 +125,8 @@ class Module(object):
         if not hasattr(self.cap, "forehead"):
             self.get_forehead()
 
+	#self.get_forehead()
+
         #return self.cap.resize(200, 160, True)
         return self.cap
 	
@@ -137,6 +139,7 @@ class Module(object):
         """
 
         if hasattr(self.cap, "forehead"):
+	    #debug.debug("Forehead Point", self.cap.forehead)
             return self.cap.forehead
 
     def get_forehead(self):
@@ -152,7 +155,6 @@ class Module(object):
 	    #startF = face[0][0]
 	    endF     = face[areas.index(max(areas))][1]
 	    #endF = face[0][1]
-	    debug.debug("face areas", areas)
 
             # Shows the face rectangle
             self.cap.add( Graphic("rect", "Face", ( startF[0], startF[1] ), (endF[0], endF[1]), parent=self.cap) )
@@ -171,11 +173,14 @@ class Module(object):
 	    debug.debug("eyes", point1)
 
             # Shows the eyes rectangle
-            #self.cap.add(Graphic("rect", "Face", ( point1[0], point1[1] ), (point2[0], point2[1]), parent=self.cap))
+            #self.cap.add(Graphic("rect", "Eyes", ( point1[0], point1[1] ), (point2[0], point2[1]), parent=self.cap))
 
             X, Y = ( (point1[0] + point2[0]) / 2 ), ( point1[1] + ( (point1[1] + point2[1]) / 2 ) ) / 2 #replaced x and y
-            self.cap.add( Point("point", "forehead", ( X, Y ), parent=self.cap, follow=True) )
-	    debug.debug("forehead point", self.foreheadOrig)
+	    self.cap.forehead = (X,Y)
+
+	    self.cap.forehead = (((startF[0] + endF[0])/2),((startF[1] + endF[1])/2))
+            self.cap.add( Point("point", "forehead-point", self.cap.forehead, parent=self.cap, follow=True) )
+	    debug.debug("forehead point", self.cap.forehead)
             return True
 
         self.foreheadOrig = None

@@ -131,6 +131,7 @@ class Capture(object):
             Camera.swap_lkpoints()
 
         self.show_rectangles(self.rectangles())
+	self.draw_point(self.points())
 
         return self.async
 
@@ -228,8 +229,9 @@ class Capture(object):
         for rect in rectangles:
             co.cv.Rectangle( self.__image, (rect.x, rect.y), (rect.size[0], rect.size[1]), co.cv.CV_RGB(255,0,0), 3, 8, 0 )
 
-    def draw_point(self, x, y):
-        co.cv.cvCircle(self.__image, (x,y), 3, co.cv.cvScalar(0, 255, 0, 0), -1, 8, 0)
+    def draw_point(self, points):
+	for point in points:
+        	co.cv.Circle(self.__image, (point.x,point.y), 3, co.cv.Scalar(0, 255, 0, 0), 3, 8, 0)
 
     def original(self):
         """
