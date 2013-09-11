@@ -37,11 +37,7 @@ import sys
 sys.argv[0] = "mousetrap"
 
 from gi.repository import GObject
-<<<<<<< HEAD
-from . import debug
-=======
 import debug
->>>>>>> acc139c... Get a window to display.
 import getopt
 from . import environment as env
 
